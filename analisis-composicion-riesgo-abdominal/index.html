@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis Corporal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Salud Corporal</h1>
+<p class="sub">Composición corporal y riesgo abdominal</p>
+
+<div class="group">
+<label>Sexo</label>
+<select id="sexo">
+<option value="hombre">Hombre</option>
+<option value="mujer">Mujer</option>
+</select>
+</div>
+
+<div class="group">
+<label>Peso (kg)</label>
+<input type="number" id="peso" placeholder="Ej: 75">
+</div>
+
+<div class="group">
+<label>Estatura (cm)</label>
+<input type="number" id="altura" placeholder="Ej: 170">
+</div>
+
+<div class="group">
+<label>Cintura (cm)</label>
+<input type="number" id="cintura" placeholder="Ej: 88">
+</div>
+
+<button onclick="analizar()">Analizar</button>
+
+<div id="resultado" class="result">
+<h2 id="titulo"></h2>
+<p id="imc"></p>
+<p id="grasa"></p>
+<p id="abdomen"></p>
+<p id="mensaje"></p>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+    --h-blue: #0052cc;
+    --h-red: #d32f2f;
+    --h-orange: #ef6c00;
+    --h-yellow: #fbc02d;
+    --h-green: #388e3c;
+    --bg: #f4f5f7;
+    --sidebar-text: #172b4d;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: #333; height: 100vh; }
+
+.hosp-container { display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
+
+/* Sidebar */
+.sidebar-entry { background: white; padding: 30px; border-right: 1px solid #dfe1e6; display: flex; flex-direction: column; overflow-y: auto; }
+.hosp-brand { display: flex; gap: 15px; align-items: center; margin-bottom: 35px; }
+.cross { background: var(--h-red); color: white; padding: 8px 12px; border-radius: 8px; font-weight: 800; }
+.hosp-brand h2 span { color: var(--h-blue); }
+
+.section-tag { display: block; font-size: 0.65rem; font-weight: 800; color: #7a869a; text-transform: uppercase; margin-bottom: 10px; border-bottom: 2px solid #ebecf0; padding-bottom: 4px; }
+.form-section { margin-bottom: 25px; }
+
+input, select { width: 100%; padding: 12px; border: 2px solid #dfe1e6; border-radius: 8px; font-size: 0.9rem; margin-bottom: 10px; font-weight: 600; }
+input:focus { border-color: var(--h-blue); outline: none; }
+
+.abc-check { background: #fff5f5; padding: 15px; border-radius: 10px; border: 1px solid #ffe3e3; }
+.abc-check span { font-size: 0.8rem; font-weight: 700; color: #ae2e24; }
+
+.toggle-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.toggle-switch button { padding: 10px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; background: #ebecf0; }
+.toggle-switch button.active { background: var(--h-red); color: white; }
+
+.vital-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.v-input label { font-size: 0.7rem; font-weight: 700; color: #5e6c84; }
+
+.btn-submit { width: 100%; padding: 18px; background: var(--h-blue); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+
+/* Monitor Area */
+.monitor-area { display: flex; align-items: center; justify-content: center; padding: 60px; }
+.idle-screen { text-align: center; color: #7a869a; border: 2px dashed #dfe1e6; padding: 60px; border-radius: 20px; }
+
+.result-card { width: 100%; max-width: 650px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; animation: slideIn 0.4s ease; }
+.prio-banner { padding: 40px; text-align: center; color: white; }
+.prio-banner h1 { font-size: 3rem; font-weight: 900; }
+
+.report-content { padding: 40px; }
+.report-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 1rem; }
+.report-row span { color: #7a869a; font-weight: 600; }
+hr { margin: 20px 0; border: 0; border-top: 1px solid #ebecf0; }
+.clinical-note label { font-size: 0.7rem; font-weight: 800; color: #7a869a; }
+.clinical-note p { margin-top: 10px; line-height: 1.5; font-weight: 500; }
+
+.hidden { display: none; }
+@keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

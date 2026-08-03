@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen: Retiro de Dinero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h3>Simulador de Retiro</h3>
+        
+        <div class="entrada">
+            <div class="cuadro">
+                <label>Saldo Total (S/.)</label>
+                <input type="number" id="saldo" value="1000">
+            </div>
+            <div class="cuadro">
+                <label>Monto a Retirar</label>
+                <input type="number" id="retiro" placeholder="0.00">
+            </div>
+        </div>
+
+        <button onclick="procesarRetiro()">Validar Retiro</button>
+
+        <div class="resultado-caja">
+            <div id="resMensaje">Esperando...</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

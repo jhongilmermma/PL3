@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>Salud<span>Digital</span></h1>
+            <p>Monitoreo de Índice de Masa Corporal</p>
+        </header>
+
+        <div class="calculator-box">
+            <div class="input-group">
+                <label>Peso (kg)</label>
+                <input type="number" id="weight" placeholder="Ej: 75" step="0.1">
+            </div>
+
+            <div class="input-group">
+                <label>Estatura (cm)</label>
+                <input type="number" id="height" placeholder="Ej: 170">
+            </div>
+            <div class="calculator-box">
+                <div class="input-group">
+                    <label>cintur</label>
+                    <input type="number" id="weight" placeholder="Ej: 75" step="0.01">
+                </div>
+    
+            <button onclick="calculateIMC()" id="btnMain">Calcular IMC</button>
+        </div>
+
+        <div id="resultCard" class="result-card hidden">
+            <div class="imc-display">
+                <div class="circle-progress">
+                    <span id="imcValue">0.0</span>
+                    <small>IMC</small>
+                </div>
+            </div>
+            
+            <div class="text-content">
+                <div id="badge" class="badge">Estado</div>
+                <h2 id="statusTitle">Resultado</h2>
+                <p id="description">Cargando análisis de salud...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

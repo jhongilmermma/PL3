@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Suma de Matrices</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Suma de Matrices</h1>
+
+        <div class="controls">
+
+            <input 
+                type="number"
+                id="rows"
+                placeholder="Filas"
+                min="1"
+            >
+
+            <input 
+                type="number"
+                id="cols"
+                placeholder="Columnas"
+                min="1"
+            >
+
+            <button onclick="generarMatrices()">
+                Generar Matrices
+            </button>
+
+        </div>
+
+        <div class="matrices">
+
+            <div>
+                <h2>Matriz A</h2>
+                <div id="matrix1-container"></div>
+            </div>
+
+            <div>
+                <h2>Matriz B</h2>
+                <div id="matrix2-container"></div>
+            </div>
+
+        </div>
+
+        <button 
+            id="btn-sumar"
+            onclick="sumarMatrices()"
+            style="display:none;"
+        >
+            Sumar Matrices
+        </button>
+
+        <div id="result-container"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

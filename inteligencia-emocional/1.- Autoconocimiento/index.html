@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inteligencia Emocional · Autoconocimiento · Timeline</title>
+  <!-- Font Awesome (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f5f0f0 0%, #e8e0e0 100%);
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 2.5rem;
+      padding: 2rem 2rem 2.5rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3), 0 2px 10px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2c2a2a;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.15rem;
+    }
+
+    h1 i {
+      color: #b8735c;
+      font-size: 2rem;
+    }
+
+    .subhead {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      border-bottom: 2px dashed rgba(120, 80, 70, 0.2);
+      padding-bottom: 0.8rem;
+    }
+
+    .subhead span {
+      font-size: 1rem;
+      background: #d6c6c0;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      color: #2f2522;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.6);
+    }
+
+    .golearn-badge {
+      background: #a98378;
+      color: white;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .golearn-badge i {
+      font-size: 1rem;
+    }
+
+    /* Área de registro – autoconocimiento */
+    .register-area {
+      background: rgba(245, 235, 230, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(255, 245, 240, 0.7);
+      box-shadow: 0 8px 18px rgba(80, 50, 40, 0.08);
+    }
+
+    .register-area h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: #3f302b;
+      margin-bottom: 0.2rem;
+    }
+
+    .register-area h2 i {
+      color: #b8735c;
+    }
+
+    .register-area p {
+      color: #5f4a42;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      flex: 1 1 200px;
+      padding: 0.9rem 1.2rem;
+      border: none;
+      border-radius: 60px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      font-size: 1rem;
+      color: #2b1f1b;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02), inset 0 1px 4px rgba(255,255,255,0.8);
+      transition: all 0.2s;
+      border: 1px solid rgba(200, 180, 170, 0.3);
+    }
+
+    .input-group input:focus,
+    .input-group textarea:focus {
+      outline: 2px solid #b8735c;
+      background: white;
+      border-color: transparent;
+      box-shadow: 0 8px 16px rgba(180, 100, 80, 0.1);
+    }
+
+    .input-group textarea {
+      flex: 2 1 280px;
+      resize: vertical;
+      min-height: 70px;
+      border-radius: 24px;
+      font-family: inherit;
+    }
+
+    .btn-grabar {
+      background: #b8735c;
+      border: none;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 8px 18px rgba(180, 100, 80, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.3px;
+      flex: 0 0 auto;
+    }
+
+    .btn-grabar:hover {
+      background: #a5634e;
+      transform: scale(1.02) translateY(-2px);
+      box-shadow: 0 12px 24px rgba(160, 90, 70, 0.3);
+    }
+
+    .btn-grabar:active {
+      transform: scale(0.97);
+    }
+
+    .btn-grabar i {
+      font-size: 1.2rem;
+    }
+
+    /* LINEA DE TIEMPO */
+    .timeline-section {
+      margin-top: 1rem;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .timeline-header h3 {
+      font-weight: 500;
+      color: #3f2e28;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .timeline-header h3 i {
+      color: #b8735c;
+    }
+
+    .counter {
+      background: #d0b8ae;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #2c1e1a;
+    }
+
+    .timeline-container {
+      background: rgba(235, 222, 215, 0.3);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      padding: 0.8rem 0.8rem 0.5rem;
+      border: 1px solid rgba(255, 235, 225, 0.5);
+      max-height: 340px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    .timeline-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .timeline-container::-webkit-scrollbar-track {
+      background: #dacbc4;
+      border-radius: 20px;
+    }
+
+    .timeline-container::-webkit-scrollbar-thumb {
+      background: #b8735c;
+      border-radius: 20px;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 0.9rem 0.9rem 0.9rem 1.2rem;
+      margin-bottom: 0.4rem;
+      background: rgba(255, 247, 242, 0.6);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      border-radius: 50px;
+      border-left: 6px solid #b8735c;
+      transition: 0.15s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .timeline-item:hover {
+      background: rgba(255, 240, 232, 0.8);
+      transform: translateX(6px);
+      border-left-width: 10px;
+    }
+
+    .timeline-item .time-badge {
+      background: #dac0b6;
+      color: #281e1a;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+      margin-top: 2px;
+    }
+
+    .timeline-item .entry-content {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem 0.8rem;
+    }
+
+    .entry-emotion {
+      background: #e6d4cc;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #3f2a22;
+    }
+
+    .entry-text {
+      color: #2d1f1a;
+      word-break: break-word;
+      font-size: 0.95rem;
+      flex: 2 1 140px;
+    }
+
+    .entry-empty {
+      color: #7f6a60;
+      font-style: italic;
+      text-align: center;
+      padding: 1.2rem 0;
+      opacity: 0.7;
+      font-weight: 300;
+    }
+
+    .btn-borrar {
+      background: transparent;
+      border: none;
+      color: #b07c6b;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0 6px;
+      transition: 0.15s;
+      opacity: 0.5;
+      margin-left: auto;
+    }
+
+    .btn-borrar:hover {
+      color: #a1422c;
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .footer-note {
+      margin-top: 1.8rem;
+      font-size: 0.8rem;
+      text-align: right;
+      color: #79645b;
+      border-top: 1px solid rgba(160, 130, 120, 0.15);
+      padding-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-note i {
+      margin: 0 4px;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 1.5rem; }
+      .register-area { padding: 1.2rem; }
+      .input-group { flex-direction: column; align-items: stretch; }
+      .btn-grabar { justify-content: center; }
+      .timeline-item { flex-wrap: wrap; border-radius: 20px; }
+      .timeline-item .time-badge { font-size: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <!-- encabezado -->
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <h1>
+      <i class="fas fa-brain"></i> Autoconocimiento
+    </h1>
+    <div class="golearn-badge">
+      <i class="fas fa-leaf"></i> golean 1
+    </div>
+  </div>
+  <div class="subhead">
+    <span><i class="far fa-clock" style="margin-right: 6px;"></i>registro emocional</span>
+    <span style="background: transparent; box-shadow: none; padding: 0;"><i class="fas fa-arrow-right" style="color: #b8735c;"></i> inteligencia emocional</span>
+  </div>
+
+  <!-- bloque 1: autoconocimiento + grabación -->
+  <div class="register-area">
+    <h2><i class="fas fa-pen-fancy"></i> ¿Cómo te sientes ahora?</h2>
+    <p>Escribe una emoción y un breve pensamiento. <br> <i class="fas fa-circle" style="color: #b8735c; font-size: 0.5rem; vertical-align: middle;"></i> Cada entrada se guarda en tu línea de tiempo.</p>
+    
+    <div class="input-group">
+      <input type="text" id="emotionInput" placeholder="Ej. alegría, frustración..." value="curiosidad">
+      <textarea id="thoughtInput" placeholder="Describe tu estado... (opcional)">explorando mi interior</textarea>
+      <button class="btn-grabar" id="grabarBtn"><i class="fas fa-save"></i> Grabar</button>
+    </div>
+    <div style="margin-top: 0.6rem; font-size: 0.8rem; color: #7f685e; display: flex; gap: 1.2rem; flex-wrap: wrap;">
+      <span><i class="fas fa-tag"></i> emoción principal</span>
+      <span><i class="fas fa-comment"></i> reflexión breve</span>
+    </div>
+  </div>
+
+  <!-- LINEA DE TIEMPO -->
+  <div class="timeline-section">
+    <div class="timeline-header">
+      <h3><i class="fas fa-history"></i> Línea de tiempo · autoconocimiento</h3>
+      <span class="counter" id="entryCounter">0 entradas</span>
+    </div>
+    <div class="timeline-container" id="timelineContainer">
+      <!-- los items se renderizan dinámicamente con JS -->
+      <div class="entry-empty" id="emptyMessage">
+        <i class="fas fa-hourglass-start" style="margin-right: 8px;"></i> Aún no hay registros. ¡Grabá tu primera emoción!
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <span><i class="fas fa-chevron-circle-right" style="color: #b8735c;"></i> autoconocimiento · golean 1</span>
+    <span><i class="far fa-calendar-alt"></i> <span id="currentDate"></span></span>
+  </div>
+</div>
+
+<script>
+  (function() {
+    "use strict";
+
+    // ---- elementos DOM ----
+    const emotionInput = document.getElementById('emotionInput');
+    const thoughtInput = document.getElementById('thoughtInput');
+    const grabarBtn = document.getElementById('grabarBtn');
+    const timelineContainer = document.getElementById('timelineContainer');
+    const emptyMessage = document.getElementById('emptyMessage');
+    const entryCounter = document.getElementById('entryCounter');
+
+    // ---- estado ----
+    let entries = [];
+
+    // ---- helpers ----
+    function formatTime(date) {
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      return `${hours}:${minutes}`;
+    }
+
+    function formatDate(date) {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+
+    // ---- renderizar timeline ----
+    function renderTimeline() {
+      // limpiar contenedor (mantener el emptyMessage como referencia)
+      const items = timelineContainer.querySelectorAll('.timeline-item');
+      items.forEach(el => el.remove());
+
+      // si no hay entries, mostrar mensaje vacío
+      if (entries.length === 0) {
+        emptyMessage.style.display = 'block';
+        entryCounter.textContent = '0 entradas';
+        return;
+      }
+      emptyMessage.style.display = 'none';
+      entryCounter.textContent = `${entries.length} entrada${entries.length > 1 ? 's' : ''}`;
+
+      // ordenar de más reciente a más antiguo (por fecha)
+      const sorted = [...entries].sort((a, b) => b.timestamp - a.timestamp);
+
+      for (const entry of sorted) {
+        const date = new Date(entry.timestamp);
+        const timeStr = formatTime(date);
+        const dateStr = formatDate(date);
+
+        const item = document.createElement('div');
+        item.className = 'timeline-item';
+
+        // badge tiempo
+        const badge = document.createElement('span');
+        badge.className = 'time-badge';
+        badge.innerHTML = `<i class="far fa-clock" style="margin-right: 4px;"></i> ${dateStr} · ${timeStr}`;
+
+        // contenido
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'entry-content';
+
+        // etiqueta emoción
+        const emotionSpan = document.createElement('span');
+        emotionSpan.className = 'entry-emotion';
+        emotionSpan.textContent = entry.emotion || 'sin etiqueta';
+
+        // texto
+        const textSpan = document.createElement('span');
+        textSpan.className = 'entry-text';
+        textSpan.textContent = entry.thought || '';
+
+        // botón borrar (ícono)
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn-borrar';
+        deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        deleteBtn.setAttribute('aria-label', 'Eliminar entrada');
+        deleteBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          eliminarEntrada(entry.id);
+        });
+
+        // armar
+        contentDiv.appendChild(emotionSpan);
+        contentDiv.appendChild(textSpan);
+        item.appendChild(badge);
+        item.appendChild(contentDiv);
+        item.appendChild(deleteBtn);
+
+        // insertar al inicio (para que lo más nuevo esté arriba)
+        timelineContainer.prepend(item);
+      }
+    }
+
+    // ---- eliminar entrada ----
+    function eliminarEntrada(id) {
+      entries = entries.filter(entry => entry.id !== id);
+      // guardar en localStorage
+      localStorage.setItem('goleanEntries', JSON.stringify(entries));
+      renderTimeline();
+    }
+
+    // ---- agregar nueva entrada ----
+    function addEntry() {
+      const emotion = emotionInput.value.trim() || 'sin emoción';
+      const thought = thoughtInput.value.trim() || '';
+
+      if (!emotion && !thought) {
+        // si ambos están vacíos, al menos poner un placeholder
+        // pero dejamos que se guarde con "sin emoción" y texto vacío
+      }
+
+      const newEntry = {
+        id: Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+        emotion: emotion,
+        thought: thought,
+        timestamp: Date.now()
+      };
+
+      entries.push(newEntry);
+      // guardar en localStorage
+      localStorage.setItem('goleanEntries', JSON.stringify(entries));
+      
+      // limpiar campos (pero dejamos algo de ejemplo, o reset)
+      emotionInput.value = '';
+      thoughtInput.value = '';
+      // poner placeholders o ejemplos sutiles
+      emotionInput.placeholder = 'ej. gratitud, enojo...';
+      thoughtInput.placeholder = '¿qué pensás?';
+
+      renderTimeline();
+
+      // scroll al inicio (nuevo registro arriba)
+      timelineContainer.scrollTop = 0;
+    }
+
+    // ---- cargar datos desde localStorage ----
+    function loadFromStorage() {
+      const stored = localStorage.getItem('goleanEntries');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed)) {
+            entries = parsed;
+          }
+        } catch (e) {
+          console.warn('Error parseando localStorage, se inicia vacío');
+          entries = [];
+        }
+      } else {
+        // datos de ejemplo para mostrar la funcionalidad
+        const now = Date.now();
+        const sample = [
+          { id: 's1_' + now, emotion: 'alegría', thought: 'me siento en paz conmigo mismo', timestamp: now - 3600000 * 2 },
+          { id: 's2_' + now, emotion: 'curiosidad', thought: 'explorando mi autoconocimiento', timestamp: now - 3600000 * 5 },
+          { id: 's3_' + now, emotion: 'serenidad', thought: 'respirar y observar', timestamp: now - 3600000 * 24 }
+        ];
+        entries = sample;
+        localStorage.setItem('goleanEntries', JSON.stringify(entries));
+      }
+      renderTimeline();
+    }
+
+    // ---- mostrar fecha actual en footer ----
+    function setCurrentDate() {
+      const now = new Date();
+      const dateSpan = document.getElementById('currentDate');
+      if (dateSpan) {
+        dateSpan.textContent = formatDate(now) + ' · ' + formatTime(now);
+      }
+    }
+
+    // ---- evento grabar ----
+    grabarBtn.addEventListener('click', addEntry);
+
+    // ---- enter en campos (opcional) ----
+    emotionInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        thoughtInput.focus();
+      }
+    });
+    thoughtInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        addEntry();
+      }
+    });
+
+    // ---- inicio ----
+    loadFromStorage();
+    setCurrentDate();
+
+    // actualizar fecha cada minuto (solo por estética)
+    setInterval(setCurrentDate, 60000);
+  })();
+</script>
+</body>
+</html>

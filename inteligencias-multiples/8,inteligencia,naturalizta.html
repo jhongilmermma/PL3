@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🌿 ECO MIND | Inteligencia Naturalista - Explorador de Ecosistemas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(ellipse at 30% 20%, #0a1a0a 0%, #051005 100%);
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        .eco-app {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .eco-header {
+            background: rgba(34, 197, 94, 0.12);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            padding: 1.2rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .eco-header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #22C55E, #16A34A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(34, 197, 94, 0.2);
+        }
+
+        .eco-header p {
+            color: #86EFAC !important;
+            font-weight: 400;
+        }
+
+        .eco-stats {
+            display: flex;
+            gap: 2rem;
+            background: #0a1a0a;
+            padding: 0.5rem 1.8rem;
+            border-radius: 3rem;
+            border: 1px solid #22C55E40;
+        }
+
+        .eco-stat {
+            text-align: center;
+        }
+
+        .eco-stat-label {
+            font-size: 0.65rem;
+            color: #86EFAC;
+            font-weight: 500;
+        }
+
+        .eco-stat-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #22C55E;
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+        }
+
+        /* GRID DE MÓDULOS */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .module-card {
+            background: linear-gradient(145deg, #0e1f0e, #071007);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #1a3a1a;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .module-card:not(.locked):not(.completed):hover {
+            transform: translateY(-6px);
+            border-color: #22C55E;
+            box-shadow: 0 20px 30px -12px rgba(34, 197, 94, 0.3);
+        }
+
+        .module-card.completed {
+            border-color: #22C55E;
+            background: linear-gradient(145deg, #064E3B, #022C22);
+        }
+
+        .module-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .module-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #F1F5F9;
+        }
+
+        .module-desc {
+            font-size: 0.8rem;
+            color: #86EFAC;
+            margin: 0.5rem 0;
+        }
+
+        .module-points {
+            display: inline-block;
+            background: #22C55E20;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            color: #4ADE80;
+            font-weight: 600;
+        }
+
+        .module-card .status-done {
+            color: #4ADE80 !important;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .module-card .lock-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* MODAL */
+        .modal-eco {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-eco.active {
+            display: flex;
+            animation: fadeScale 0.3s ease;
+        }
+
+        .modal-eco-content {
+            background: linear-gradient(145deg, #0e1f0e, #071007);
+            max-width: 600px;
+            width: 90%;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 2px solid #22C55E;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 0 40px rgba(34, 197, 94, 0.15);
+        }
+
+        .modal-eco-header {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4ADE80;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+        }
+
+        .eco-area {
+            background: #071007;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+            border: 1px solid #1a3a1a;
+        }
+
+        .eco-area p {
+            color: #86EFAC !important;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .eco-area .question-text {
+            color: #F1F5F9 !important;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        /* CLASIFICACIÓN */
+        .classification-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .animal-card {
+            background: #0e1f0e;
+            border: 2px solid #1a3a1a;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .animal-card:hover {
+            border-color: #22C55E;
+            background: #1a3a1a;
+        }
+
+        .animal-card.selected {
+            border-color: #22C55E;
+            background: #22C55E20;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+        }
+
+        .animal-emoji {
+            font-size: 2.5rem;
+        }
+
+        .animal-name {
+            color: #E2E8F0 !important;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* OPCIONES */
+        .carbon-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .carbon-option {
+            background: #0e1f0e;
+            border: 2px solid #1a3a1a;
+            border-radius: 1rem;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #E2E8F0 !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            min-width: 120px;
+        }
+
+        .carbon-option:hover {
+            border-color: #22C55E;
+            background: #1a3a1a;
+        }
+
+        .carbon-option.selected {
+            border-color: #22C55E;
+            background: #22C55E20;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+        }
+
+        /* BOTONES */
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.8rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #22C55E, #16A34A);
+            color: white;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-secondary {
+            background: #1a3a1a;
+            color: #86EFAC;
+            border: 1px solid #22C55E40;
+        }
+
+        .btn-secondary:hover {
+            background: #2a5a2a;
+        }
+
+        /* PROGRESO */
+        .progress-bar {
+            margin-top: 1rem;
+            background: #0a1a0a;
+            border-radius: 1rem;
+            height: 8px;
+            overflow: hidden;
+            border: 1px solid #1a3a1a;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #22C55E, #4ADE80);
+            width: 0%;
+            height: 100%;
+            transition: width 0.4s;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+        }
+
+        /* FINAL */
+        .final-screen {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(145deg, #0e1f0e, #071007);
+            border-top: 3px solid #22C55E;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+            z-index: 100;
+        }
+
+        .final-screen.show {
+            transform: translateY(0);
+        }
+
+        .final-screen h2 {
+            color: #22C55E !important;
+        }
+
+        .final-screen p {
+            color: #86EFAC !important;
+        }
+
+        @keyframes fadeScale {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .float-particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.2rem;
+            animation: floatUp 1.5s forwards;
+            z-index: 1000;
+            font-weight: bold;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-80px); }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #2a5a2a;
+            font-size: 0.8rem;
+        }
+
+        /* SCROLLBAR */
+        .modal-eco-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-eco-content::-webkit-scrollbar-track {
+            background: #071007;
+        }
+
+        .modal-eco-content::-webkit-scrollbar-thumb {
+            background: #22C55E;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="eco-app">
+    <div class="eco-header">
+        <div>
+            <h1>🌿 ECO MIND</h1>
+            <p style="color: #86EFAC;">Inteligencia Naturalista · Biodiversidad · Sostenibilidad · Observación</p>
+        </div>
+        <div class="eco-stats">
+            <div class="eco-stat"><div class="eco-stat-label">🏆 PUNTOS</div><div class="eco-stat-value" id="pointsTotal">0</div></div>
+            <div class="eco-stat"><div class="eco-stat-label">✨ COMPLETADOS</div><div class="eco-stat-value" id="completedCount">0/7</div></div>
+            <div class="eco-stat"><div class="eco-stat-label">🎯 RANGO</div><div class="eco-stat-value" id="rankLabel">NOVATO</div></div>
+        </div>
+    </div>
+
+    <div class="modules-grid" id="modulesGrid"></div>
+    <div class="progress-bar"><div class="progress-fill" id="globalProgress"></div></div>
+    <footer>🌍 Conecta con la naturaleza · Observa, clasifica y protege nuestro planeta</footer>
+</div>
+
+<div class="final-screen" id="finalPanel">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <div><h2 id="finalRank" style="color:#22C55E;">🏆 GUARDIÁN DE LA TIERRA</h2><p id="finalMsg" style="color:#CBD5E1;"></p></div>
+        <button class="btn btn-primary" id="closeFinalBtn">✨ Continuar</button>
+    </div>
+</div>
+
+<div class="modal-eco" id="ecoModal">
+    <div class="modal-eco-content">
+        <div class="modal-eco-header" id="modalTitle">🌿 Explorador Naturalista</div>
+        <div id="modalBody"></div>
+        <div class="modal-buttons">
+            <button class="btn btn-secondary" id="closeModalBtn">Cancelar</button>
+            <button class="btn btn-primary" id="submitModalBtn">🌱 Completar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ==================== MÓDULOS ====================
+    let modules = [
+        { id:0, icon:"🐾", title:"CLASIFICACIÓN DE ANIMALES", desc:"Agrupa los animales por su hábitat", type:"classification", points:25, unlocked:true, done:false },
+        { id:1, icon:"🌳", title:"ECOSISTEMAS DEL MUNDO", desc:"Identifica el ecosistema correcto", type:"ecosystem", points:30, unlocked:false, done:false },
+        { id:2, icon:"🌍", title:"HUELLA DE CARBONO", desc:"Calcula tu impacto ambiental", type:"carbon", points:35, unlocked:false, done:false },
+        { id:3, icon:"🌿", title:"PLANTAS MEDICINALES", desc:"Reconoce plantas curativas", type:"plants", points:30, unlocked:false, done:false },
+        { id:4, icon:"🔄", title:"CICLO DE VIDA", desc:"Ordena el ciclo de vida", type:"lifecycle", points:40, unlocked:false, done:false },
+        { id:5, icon:"🌊", title:"BIODIVERSIDAD MARINA", desc:"Identifica especies marinas", type:"marine", points:35, unlocked:false, done:false },
+        { id:6, icon:"🏆", title:"GUARDIÁN DE LA TIERRA", desc:"Protege el medio ambiente", type:"guardian", points:50, unlocked:false, done:false }
+    ];
+
+    let totalPoints = 0;
+    let currentModule = null;
+    let selectedAnswer = null;
+
+    function saveProgress() {
+        localStorage.setItem('ecoMindPoints', totalPoints);
+        localStorage.setItem('ecoModules', JSON.stringify(modules.map(m => ({ done: m.done, unlocked: m.unlocked }))));
+    }
+
+    function loadProgress() {
+        const savedPts = localStorage.getItem('ecoMindPoints');
+        const savedMod = localStorage.getItem('ecoModules');
+        if (savedPts) totalPoints = parseInt(savedPts);
+        if (savedMod) {
+            const saved = JSON.parse(savedMod);
+            modules.forEach((m, idx) => {
+                if (saved[idx]) {
+                    m.done = saved[idx].done;
+                    m.unlocked = saved[idx].unlocked;
+                }
+            });
+        }
+        modules[0].unlocked = true;
+        for (let i = 1; i < modules.length; i++) {
+            if (modules[i-1].done && !modules[i].unlocked) modules[i].unlocked = true;
+        }
+        renderModules();
+    }
+
+    function renderModules() {
+        const grid = document.getElementById("modulesGrid");
+        grid.innerHTML = "";
+        modules.forEach((m, idx) => {
+            const card = document.createElement("div");
+            card.className = "module-card";
+            if (m.done) card.classList.add("completed");
+            if (!m.unlocked && !m.done) card.classList.add("locked");
+            card.innerHTML = `
+                <div class="module-icon">${m.icon}</div>
+                <div class="module-title">${m.title}</div>
+                <div class="module-desc">${m.desc}</div>
+                <div class="module-points">🏆 ${m.points} pts</div>
+                ${m.done ? '<div class="status-done">✅ Completado</div>' : ''}
+                ${!m.unlocked && !m.done ? '<div class="lock-icon">🔒</div>' : ''}
+            `;
+            if (!m.done && m.unlocked) card.onclick = () => openModule(idx);
+            grid.appendChild(card);
+        });
+        updateStats();
+    }
+
+    function updateStats() {
+        const doneCount = modules.filter(m => m.done).length;
+        document.getElementById("pointsTotal").innerText = totalPoints;
+        document.getElementById("completedCount").innerHTML = `${doneCount}/${modules.length}`;
+        const percent = (doneCount / modules.length) * 100;
+        document.getElementById("globalProgress").style.width = percent + "%";
+        
+        let rank = totalPoints >= 230 ? "GUARDIÁN DE LA TIERRA" : totalPoints >= 150 ? "NATURALISTA EXPERTO" : totalPoints >= 80 ? "EXPLORADOR" : totalPoints >= 30 ? "APRENDIZ" : "NOVATO";
+        document.getElementById("rankLabel").innerHTML = rank;
+        saveProgress();
+    }
+
+    function floatPoints(p) {
+        for (let i=0;i<4;i++) {
+            setTimeout(() => {
+                const f = document.createElement("div");
+                f.className = "float-particle";
+                f.innerHTML = `+${p} 🌿`;
+                f.style.left = (Math.random() * window.innerWidth * 0.7 + window.innerWidth * 0.15) + "px";
+                f.style.top = "70%";
+                f.style.color = "#4ADE80";
+                document.body.appendChild(f);
+                setTimeout(() => f.remove(), 1500);
+            }, i*70);
+        }
+    }
+
+    function completeModule(id, earned) {
+        if (modules[id].done) return;
+        modules[id].done = true;
+        totalPoints += earned;
+        floatPoints(earned);
+        for (let i = 1; i < modules.length; i++) {
+            if (modules[i-1].done && !modules[i].unlocked) modules[i].unlocked = true;
+        }
+        renderModules();
+        
+        if (modules.filter(m => m.done).length === modules.length) {
+            document.getElementById("finalRank").innerHTML = `🏅 ${document.getElementById("rankLabel").innerHTML} · ${totalPoints} pts`;
+            document.getElementById("finalMsg").innerHTML = "🎉 ¡FELICIDADES! Eres un verdadero Guardián de la Tierra. Tu conexión con la naturaleza es excepcional.";
+            document.getElementById("finalPanel").classList.add("show");
+        }
+    }
+
+    function openModule(id) {
+        currentModule = modules[id];
+        selectedAnswer = null;
+        const modalBody = document.getElementById("modalBody");
+        document.getElementById("modalTitle").innerHTML = `${currentModule.icon} ${currentModule.title}`;
+        
+        if (currentModule.type === "classification") {
+            modalBody.innerHTML = `
+                <div class="eco-area">
+                    <p class="question-text">🐾 ¿Cuáles animales viven en la selva tropical?</p>
+                    <p style="color:#86EFAC; font-size:0.8rem;">Selecciona los 3 animales que habitan en la selva</p>
+                    <div class="classification-grid" id="animalGrid"></div>
+                </div>
+            `;
+            const animals = [
+                { name: "Tucán", emoji: "🐦", habitat: "selva" },
+                { name: "Pingüino", emoji: "🐧", habitat: "polar" },
+                { name: "Jaguar", emoji: "🐆", habitat: "selva" },
+                { name: "Camello", emoji: "🐫", habitat: "desierto" },
+                { name: "Mono", emoji: "🐒", habitat: "selva" },
+                { name: "Oso Polar", emoji: "🐻‍❄️", habitat: "polar" }
+            ];
+            const grid = document.getElementById("animalGrid");
+            grid.innerHTML = animals.map((a, idx) => `
+                <div class="animal-card" data-idx="${idx}" data-habitat="${a.habitat}">
+                    <div class="animal-emoji">${a.emoji}</div>
+                    <div class="animal-name">${a.name}</div>
+                </div>
+            `).join('');
+            let selected = [];
+            document.querySelectorAll(".animal-card").forEach(card => {
+                card.onclick = () => {
+                    card.classList.toggle("selected");
+                    selected = Array.from(document.querySelectorAll(".animal-card.selected")).map(c => c.dataset.habitat);
+                    if (selected.length === 3) {
+                        selectedAnswer = selected;
+                    }
+                };
+            });
+        }
+        else if (currentModule.type === "ecosystem") {
+            modalBody.innerHTML = `
+                <div class="eco-area">
+                    <p class="question-text">🌳 ¿Qué ecosistema tiene mayor biodiversidad?</p>
+                    <div class="carbon-options" id="ecoOptions"></div>
+                </div>
+            `;
+            const options = ['🌴 Selva Tropical', '🏜️ Desierto', '🌊 Océano', '🌲 Bosque Templado'];
+            const optsDiv = document.getElementById("ecoOptions");
+            optsDiv.innerHTML = options.map((o, idx) => `<div class="carbon-option" data-val="${idx}">${o}</div>`).join('');
+            document.querySelectorAll(".carbon-option").forEach(opt => {
+                opt.onclick = () => {
+                    document.querySelectorAll(".carbon-option").forEach(o => o.classList.remove("selected"));
+                    opt.classList.add("selected");
+                    selectedAnswer = parseInt(opt.dataset.val);
+                };
+            });
+        }
+        else if (currentModule.type === "carbon") {
+            modalBody.innerHTML = `
+                <div class="eco-area">
+                    <p class="question-text">🌍 ¿Cuál de estas acciones reduce más la huella de carbono?</p>
+                    <div class="carbon-options" id="carbonOptions"></div>
+                </div>
+            `;
+            const options = ['🚲 Usar bicicleta', '💡 Apagar luces', '♻️ Reciclar', '🌱 Plantar árboles'];
+            const optsDiv = document.getElementById("carbonOptions");
+            optsDiv.innerHTML = options.map((o, idx) => `<div class="carbon-option" data-val="${idx}">${o}</div>`).join('');
+            document.querySelectorAll(".carbon-option").forEach(opt => {
+                opt.onclick = () => {
+                    document.querySelectorAll(".carbon-option").forEach(o => o.classList.remove("selected"));
+                    opt.classList.add("selected");
+                    selectedAnswer = parseInt(opt.dataset.val);
+                };
+            });
+        }
+        else if (currentModule.type === "plants") {
+            modalBody.innerHTML = `
+                <div class="eco-area">
+                    <p class="question-text">🌿 ¿Qué planta medicinal se usa para calmar el dolor de cabeza?</p>
+                    <div class="carbon-options" id="plantOptions"></div>
+                </div>
+            `;
+            const options = ['🌿 Manzanilla', '🌿 Menta', '🌿 Lavanda', '🌿 Romero'];
+            const optsDiv = document.getElementById("plantOptions");
+            optsDiv.innerHTML = options.map((o, idx) => `<div class="carbon-option" data-val="${idx}">${o}</div>`).join('');
+            document.querySelectorAll(".carbon-option").forEach(opt => {
+                opt.onclick = () => {
+                    document.querySelectorAll(".carbon-option").forEach(o => o.classList.remove("selected"));
+                    opt.classList.add("selected");
+                    selectedAnswer = parseInt(opt.dataset.val);
+                };
+            });
+        }
+        else if (currentModule.type === "lifecycle") {
+            modalBody.innerHTML = `
+                <div class="eco-area">
+                    <p class="question-text">🔄 ¿Cuál es el primer paso en el ciclo de vida de una mariposa?</p>
+                    <div class="carbon-options" id="lifecycleOptions"></div>
+                </div>
+            `;
+            const options = ['🥚 Huevo', '🐛 Oruga', '🕷️ Crisálida', '🦋 Mariposa'];
+            const optsDiv = document.getElementById("lifecycleOptions");
+            optsDiv.innerHTML = options.map((o, idx) => `<div class="carbon-option" data-val="${idx}">${o}</div>`).join('');
+            document.querySelectorAll(".carbon-option").forEach(opt => {
+                opt.onclick = () => {
+                    document.querySelectorAll(".carbon-option").forEach(o => o.classList.remove("selected"));
+                    opt.classList.add("selected");
+                    selectedAnswer = parseInt(opt.dataset.val);
+                };
+            });
+        }
+        else if (currentModule.type === "marine") {
+            modalBody.innerHTML = `
+                <div class="eco-area">
+                    <p class="question-text">🌊 ¿Qué especie marina está en peligro de extinción?</p>
+                    <div class="carbon-options" id="marineOptions"></div>
+                </div>
+            `;
+            const options = ['🐬 Delfín', '🐋 Ballena', '🐢 Tortuga marina', '🦈 Tiburón'];
+            const optsDiv = document.getElementById("marineOptions");
+            optsDiv.innerHTML = options.map((o, idx) => `<div class="carbon-option" data-val="${idx}">${o}</div>`).join('');
+            document.querySelectorAll(".carbon-option").forEach(opt => {
+                opt.onclick = () => {
+                    document.querySelectorAll(".carbon-option").forEach(o => o.classList.remove("selected"));
+                    opt.classList.add("selected");
+                    selectedAnswer = parseInt(opt.dataset.val);
+                };
+            });
+        }
+        else if (currentModule.type === "guardian") {
+            modalBody.innerHTML = `
+                <div class="eco-area">
+                    <p class="question-text">🏆 ¿Qué acción tiene mayor impacto positivo en el planeta?</p>
+                    <div class="carbon-options" id="guardianOptions"></div>
+                </div>
+            `;
+            const options = ['🌳 Reforestar', '♻️ Reducir plásticos', '💧 Ahorrar agua', '🚗 Transporte público'];
+            const optsDiv = document.getElementById("guardianOptions");
+            optsDiv.innerHTML = options.map((o, idx) => `<div class="carbon-option" data-val="${idx}">${o}</div>`).join('');
+            document.querySelectorAll(".carbon-option").forEach(opt => {
+                opt.onclick = () => {
+                    document.querySelectorAll(".carbon-option").forEach(o => o.classList.remove("selected"));
+                    opt.classList.add("selected");
+                    selectedAnswer = parseInt(opt.dataset.val);
+                };
+            });
+        }
+        
+        document.getElementById("ecoModal").classList.add("active");
+    }
+
+    function submitModule() {
+        if (currentModule === null) return;
+        
+        let completed = false;
+        let correct = false;
+        
+        if (currentModule.type === "classification") {
+            if (selectedAnswer) {
+                let countCorrect = selectedAnswer.filter(a => a === 'selva').length;
+                if (countCorrect === 3 && selectedAnswer.length === 3) correct = true;
+            }
+            if (correct) {
+                completed = true;
+                alert("🎉 ¡Excelente! Clasificaste correctamente los animales de la selva.");
+            } else {
+                alert("❌ Los animales de la selva son: Tucán, Jaguar y Mono.");
+                closeModal();
+                return;
+            }
+        }
+        else if (currentModule.type === "ecosystem") {
+            correct = (selectedAnswer === 0);
+            if (correct) {
+                completed = true;
+                alert("🎉 ¡Correcto! La selva tropical tiene la mayor biodiversidad del planeta.");
+            } else {
+                alert("❌ La selva tropical alberga más del 50% de las especies del mundo.");
+                closeModal();
+                return;
+            }
+        }
+        else if (currentModule.type === "carbon") {
+            correct = (selectedAnswer === 3);
+            if (correct) {
+                completed = true;
+                alert("🎉 ¡Plantar árboles es la acción que más reduce el CO₂!");
+            } else {
+                alert("❌ Plantar árboles absorbe CO₂ y produce oxígeno, es la mejor acción.");
+                closeModal();
+                return;
+            }
+        }
+        else if (currentModule.type === "plants") {
+            correct = (selectedAnswer === 0);
+            if (correct) {
+                completed = true;
+                alert("🎉 ¡Correcto! La manzanilla es conocida por sus propiedades relajantes.");
+            } else {
+                alert("❌ La manzanilla es la planta medicinal más usada para dolores de cabeza.");
+                closeModal();
+                return;
+            }
+        }
+        else if (currentModule.type === "lifecycle") {
+            correct = (selectedAnswer === 0);
+            if (correct) {
+                completed = true;
+                alert("🎉 ¡Correcto! El ciclo comienza con el huevo.");
+            } else {
+                alert("❌ El ciclo correcto es: Huevo → Oruga → Crisálida → Mariposa.");
+                closeModal();
+                return;
+            }
+        }
+        else if (currentModule.type === "marine") {
+            correct = (selectedAnswer === 2);
+            if (correct) {
+                completed = true;
+                alert("🎉 ¡Correcto! Las tortugas marinas están en peligro crítico de extinción.");
+            } else {
+                alert("❌ Las tortugas marinas son una de las especies más amenazadas.");
+                closeModal();
+                return;
+            }
+        }
+        else if (currentModule.type === "guardian") {
+            correct = (selectedAnswer === 0);
+            if (correct) {
+                completed = true;
+                alert("🎉 ¡Eres un Guardián de la Tierra! Reforestar salva el planeta.");
+            } else {
+                alert("❌ Reforestar tiene el mayor impacto positivo a largo plazo.");
+                closeModal();
+                return;
+            }
+        }
+        
+        if (completed) {
+            completeModule(currentModule.id, currentModule.points);
+            closeModal();
+        }
+    }
+
+    function closeModal() {
+        document.getElementById("ecoModal").classList.remove("active");
+        currentModule = null;
+        selectedAnswer = null;
+    }
+
+    document.getElementById("closeModalBtn").onclick = closeModal;
+    document.getElementById("submitModalBtn").onclick = submitModule;
+    document.getElementById("closeFinalBtn").onclick = () => document.getElementById("finalPanel").classList.remove("show");
+
+    loadProgress();
+</script>
+</body>
+</html>

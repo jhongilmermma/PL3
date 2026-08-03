@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz Caracol Grande</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>Matriz Caracol N x N</h1>
+
+        <label>Ingrese el tamaño N:</label>
+
+        <input type="number" id="orden" min="1" max="10000">
+
+        <button onclick="crearCaracol()">
+            Generar
+        </button>
+
+        <div id="info"></div>
+
+        <div id="matriz"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

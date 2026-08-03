@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Ladrillos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>Calculadora de Ladrillos 🧱</h1>
+
+        <label>Tipo de muro:</label>
+        <select id="tipo">
+            <option value="soga">Soga</option>
+            <option value="cabeza">Cabeza</option>
+            <option value="canto">Canto</option>
+        </select>
+
+        <label>Alto de la pared (m):</label>
+        <input type="number" id="alto" placeholder="Ej: 2.5">
+
+        <label>Ancho de la pared (m):</label>
+        <input type="number" id="ancho" placeholder="Ej: 4">
+
+        <label>Área de puertas/ventanas (m²):</label>
+        <input type="number" id="descuento" placeholder="Ej: 1.5">
+
+        <button onclick="calcular()">Calcular</button>
+
+        <p id="resultado"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

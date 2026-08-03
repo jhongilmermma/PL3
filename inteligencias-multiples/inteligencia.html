@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 ECO MIND - Versión Reducida</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a1a0a;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            padding: 2rem;
+            color: #e2e8f0;
+        }
+
+        .app {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .header {
+            background: #0e1f0e;
+            border-radius: 1.5rem;
+            padding: 1.2rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #22C55E40;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #22C55E;
+        }
+
+        .header p {
+            color: #86EFAC;
+            font-size: 0.9rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 0.8rem;
+        }
+
+        .stats span {
+            color: #4ADE80;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .stats label {
+            color: #86EFAC;
+        }
+
+        /* GRID DE MÓDULOS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: #0e1f0e;
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            border: 1px solid #1a3a1a;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .card:hover:not(.locked):not(.done) {
+            border-color: #22C55E;
+            transform: translateY(-4px);
+        }
+
+        .card.done {
+            border-color: #22C55E;
+            background: #064E3B;
+        }
+
+        .card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .card .icon {
+            font-size: 2.5rem;
+        }
+
+        .card .title {
+            color: #f1f5f9;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0.3rem 0;
+        }
+
+        .card .desc {
+            color: #86EFAC;
+            font-size: 0.8rem;
+        }
+
+        .card .pts {
+            display: inline-block;
+            background: #22C55E20;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            color: #4ADE80;
+            margin-top: 0.5rem;
+        }
+
+        .card .lock {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .card .status {
+            color: #4ADE80;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* PROGRESO */
+        .progress {
+            background: #0a1a0a;
+            border-radius: 1rem;
+            height: 8px;
+            overflow: hidden;
+            border: 1px solid #1a3a1a;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #22C55E, #4ADE80);
+            width: 0%;
+            height: 100%;
+            transition: width 0.4s;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #0e1f0e;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 2px solid #22C55E;
+        }
+
+        .modal h2 {
+            color: #4ADE80;
+            margin-bottom: 1rem;
+        }
+
+        .modal .question {
+            color: #f1f5f9;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .option {
+            background: #0a1a0a;
+            border: 2px solid #1a3a1a;
+            border-radius: 1rem;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .option:hover {
+            border-color: #22C55E;
+        }
+
+        .option.selected {
+            border-color: #22C55E;
+            background: #22C55E20;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: #22C55E;
+            color: #0a1a0a;
+        }
+
+        .btn-primary:hover {
+            background: #16A34A;
+        }
+
+        .btn-secondary {
+            background: #1a3a1a;
+            color: #86EFAC;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #2a5a2a;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="header">
+        <h1>🌿 ECO MIND</h1>
+        <p>Inteligencia Naturalista · Conecta con la naturaleza</p>
+        <div class="stats">
+            <div><label>🏆 Puntos:</label> <span id="pointsTotal">0</span></div>
+            <div><label>✅ Completados:</label> <span id="completedCount">0/3</span></div>
+            <div><label>🎯 Rango:</label> <span id="rankLabel">NOVATO</span></div>
+        </div>
+    </div>
+
+    <div class="grid" id="modulesGrid"></div>
+    <div class="progress"><div class="progress-fill" id="globalProgress"></div></div>
+    <footer>🌱 Selecciona un módulo desbloqueado para comenzar</footer>
+</div>
+
+<div class="modal" id="ecoModal">
+    <div class="modal-content">
+        <h2 id="modalTitle">🌿 Módulo</h2>
+        <div id="modalBody"></div>
+        <div class="buttons">
+            <button class="btn btn-secondary" id="closeModalBtn">Cancelar</button>
+            <button class="btn btn-primary" id="submitModalBtn">🌱 Completar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // DATOS: 3 módulos de ejemplo para entender la mecánica
+    // ============================================================
+    let modules = [
+        { id: 0, icon: "🐾", title: "CLASIFICACIÓN DE ANIMALES", desc: "¿Cuáles viven en la selva?", type: "classification", points: 25, unlocked: true, done: false },
+        { id: 1, icon: "🌳", title: "ECOSISTEMAS", desc: "¿Cuál tiene más biodiversidad?", type: "ecosystem", points: 30, unlocked: false, done: false },
+        { id: 2, icon: "🌍", title: "HUELLA DE CARBONO", desc: "¿Qué acción reduce más el CO₂?", type: "carbon", points: 35, unlocked: false, done: false }
+    ];
+
+    let totalPoints = 0;
+    let currentModule = null;
+    let selectedAnswer = null;
+
+    // ============================================================
+    // GUARDADO Y CARGA
+    // ============================================================
+    function saveProgress() {
+        localStorage.setItem('ecoMindPoints', totalPoints);
+        localStorage.setItem('ecoModules', JSON.stringify(modules.map(m => ({ done: m.done, unlocked: m.unlocked }))));
+    }
+
+    function loadProgress() {
+        const savedPts = localStorage.getItem('ecoMindPoints');
+        const savedMod = localStorage.getItem('ecoModules');
+        if (savedPts) totalPoints = parseInt(savedPts);
+        if (savedMod) {
+            const saved = JSON.parse(savedMod);
+            modules.forEach((m, idx) => {
+                if (saved[idx]) {
+                    m.done = saved[idx].done;
+                    m.unlocked = saved[idx].unlocked;
+                }
+            });
+        }
+        modules[0].unlocked = true;
+        for (let i = 1; i < modules.length; i++) {
+            if (modules[i - 1].done && !modules[i].unlocked) modules[i].unlocked = true;
+        }
+        renderModules();
+    }
+
+    // ============================================================
+    // RENDERIZAR TARJETAS
+    // ============================================================
+    function renderModules() {
+        const grid = document.getElementById("modulesGrid");
+        grid.innerHTML = "";
+        modules.forEach((m, idx) => {
+            const card = document.createElement("div");
+            card.className = "card";
+            if (m.done) card.classList.add("done");
+            if (!m.unlocked && !m.done) card.classList.add("locked");
+            card.innerHTML = `
+                <div class="icon">${m.icon}</div>
+                <div class="title">${m.title}</div>
+                <div class="desc">${m.desc}</div>
+                <div class="pts">🏆 ${m.points} pts</div>
+                ${m.done ? '<div class="status">✅ Completado</div>' : ''}
+                ${!m.unlocked && !m.done ? '<div class="lock">🔒</div>' : ''}
+            `;
+            if (!m.done && m.unlocked) card.onclick = () => openModule(idx);
+            grid.appendChild(card);
+        });
+        updateStats();
+    }
+
+    // ============================================================
+    // ACTUALIZAR ESTADÍSTICAS
+    // ============================================================
+    function updateStats() {
+        const doneCount = modules.filter(m => m.done).length;
+        document.getElementById("pointsTotal").innerText = totalPoints;
+        document.getElementById("completedCount").innerHTML = `${doneCount}/${modules.length}`;
+        document.getElementById("globalProgress").style.width = (doneCount / modules.length * 100) + "%";
+
+        let rank = totalPoints >= 60 ? "NATURALISTA" : totalPoints >= 30 ? "EXPLORADOR" : "NOVATO";
+        document.getElementById("rankLabel").innerHTML = rank;
+        saveProgress();
+    }
+
+    // ============================================================
+    // PARTICULAS DE PUNTOS (efecto visual)
+    // ============================================================
+    function floatPoints(p) {
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                const f = document.createElement("div");
+                f.innerHTML = `+${p} 🌿`;
+                f.style.cssText = `
+                    position: fixed;
+                    pointer-events: none;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    color: #4ADE80;
+                    left: ${Math.random() * window.innerWidth * 0.6 + window.innerWidth * 0.2}px;
+                    bottom: 40%;
+                    z-index: 1000;
+                    animation: floatAnim 1.5s forwards;
+                `;
+                document.body.appendChild(f);
+                setTimeout(() => f.remove(), 1500);
+            }, i * 70);
+        }
+    }
+
+    // ============================================================
+    // COMPLETAR MÓDULO
+    // ============================================================
+    function completeModule(id, earned) {
+        if (modules[id].done) return;
+        modules[id].done = true;
+        totalPoints += earned;
+        floatPoints(earned);
+        for (let i = 1; i < modules.length; i++) {
+            if (modules[i - 1].done && !modules[i].unlocked) modules[i].unlocked = true;
+        }
+        renderModules();
+    }
+
+    // ============================================================
+    // ABRIR MÓDULO (MODAL)
+    // ============================================================
+    function openModule(id) {
+        currentModule = modules[id];
+        selectedAnswer = null;
+        const modalBody = document.getElementById("modalBody");
+        document.getElementById("modalTitle").innerHTML = `${currentModule.icon} ${currentModule.title}`;
+
+        if (currentModule.type === "classification") {
+            modalBody.innerHTML = `
+                <div class="question">🐾 ¿Qué animales viven en la selva?</div>
+                <div class="options" id="optionsContainer">
+                    <div class="option" data-val="0">🐦 Tucán</div>
+                    <div class="option" data-val="1">🐧 Pingüino</div>
+                    <div class="option" data-val="2">🐆 Jaguar</div>
+                    <div class="option" data-val="3">🐫 Camello</div>
+                </div>
+                <p style="color:#86EFAC; font-size:0.8rem;">Selecciona el animal que vive en la selva</p>
+            `;
+        } else if (currentModule.type === "ecosystem") {
+            modalBody.innerHTML = `
+                <div class="question">🌳 ¿Qué ecosistema tiene más biodiversidad?</div>
+                <div class="options" id="optionsContainer">
+                    <div class="option" data-val="0">🌴 Selva Tropical</div>
+                    <div class="option" data-val="1">🏜️ Desierto</div>
+                    <div class="option" data-val="2">🌊 Océano</div>
+                </div>
+            `;
+        } else if (currentModule.type === "carbon") {
+            modalBody.innerHTML = `
+                <div class="question">🌍 ¿Qué acción reduce más la huella de carbono?</div>
+                <div class="options" id="optionsContainer">
+                    <div class="option" data-val="0">🚲 Usar bicicleta</div>
+                    <div class="option" data-val="1">💡 Apagar luces</div>
+                    <div class="option" data-val="2">🌱 Plantar árboles</div>
+                </div>
+            `;
+        }
+
+        // Eventos de selección
+        document.querySelectorAll("#optionsContainer .option").forEach(opt => {
+            opt.onclick = () => {
+                document.querySelectorAll("#optionsContainer .option").forEach(o => o.classList.remove("selected"));
+                opt.classList.add("selected");
+                selectedAnswer = parseInt(opt.dataset.val);
+            };
+        });
+
+        document.getElementById("ecoModal").classList.add("active");
+    }
+
+    // ============================================================
+    // ENVIAR RESPUESTA
+    // ============================================================
+    function submitModule() {
+        if (currentModule === null) return;
+        let correct = false;
+
+        if (currentModule.type === "classification") {
+            correct = (selectedAnswer === 0 || selectedAnswer === 2); // Tucán o Jaguar
+        } else if (currentModule.type === "ecosystem") {
+            correct = (selectedAnswer === 0); // Selva Tropical
+        } else if (currentModule.type === "carbon") {
+            correct = (selectedAnswer === 2); // Plantar árboles
+        }
+
+        if (correct) {
+            completeModule(currentModule.id, currentModule.points);
+            alert("🎉 ¡Correcto!");
+            closeModal();
+        } else {
+            alert("❌ Intenta de nuevo. Lee bien la pregunta.");
+            closeModal();
+        }
+    }
+
+    // ============================================================
+    // CERRAR MODAL
+    // ============================================================
+    function closeModal() {
+        document.getElementById("ecoModal").classList.remove("active");
+        currentModule = null;
+        selectedAnswer = null;
+    }
+
+    // ============================================================
+    // EVENT LISTENERS
+    // ============================================================
+    document.getElementById("closeModalBtn").onclick = closeModal;
+    document.getElementById("submitModalBtn").onclick = submitModule;
+
+    // Estilo de animación para partículas
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes floatAnim {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-80px); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // ============================================================
+    // INICIAR
+    // ============================================================
+    loadProgress();
+</script>
+</body>
+</html>

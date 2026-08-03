@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Techo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ladrillo de Techo</h1>
+        <p>Cálculo para losa aligerada</p>
+        
+        <div class="input-group">
+            <label>Largo del techo (m):</label>
+            <input type="number" id="largoTecho" placeholder="Ej: 5.0">
+        </div>
+
+        <div class="input-group">
+            <label>Ancho del techo (m):</label>
+            <input type="number" id="anchoTecho" placeholder="Ej: 4.0">
+        </div>
+
+        <div class="input-group">
+            <label>Ancho de vigueta (m):</label>
+            <input type="number" id="vigueta" value="0.10" step="0.01">
+        </div>
+
+        <button onclick="calcularTecho()">Calcular Ladrillos</button>
+
+        <div id="resultado" class="result-box" style="display: none;">
+            <p>Área a cubrir: <span id="area-text">0</span> m²</p>
+            <h3>Total: <span id="total-text">0</span> ladrillos</h3>
+            <small>* Incluye 5% de desperdicio</small>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

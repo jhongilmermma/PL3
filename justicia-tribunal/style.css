@@ -1,0 +1,84 @@
+:root {
+    --primary: #2563eb;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --dark: #0f172a;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+body {
+    background: var(--dark);
+    color: white;
+    min-height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    overflow-x: hidden;
+}
+
+.glass-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+    z-index: -1;
+}
+
+.app-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    max-width: 1000px; width: 90%; align-items: start;
+}
+
+/* Panel de Entrada */
+.config-panel { background: var(--glass); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+.badge-oficial { font-size: 0.6rem; font-weight: 800; letter-spacing: 2px; color: var(--success); margin-bottom: 10px; }
+h1 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 800; }
+h1 span { color: var(--primary); }
+p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 30px; }
+
+.input-wrapper { position: relative; display: flex; align-items: center; margin-top: 10px; }
+.currency { position: absolute; left: 15px; color: var(--primary); font-weight: 700; }
+input {
+    width: 100%; background: rgba(0,0,0,0.4); border: 2px solid #1e293b; padding: 15px 15px 15px 45px;
+    border-radius: 12px; color: white; font-size: 1.2rem; transition: 0.3s;
+}
+input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 20px rgba(37, 99, 235, 0.2); }
+
+button {
+    width: 100%; margin-top: 20px; padding: 18px; border-radius: 12px; border: none;
+    background: var(--primary); color: white; font-weight: 700; cursor: pointer; transition: 0.3s;
+}
+button:hover { background: #1d4ed8; transform: translateY(-3px); }
+
+/* Recibo Moderno */
+.receipt-card {
+    background: #fff; color: var(--dark); border-radius: 24px; padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); position: relative;
+}
+
+.logo-simulado { font-weight: 900; color: var(--primary); font-size: 1.5rem; letter-spacing: -1px; }
+.receipt-header { border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 20px; text-align: center; }
+.receipt-header p { margin-bottom: 0; font-weight: 700; color: var(--dark); font-size: 0.7rem; letter-spacing: 1px; }
+
+/* Termómetro de Impuestos */
+.visual-meter { height: 12px; background: #f1f5f9; border-radius: 10px; margin: 30px 0 10px; position: relative; overflow: hidden; }
+.meter-bar { height: 100%; width: 0; background: var(--primary); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+.meter-labels { display: flex; justify-content: space-between; font-size: 0.6rem; color: #64748b; font-weight: 700; text-transform: uppercase; }
+
+.details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+.detail-item { display: flex; flex-direction: column; }
+.detail-item.full { grid-column: span 2; border-top: 1px solid #f1f5f9; padding-top: 20px; }
+.label { font-size: 0.7rem; color: #64748b; text-transform: uppercase; font-weight: 600; }
+.value { font-size: 1.2rem; font-weight: 700; }
+.value.warning { color: var(--danger); }
+.value.total { font-size: 1.8rem; color: var(--success); }
+
+.qr-placeholder { display: flex; align-items: center; gap: 15px; margin-top: 30px; padding-top: 20px; border-top: 1px dashed #cbd5e1; }
+.qr-box { width: 40px; height: 40px; background: var(--dark); border-radius: 4px; opacity: 0.1; }
+
+.hidden { display: none; }
+
+/* Responsive */
+@media (max-width: 850px) {
+    .app-wrapper { grid-template-columns: 1fr; }
+}

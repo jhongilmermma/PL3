@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Energética</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>EcoCalc Pro</h1>
+        <p>Mide la eficiencia de tus artefactos</p>
+        
+        <form id="energyForm">
+            <div class="input-group">
+                <label>Potencia (Watts):</label>
+                <input type="number" id="watts" placeholder="Ej: 1500" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Tiempo (Horas de uso):</label>
+                <input type="number" id="hours" step="0.1" placeholder="Ej: 2.5" required>
+            </div>
+            
+            <button type="submit">Calcular Consumo</button>
+        </form>
+
+        <div id="result" class="result-card hidden">
+            <div class="kwh-display">
+                <span id="kwhValue">0</span> <small>kWh</small>
+            </div>
+            <h2 id="statusLabel"></h2>
+            <p id="description"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

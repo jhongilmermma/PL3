@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Facturación v2.0 - Electro Puno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="input-card">
+            <div class="header-ui">
+                <img src="https://www.electropuno.com.pe/images/logo.png" alt="Electro Puno" class="logo-img">
+                <h2>Calculadora de Energía</h2>
+            </div>
+            
+            <form id="calcForm">
+                <div class="field">
+                    <label>Potencia del equipo (Watts)</label>
+                    <input type="number" id="watts" step="any" placeholder="Ej: 1500" required>
+                </div>
+                <div class="field">
+                    <label>Horas de uso al día</label>
+                    <input type="number" id="hours" step="any" placeholder="Ej: 2.5" required>
+                </div>
+                <button type="submit" id="btnGen">GENERAR FACTURACIÓN</button>
+            </form>
+        </div>
+
+        <div id="ticket" class="ticket hidden">
+            <div class="ticket-header">
+                <h3>ELECTRO PUNO S.A.A.</h3>
+                <p>Puno - Perú</p>
+                <div class="barcode-top">||||||||||||||||||||||||||</div>
+            </div>
+
+            <div class="ticket-info">
+                <p>SUMINISTRO: <strong>72405891</strong></p>
+                <p>FECHA: <span id="fechaRecibo"></span></p>
+                <p>TARIFA: BT5B Residencial</p>
+            </div>
+
+            <div class="ticket-divider">--------------------------</div>
+
+            <div class="ticket-details">
+                <div class="row"><span>ENERGÍA ACTIVA</span><span id="resKwh">0.00</span></div>
+                <div class="row"><span>CARGO FIJO</span><span>4.92</span></div>
+                <div class="row"><span>ALUMBRADO PÚB.</span><span>6.15</span></div>
+                <div class="row"><span>MANT. Y REPOS.</span><span>1.10</span></div>
+                <div class="row"><span>FISE LEY 28749</span><span>0.80</span></div>
+                <div class="ticket-divider">--------------------------</div>
+                <div class="row"><span>SUBTOTAL</span><span id="resSub">0.00</span></div>
+                <div class="row"><span>I.G.V. 18%</span><span id="resIgv">0.00</span></div>
+                <div class="ticket-divider">==========================</div>
+                <div class="row total"><span>TOTAL A PAGAR</span><span id="resTotal">0.00</span></div>
+            </div>
+
+            <div class="chart-container">
+                <p>HISTÓRICO CONSUMO (kWh)</p>
+                <div class="bar-chart">
+                    <div class="bar" style="height: 40%;"><span>45</span></div>
+                    <div class="bar" style="height: 60%;"><span>62</span></div>
+                    <div class="bar current" id="barCurrent"><span>0</span></div>
+                </div>
+            </div>
+
+            <div class="ticket-footer">
+                <p id="msgEficiencia"></p>
+                <p class="thanks">¡GRACIAS POR SU PAGO!</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

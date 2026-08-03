@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Facturación</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+    <header>
+        <h1>🧾 Sistema de Facturación</h1>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Datos de Venta</h2>
+
+            <div class="input-group">
+                <label>Cliente</label>
+                <input type="text" id="cliente">
+            </div>
+
+            <div class="input-group">
+                <label>Producto</label>
+                <input type="text" id="producto">
+            </div>
+
+            <div class="input-row">
+                <div>
+                    <label>Precio (S/)</label>
+                    <input type="number" id="precio">
+                </div>
+                <div>
+                    <label>Cantidad</label>
+                    <input type="number" id="cantidad">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Tipo de Cliente</label>
+                <select id="tipoCliente">
+                    <option value="regular">Regular</option>
+                    <option value="vip">VIP</option>
+                    <option value="mayorista">Mayorista</option>
+                </select>
+            </div>
+
+            <button id="btnCalcular">Generar Factura</button>
+        </section>
+
+        <section class="result-section" id="resultado">
+            <h2>Resultado</h2>
+            <p class="empty">Complete los datos para generar la factura</p>
+        </section>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

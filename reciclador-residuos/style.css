@@ -1,0 +1,49 @@
+/* Estilos del Tacho (Bin) */
+.bin-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.bin-icon {
+    width: 80%;
+    height: 80%;
+    transition: var(--transition);
+}
+
+.emoji-overlay {
+    position: absolute;
+    font-size: 1.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%); /* Posicionado "dentro" del tacho */
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Colores dinámicos para el Tacho (SVG stroke) */
+.bg-blue-text .bin-icon { color: var(--p-blue); stroke: var(--p-blue); }
+.bg-yellow-text .bin-icon { color: var(--p-yellow); stroke: var(--p-yellow); }
+.bg-green-text .bin-icon { color: var(--p-green); stroke: var(--p-green); }
+.bg-brown-text .bin-icon { color: var(--p-brown); stroke: var(--p-brown); }
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, -10%); }
+    50% { transform: translate(-50%, -25%); }
+}
+
+/* Efecto de entrada de la tarjeta */
+.result-card:not(.hidden) {
+    display: block;
+    animation: slideIn 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}

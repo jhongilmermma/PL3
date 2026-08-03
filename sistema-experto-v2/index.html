@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Experto - Enfermedades Respiratorias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <div class="logo">🫁</div>
+            <h1>Respira<span>Diagnóstico</span></h1>
+            <p class="subtitle">Sistema Experto · Enfermedades Respiratorias Crónicas</p>
+            <span class="badge"><i class="fas fa-microscope"></i> Basado en tesis UPN 2019</span>
+        </header>
+
+        <!-- ===== CONTENIDO ===== -->
+        <main class="content">
+
+            <!-- ==========================================================
+            INDICADOR DE PASOS
+            ========================================================== -->
+            <div class="steps-indicator">
+                <div class="step active" id="step1Indicator">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Datos</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" id="step2Indicator">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Cuestionario</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" id="step3Indicator">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Resultados</span>
+                </div>
+            </div>
+
+            <!-- ==========================================================
+            PASO 1: DATOS DEL PACIENTE
+            ========================================================== -->
+            <section class="step-panel" id="step1">
+                <div class="panel-header">
+                    <h2><i class="fas fa-user-md"></i> Datos del Paciente</h2>
+                    <p>Complete todos los campos obligatorios para continuar</p>
+                </div>
+
+                <div class="patient-grid">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Nombre <span class="required">*</span></label>
+                        <input type="text" id="nombre" placeholder="Ej: Juan" value="María" />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Apellido <span class="required">*</span></label>
+                        <input type="text" id="apellido" placeholder="Ej: Pérez" value="González" />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-id-card"></i> DNI <span class="required">*</span></label>
+                        <input type="text" id="dni" placeholder="Ej: 12345678" maxlength="12" value="12345678" />
+                        <span class="hint">8 dígitos numéricos</span>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar-alt"></i> Edad <span class="required">*</span></label>
+                        <input type="number" id="edad" placeholder="Ej: 35" min="1" max="120" value="35" />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-venus-mars"></i> Sexo <span class="required">*</span></label>
+                        <select id="sexo">
+                            <option value="">Seleccionar</option>
+                            <option value="Masculino">👨 Masculino</option>
+                            <option value="Femenino" selected>👩 Femenino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Teléfono</label>
+                        <input type="text" id="telefono" placeholder="Ej: 987654321" maxlength="15" value="987654321" />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Correo</label>
+                        <input type="email" id="email" placeholder="Ej: paciente@email.com" value="maria.gonzalez@email.com" />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Dirección</label>
+                        <input type="text" id="direccion" placeholder="Ej: Av. Principal 123" value="Av. Principal 456" />
+                    </div>
+                </div>
+
+                <button class="btn-primary" id="btnGoToStep2">
+                    <i class="fas fa-arrow-right"></i> Continuar al Cuestionario
+                </button>
+            </section>
+
+            <!-- ==========================================================
+            PASO 2: CUESTIONARIO
+            ========================================================== -->
+            <section class="step-panel" id="step2" style="display:none;">
+                <div class="panel-header">
+                    <h2><i class="fas fa-question-circle"></i> Cuestionario de Síntomas</h2>
+                    <p>Responda <strong>Sí</strong> o <strong>No</strong> a cada pregunta</p>
+                </div>
+
+                <!-- Progress -->
+                <div class="progress-container">
+                    <div class="info">
+                        <span>Pregunta <span id="currentQuestionNum">1</span> de <span id="totalQuestionsNum">30</span></span>
+                        <span class="counter" id="answeredCounter">0 / 30</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <!-- Pregunta -->
+                <div class="question-area">
+                    <span class="question-number" id="qNumber">Pregunta 1</span>
+                    <span class="symptom-icon" id="qIcon">🤔</span>
+                    <div class="question-text" id="qText">Cargando preguntas...</div>
+                    <div class="question-hint" id="qHint">Selecciona una opción</div>
+
+                    <div class="answer-buttons">
+                        <button class="btn-answer yes" id="btnYes">
+                            <i class="fas fa-check-circle"></i> Sí
+                        </button>
+                        <button class="btn-answer no" id="btnNo">
+                            <i class="fas fa-times-circle"></i> No
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navegación -->
+                <div class="nav-buttons">
+                    <button class="btn-nav prev" id="btnPrev" disabled>
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn-nav next" id="btnNext">
+                        Siguiente <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <button class="btn-secondary" id="btnBackToStep1" style="margin-top:12px;">
+                    <i class="fas fa-arrow-left"></i> Volver a Datos
+                </button>
+            </section>
+
+            <!-- ==========================================================
+            PASO 3: RESULTADOS
+            ========================================================== -->
+            <section class="step-panel" id="step3" style="display:none;">
+                <div class="panel-header">
+                    <h2><i class="fas fa-flag-checkered"></i> Resultados del Diagnóstico</h2>
+                    <p>Basado en los síntomas reportados por el paciente</p>
+                </div>
+
+                <!-- Información del paciente -->
+                <div class="result-patient-info">
+                    <span><strong>👤 Paciente:</strong> <span id="rNombre">--</span> <span id="rApellido">--</span></span>
+                    <span><strong>🆔 DNI:</strong> <span id="rDNI">--</span></span>
+                    <span><strong>📅 Edad:</strong> <span id="rEdad">--</span> años</span>
+                    <span><strong>⚥ Sexo:</strong> <span id="rSexo">--</span></span>
+                </div>
+
+                <!-- Tarjeta de diagnóstico -->
+                <div class="result-card">
+                    <div class="result-icon-large" id="resultIcon">🦠</div>
+                    <div class="disease-name" id="diseaseName">Enfermedad</div>
+                    <div class="disease-desc" id="diseaseDesc">Descripción de la enfermedad.</div>
+
+                    <div class="symptom-list" id="symptomList">
+                        <!-- Síntomas detectados -->
+                    </div>
+                </div>
+
+                <!-- Recomendación -->
+                <div class="result-recommendation">
+                    <strong>💊 Recomendación:</strong>
+                    <span id="recommendationText">--</span>
+                </div>
+
+                <!-- Resumen -->
+                <div class="result-summary">
+                    <strong>📋 Resumen:</strong>
+                    <span id="summaryText">--</span>
+                </div>
+
+                <!-- Botones -->
+                <div class="result-actions">
+                    <button class="btn-action btn-restart" id="btnRestart">
+                        <i class="fas fa-redo"></i> Nuevo Diagnóstico
+                    </button>
+                    <button class="btn-action btn-print" id="btnPrint">
+                        <i class="fas fa-print"></i> Imprimir
+                    </button>
+                    <button class="btn-action btn-save" id="btnSaveHistory">
+                        <i class="fas fa-save"></i> Guardar Historial
+                    </button>
+                </div>
+
+                <!-- Historial -->
+                <div class="history-section">
+                    <h4><i class="fas fa-history"></i> Historial de Diagnósticos</h4>
+                    <div class="history-list" id="historyList">
+                        <div class="history-empty">No hay diagnósticos guardados aún.</div>
+                    </div>
+                </div>
+
+                <button class="btn-secondary" id="btnBackToStep2" style="margin-top:12px;">
+                    <i class="fas fa-arrow-left"></i> Volver al Cuestionario
+                </button>
+            </section>
+
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            Basado en la tesis <strong>“Sistema Experto para el Diagnóstico de Enfermedades Respiratorias Crónicas”</strong> ·
+            Arias Caballero · UPN 2019
+        </footer>
+
+    </div>
+
+    <!-- ==========================================================
+    TOAST
+    ========================================================== -->
+    <div id="toast" class="toast">
+        <span id="toastMessage">Mensaje</span>
+        <button class="toast-close" onclick="closeToast()">&times;</button>
+    </div>
+
+    <!-- ==========================================================
+    JAVASCRIPT
+    ========================================================== -->
+    <script src="motor-inferencia.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>

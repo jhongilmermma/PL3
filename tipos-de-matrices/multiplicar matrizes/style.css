@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container{
+    width: 95%;
+    max-width: 1200px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1{
+    color: #203a43;
+    margin-bottom: 25px;
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 30px;
+}
+
+input{
+    width: 130px;
+
+    padding: 12px;
+
+    border: 2px solid #203a43;
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+button{
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #203a43;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover{
+    background: #16262d;
+    transform: scale(1.05);
+}
+
+.matrices{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 30px;
+}
+
+.matrix-grid{
+    display: grid;
+    gap: 5px;
+
+    margin-top: 15px;
+}
+
+.matrix-grid input{
+    width: 60px;
+    height: 60px;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+table{
+    margin: auto;
+    margin-top: 20px;
+
+    border-collapse: collapse;
+}
+
+td{
+    width: 60px;
+    height: 60px;
+
+    border: 1px solid #ccc;
+
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    background: #203a43;
+    color: white;
+}
+
+#resultado{
+    margin-top: 30px;
+}

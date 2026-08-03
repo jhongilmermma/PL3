@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthML · Engine Profesional</title>
+    <!-- Hoja de estilos propia -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- SheetJS para leer Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="app-container">
+
+        <!-- Barra superior -->
+        <header class="navbar">
+            <div class="brand">
+                <span class="icon">🧬</span>
+                <span>Health<span class="highlight">ML</span></span>
+                <span class="version">v3.0</span>
+            </div>
+            <div class="header-actions">
+                <span class="status-badge" id="modelStatus">⚡ Sin entrenar</span>
+                <button class="btn btn-ghost" id="btnReset">Reiniciar</button>
+            </div>
+        </header>
+
+        <!-- Métricas rápidas -->
+        <section class="metrics-strip" id="metricsStrip">
+            <div class="metric-item"><span class="label">Exactitud</span><span class="value" id="m-acc">—</span></div>
+            <div class="metric-item"><span class="label">Precisión</span><span class="value" id="m-pre">—</span></div>
+            <div class="metric-item"><span class="label">Sensibilidad</span><span class="value" id="m-rec">—</span></div>
+            <div class="metric-item"><span class="label">Especificidad</span><span class="value" id="m-spec">—</span></div>
+            <div class="metric-item"><span class="label">F1-Score</span><span class="value" id="m-f1">—</span></div>
+            <div class="metric-item"><span class="label">Muestras</span><span class="value" id="m-size">0</span></div>
+        </section>
+
+        <!-- Grid principal -->
+        <div class="dashboard-grid">
+
+            <!-- Panel izquierdo: carga, controles, predicción -->
+            <div class="panel-left">
+                <!-- Carga de datos -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-icon">📂</span>
+                        <h3>Cargar datos clínicos</h3>
+                    </div>
+                    <div class="dropzone" id="dropzone">
+                        <p>Arrastra aquí tu archivo Excel/CSV</p>
+                        <p class="subtext">o haz clic para seleccionar</p>
+                        <input type="file" id="fileSelector" accept=".xlsx,.xls,.csv" style="display:none;" />
+                    </div>
+                    <button class="btn btn-secondary" id="btnFakeData">🧪 Generar datos de prueba</button>
+                    <div class="file-info" id="fileInfo">Ningún archivo cargado</div>
+                </div>
+
+                <!-- Hiperparámetros -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-icon">⚙️</span>
+                        <h3>Hiperparámetros</h3>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Profundidad máx.</label>
+                            <input type="number" id="hyper-depth" value="5" min="1" max="15" />
+                        </div>
+                        <div class="form-group">
+                            <label>Mín. muestras hoja</label>
+                            <input type="number" id="hyper-leaf" value="2" min="1" max="20" />
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="btnTrain">🔄 Entrenar modelo</button>
+                </div>
+
+                <!-- Predictor individual -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-icon">🔮</span>
+                        <h3>Evaluación de paciente</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Edad</label><input type="number" id="p-edad" value="54" /></div>
+                        <div class="form-group"><label>IMC</label><input type="number" id="p-imc" value="31.4" step="0.1" /></div>
+                        <div class="form-group"><label>P. Sistólica</label><input type="number" id="p-sist" value="142" /></div>
+                        <div class="form-group"><label>P. Diastólica</label><input type="number" id="p-diast" value="94" /></div>
+                        <div class="form-group"><label>Glucosa</label><input type="number" id="p-gluc" value="155" /></div>
+                        <div class="form-group"><label>Colesterol</label><input type="number" id="p-col" value="265" /></div>
+                    </div>
+                    <button class="btn btn-success" id="btnEvaluate">🔍 Evaluar</button>
+                    <div class="result-box" id="resultDisplay">
+                        <span class="result-text">Esperando evaluación...</span>
+                        <span class="confidence-badge" id="confidenceBadge"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel derecho: tabla y visualizaciones -->
+            <div class="panel-right">
+                <!-- Tabla de datos -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-icon">📋</span>
+                        <h3>Vista previa de datos</h3>
+                        <span class="badge-count" id="rowCount">0 registros</span>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Edad</th><th>IMC</th><th>Sistólica</th><th>Diastólica</th>
+                                    <th>Glucosa</th><th>Colesterol</th><th>Enfermedad</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <tr><td colspan="7" class="empty-state">No hay datos cargados</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Visualizaciones: Matriz + Importancia -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-icon">📊</span>
+                        <h3>Análisis del modelo</h3>
+                    </div>
+                    <div class="viz-grid">
+                        <div class="viz-matrix">
+                            <h4>Matriz de confusión</h4>
+                            <div class="matrix-canvas-wrap">
+                                <canvas id="cmCanvas" width="180" height="180"></canvas>
+                            </div>
+                        </div>
+                        <div class="viz-importance">
+                            <h4>Importancia de características</h4>
+                            <div id="importanceContainer" class="importance-list">
+                                <!-- Generado dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <span>HealthML Engine · Implementación nativa de árbol de decisión · Sin dependencias externas</span>
+        </footer>
+    </div>
+
+    <!-- Script principal -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,807 @@
+/* ============================================================
+   RESET Y BASE
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e8f4fd 0%, #d4e8f7 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 20px;
+}
+
+.container {
+    max-width: 920px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 40, 80, 0.25);
+    overflow: hidden;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+    background: linear-gradient(135deg, #0b2b4a, #1a5276);
+    padding: 24px 40px 18px;
+    color: #fff;
+    text-align: center;
+}
+
+.header .logo {
+    font-size: 36px;
+    margin-bottom: 2px;
+}
+
+.header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.header h1 span {
+    color: #85c1e9;
+}
+
+.header .subtitle {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 2px;
+    font-weight: 300;
+}
+
+.header .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 3px 14px;
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   CONTENIDO
+   ============================================================ */
+.content {
+    padding: 24px 35px 28px;
+}
+
+/* ============================================================
+   INDICADOR DE PASOS
+   ============================================================ */
+.steps-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    padding: 0 20px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step .step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e4eaf2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #4a5b6e;
+    transition: all 0.3s ease;
+}
+
+.step.active .step-number {
+    background: #1a5276;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(26, 82, 118, 0.35);
+}
+
+.step .step-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a5b6e;
+}
+
+.step.active .step-label {
+    color: #1a5276;
+}
+
+.step-line {
+    width: 60px;
+    height: 2px;
+    background: #dce3ed;
+    margin: 0 8px;
+}
+
+/* ============================================================
+   PANELES DE PASOS
+   ============================================================ */
+.step-panel {
+    animation: fadeSlide 0.5s ease;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.panel-header {
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    font-size: 20px;
+    color: #0b2b4a;
+}
+
+.panel-header p {
+    font-size: 14px;
+    color: #6a7b8e;
+    margin-top: 4px;
+}
+
+/* ============================================================
+   DATOS DEL PACIENTE
+   ============================================================ */
+.patient-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px 20px;
+    margin-bottom: 20px;
+    background: #f8faff;
+    padding: 18px 22px;
+    border-radius: 14px;
+    border: 2px solid #e4eaf2;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a5b6e;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.form-group label .required {
+    color: #e74c3c;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 9px 12px;
+    border: 2px solid #dce3ed;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #ffffff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+    font-family: inherit;
+    width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #1a5276;
+    box-shadow: 0 0 0 4px rgba(26, 82, 118, 0.12);
+}
+
+.form-group .hint {
+    font-size: 10px;
+    color: #8a96a8;
+    margin-top: 2px;
+}
+
+/* ============================================================
+   BOTONES PRINCIPALES
+   ============================================================ */
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #1a5276, #2e86c1);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 82, 118, 0.35);
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    background: #e4eaf2;
+    color: #4a5b6e;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #d0d8e4;
+}
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+.progress-container {
+    margin-bottom: 18px;
+}
+
+.progress-container .info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #4a5b6e;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.progress-container .info .counter {
+    background: #1a5276;
+    color: #fff;
+    padding: 0 14px;
+    border-radius: 30px;
+    font-size: 12px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e4eaf2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1a5276, #2e86c1);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+/* ============================================================
+   PREGUNTAS
+   ============================================================ */
+.question-area {
+    background: #f8faff;
+    border-radius: 16px;
+    padding: 24px 28px;
+    border: 2px solid #e4eaf2;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.question-area .question-number {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a5276;
+    background: #d4e8f7;
+    display: inline-block;
+    padding: 2px 14px;
+    border-radius: 30px;
+    width: fit-content;
+    margin-bottom: 8px;
+}
+
+.question-area .question-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0b2b4a;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+.question-area .question-hint {
+    font-size: 13px;
+    color: #6a7b8e;
+    margin-bottom: 14px;
+}
+
+.question-area .symptom-icon {
+    font-size: 40px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.answer-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.btn-answer {
+    flex: 1;
+    min-width: 100px;
+    padding: 12px 20px;
+    border: 2px solid #dce3ed;
+    border-radius: 12px;
+    background: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #1e2a3a;
+}
+
+.btn-answer:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.btn-answer.yes {
+    border-color: #27ae60;
+    color: #27ae60;
+}
+
+.btn-answer.yes:hover:not(:disabled) {
+    background: #eafaf1;
+    border-color: #1e8449;
+}
+
+.btn-answer.no {
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+.btn-answer.no:hover:not(:disabled) {
+    background: #fdedec;
+    border-color: #c0392b;
+}
+
+.btn-answer:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    gap: 12px;
+}
+
+.btn-nav {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-nav.prev {
+    background: #e4eaf2;
+    color: #4a5b6e;
+}
+
+.btn-nav.prev:hover:not(:disabled) {
+    background: #d0d8e4;
+}
+
+.btn-nav.next {
+    background: linear-gradient(135deg, #1a5276, #2e86c1);
+    color: #fff;
+}
+
+.btn-nav.next:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(26, 82, 118, 0.35);
+}
+
+.btn-nav:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ============================================================
+   RESULTADOS - PASO 3
+   ============================================================ */
+.result-patient-info {
+    background: #f8faff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin: 0 0 16px 0;
+    border: 2px solid #e4eaf2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    font-size: 14px;
+    color: #1e2a3a;
+}
+
+.result-patient-info strong {
+    color: #0b2b4a;
+}
+
+.result-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 28px;
+    border: 2px solid #1a5276;
+    box-shadow: 0 4px 16px rgba(26, 82, 118, 0.1);
+    text-align: center;
+}
+
+.result-icon-large {
+    font-size: 56px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.result-card .disease-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a5276;
+    margin-bottom: 4px;
+}
+
+.result-card .disease-desc {
+    color: #4a5b6e;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.result-card .symptom-list {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.result-card .symptom-tag {
+    background: #d4e8f7;
+    color: #1a5276;
+    padding: 4px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.result-recommendation {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: #fef9e7;
+    border-radius: 12px;
+    border-left: 5px solid #f39c12;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #1e2a3a;
+}
+
+.result-recommendation strong {
+    color: #e67e22;
+}
+
+.result-summary {
+    margin-top: 14px;
+    padding: 14px 18px;
+    background: #f0f7ff;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #1e2a3a;
+    border: 1px solid #d4e8f7;
+}
+
+.result-summary strong {
+    color: #0b2b4a;
+}
+
+.result-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.result-actions .btn-action {
+    flex: 1;
+    min-width: 130px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.result-actions .btn-restart {
+    background: linear-gradient(135deg, #1a5276, #2e86c1);
+    color: #fff;
+}
+
+.result-actions .btn-restart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 82, 118, 0.35);
+}
+
+.result-actions .btn-print {
+    background: #27ae60;
+    color: #fff;
+}
+
+.result-actions .btn-print:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(39, 174, 96, 0.35);
+}
+
+.result-actions .btn-save {
+    background: #f39c12;
+    color: #fff;
+}
+
+.result-actions .btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(243, 156, 18, 0.35);
+}
+
+/* ============================================================
+   HISTORIAL
+   ============================================================ */
+.history-section {
+    margin-top: 20px;
+    border-top: 2px solid #e4eaf2;
+    padding-top: 16px;
+}
+
+.history-section h4 {
+    font-size: 14px;
+    color: #0b2b4a;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.history-list {
+    max-height: 130px;
+    overflow-y: auto;
+    background: #f8faff;
+    border-radius: 12px;
+    padding: 8px 14px;
+    border: 1px solid #e4eaf2;
+}
+
+.history-list .history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 4px;
+    border-bottom: 1px solid #e4eaf2;
+    font-size: 13px;
+    color: #4a5b6e;
+}
+
+.history-list .history-item:last-child {
+    border-bottom: none;
+}
+
+.history-list .history-item .h-disease {
+    font-weight: 600;
+    color: #1a5276;
+}
+
+.history-list .history-item .h-date {
+    color: #8a96a8;
+    font-size: 12px;
+}
+
+.history-empty {
+    color: #8a96a8;
+    font-size: 13px;
+    text-align: center;
+    padding: 12px 0;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+    text-align: center;
+    padding: 14px 40px 14px;
+    border-top: 1px solid #e4eaf2;
+    font-size: 12px;
+    color: #8a96a8;
+    background: #fafcfe;
+}
+
+.footer strong {
+    color: #1a5276;
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #0b2b4a;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transform: translateX(120%);
+    transition: transform 0.4s ease;
+    z-index: 1000;
+    max-width: 360px;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    background: #27ae60;
+}
+
+.toast.error {
+    background: #e74c3c;
+}
+
+.toast .toast-close {
+    margin-left: 14px;
+    cursor: pointer;
+    opacity: 0.7;
+    font-size: 18px;
+    background: none;
+    border: none;
+    color: #fff;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .patient-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .step-line {
+        width: 30px;
+    }
+    .step .step-label {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        padding: 18px 20px 14px;
+    }
+    .header h1 {
+        font-size: 18px;
+    }
+    .content {
+        padding: 16px 14px 20px;
+    }
+    .patient-grid {
+        grid-template-columns: 1fr;
+        padding: 14px 16px;
+    }
+    .question-area {
+        padding: 16px 18px;
+    }
+    .question-area .question-text {
+        font-size: 16px;
+    }
+    .answer-buttons {
+        flex-direction: column;
+    }
+    .btn-answer {
+        min-width: unset;
+    }
+    .nav-buttons {
+        flex-direction: column;
+    }
+    .btn-nav {
+        justify-content: center;
+    }
+    .result-card {
+        padding: 16px 18px;
+    }
+    .result-card .disease-name {
+        font-size: 18px;
+    }
+    .result-actions {
+        flex-direction: column;
+    }
+    .result-actions .btn-action {
+        min-width: unset;
+    }
+    .result-patient-info {
+        font-size: 13px;
+        gap: 6px 14px;
+        padding: 10px 16px;
+    }
+    .steps-indicator {
+        padding: 0 6px;
+    }
+    .step-line {
+        width: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .header .logo {
+        font-size: 28px;
+    }
+    .header h1 {
+        font-size: 16px;
+    }
+    .question-area .question-text {
+        font-size: 14px;
+    }
+    .container {
+        border-radius: 16px;
+    }
+}

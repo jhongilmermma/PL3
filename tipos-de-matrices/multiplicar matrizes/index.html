@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Multiplicación de Matrices</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Multiplicación de Matrices</h1>
+
+        <div class="controls">
+
+            <input 
+                type="number"
+                id="filasA"
+                placeholder="Filas A"
+                min="1"
+            >
+
+            <input 
+                type="number"
+                id="columnasA"
+                placeholder="Columnas A"
+                min="1"
+            >
+
+            <input 
+                type="number"
+                id="columnasB"
+                placeholder="Columnas B"
+                min="1"
+            >
+
+            <button onclick="generarMatrices()">
+                Generar Matrices
+            </button>
+
+        </div>
+
+        <div class="matrices">
+
+            <div>
+                <h2>Matriz A</h2>
+                <div id="matrizA"></div>
+            </div>
+
+            <div>
+                <h2>Matriz B</h2>
+                <div id="matrizB"></div>
+            </div>
+
+        </div>
+
+        <button 
+            id="btnMultiplicar"
+            onclick="multiplicarMatrices()"
+            style="display:none;"
+        >
+            Multiplicar
+        </button>
+
+        <div id="resultado"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

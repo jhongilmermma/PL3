@@ -1,0 +1,422 @@
+/* ========================================
+   RESET Y BASE
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at 10% 20%, #18d18a, #040814);
+    font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+    min-height: 100vh;
+    padding: 1.5rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap');
+
+.app-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.game-header {
+    background: rgba(227, 120, 120, 0.03);
+    backdrop-filter: blur(12px);
+    border-radius: 2rem;
+    padding: 1.2rem 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border: 1px solid rgba(167, 162, 135, 0.2);
+}
+
+.title h1 {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #e0ac27, #fcaf2b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.title p {
+    color: #9CA3AF !important;
+    font-size: 0.8rem;
+}
+
+.stats {
+    display: flex;
+    gap: 1.8rem;
+    background: #2660db80;
+    padding: 0.5rem 1.5rem;
+    border-radius: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #9CA3AF;
+}
+
+.stat-number {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #3d23a4;
+}
+
+/* ========================================
+   TABLERO DE RETOS
+   ======================================== */
+.challenge-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.challenge-tile {
+    background: linear-gradient(145deg, #1F2937, #111827);
+    border-radius: 1.8rem;
+    padding: 1.2rem;
+    border: 1px solid #374151;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-tile:not(.locked):not(.completed):hover {
+    transform: translateY(-6px);
+    border-color: #98886c;
+    box-shadow: 0 20px 30px -12px rgba(245,158,11,0.3);
+}
+
+.challenge-tile.completed {
+    border-color: #10B981;
+    background: linear-gradient(145deg, #1e3a2f, #0f2a20);
+    opacity: 0.8;
+    cursor: default;
+}
+
+.challenge-tile.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(0.2);
+}
+
+.tile-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tile-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #F3F4F6;
+}
+
+.tile-desc {
+    font-size: 0.7rem;
+    color: #9CA3AF;
+    margin: 0.5rem 0;
+}
+
+.badge-points {
+    display: inline-block;
+    background: #F59E0B20;
+    padding: 0.2rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    color: #ddb03e;
+}
+
+.lock-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+}
+
+.tile-status {
+    color: #10B981 !important;
+    margin-top: 6px;
+}
+
+/* ========================================
+   MODAL
+   ======================================== */
+.modal-game {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-game.active {
+    display: flex;
+    animation: fadeSlide 0.3s ease;
+}
+
+.modal-card {
+    background: linear-gradient(145deg, #1E293B, #0F172A);
+    max-width: 550px;
+    width: 90%;
+    border-radius: 2rem;
+    padding: 2rem;
+    border: 1px solid #F59E0B;
+    box-shadow: 0 30px 40px rgba(0,0,0,0.6);
+}
+
+.modal-header {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #FBBF24;
+    margin-bottom: 1rem;
+}
+
+.question-area {
+    background: #0F172A;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.question-text {
+    color: #F3F4F6;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.visual-pattern {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+    font-size: 2rem;
+}
+
+.options-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+.opt-btn {
+    background: #334155;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid transparent;
+}
+
+.opt-btn:hover {
+    background: #475569;
+    border-color: #F59E0B;
+}
+
+.opt-btn.selected {
+    background: #F59E0B;
+    color: #0F172A;
+    font-weight: bold;
+}
+
+.input-number {
+    background: #0F172A;
+    border: 1px solid #374151;
+    border-radius: 1rem;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+.btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: #0F172A;
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(245,158,11,0.3);
+}
+
+.btn-secondary {
+    background: #374151;
+    color: #E5E7EB;
+}
+
+.btn-secondary:hover {
+    background: #475569;
+}
+
+/* ========================================
+   PROGRESO
+   ======================================== */
+.progress-area {
+    margin-top: 1rem;
+}
+
+.progress-bar-bg {
+    background: #374151;
+    border-radius: 1rem;
+    height: 8px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #FBBF24, #F59E0B);
+    width: 0%;
+    height: 100%;
+    transition: width 0.3s;
+}
+
+/* ========================================
+   PANEL FINAL
+   ======================================== */
+.final-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(145deg, #1E293B, #030712);
+    border-top: 3px solid #FBBF24;
+    padding: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.4s;
+    z-index: 100;
+}
+
+.final-panel.show {
+    transform: translateY(0);
+}
+
+.final-panel h2 {
+    color: #FBBF24 !important;
+}
+
+.final-panel p {
+    color: #D1D5DB !important;
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+@keyframes fadeSlide {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-80px); }
+}
+
+.float-points {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.2rem;
+    animation: floatUp 1.5s forwards;
+    color: #FBBF24;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+    text-align: center;
+    color: #4B5563;
+    font-size: 0.7rem;
+    margin-top: 2rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .game-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .stats {
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .challenge-board {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-card {
+        padding: 1.5rem;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .title h1 {
+        font-size: 1.4rem;
+    }
+
+    .stat-number {
+        font-size: 1.2rem;
+    }
+}

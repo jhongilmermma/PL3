@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonAudit Pro | Expert Engineering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-interface">
+        <aside class="config-panel">
+            <header>
+                <div class="icon-brand">🌱</div>
+                <h2>Carbon<span>Audit</span></h2>
+            </header>
+
+            <div class="control-group">
+                <label>Periodo de Análisis</label>
+                <select id="periodType">
+                    <option value="1">Lectura Mensual</option>
+                    <option value="12">Lectura Anual</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>Energía Consumida</label>
+                <div class="input-with-unit">
+                    <input type="number" id="energyInput" placeholder="0.00">
+                    <span>kWh</span>
+                </div>
+            </div>
+
+            <div class="factor-display">
+                <small>Factor de Emisión</small>
+                <p>0.45 kg CO₂ / kWh</p>
+            </div>
+
+            <button onclick="runAudit()" class="btn-primary">Ejecutar Auditoría</button>
+        </aside>
+
+        <main class="dashboard">
+            <div id="emptyState" class="empty-state">
+                <p>Configure los parámetros para procesar el informe biométrico</p>
+            </div>
+
+            <div id="resultsContent" class="hidden">
+                <div class="hero-stats">
+                    <div class="stat-main">
+                        <span>Emisiones Mensuales</span>
+                        <h1 id="monthlyCO2">0.00</h1>
+                        <small>kg CO₂eq</small>
+                    </div>
+                </div>
+
+                <div class="grid-stats">
+                    <div class="card highlight">
+                        <div class="card-icon">🌳</div>
+                        <h3 id="treesVal">0</h3>
+                        <p>Árboles necesarios (CO₂ / 1.67)</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📉</div>
+                        <h3 id="annualProy">0.00</h3>
+                        <p>Impacto Anual Proyectado (tCO₂)</p>
+                    </div>
+                </div>
+
+                <div class="footer-analysis" id="statusBox">
+                    Estado: <span id="statusText">Calculando...</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

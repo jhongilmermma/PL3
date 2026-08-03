@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Numerical Methods Suite Pro | Bisección · Newton · Secante · Punto Fijo · Muller</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(circle at 10% 20%, #0a0c1a, #010208);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            color: #edf4ff;
+        }
+        
+        .navbar {
+            background: rgba(8, 12, 22, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(93, 201, 224, 0.3);
+            padding: 0.8rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #fff, #7ae2f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid #3a8a9a;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #ccf4ff;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: #2a7a8a;
+            border-color: #7ae2f0;
+            color: white;
+        }
+        
+        .app-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        
+        .control-bar {
+            background: rgba(15, 25, 50, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            border: 1px solid #3a8a9a;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .func-group {
+            flex: 2;
+            min-width: 250px;
+        }
+        .func-group label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9abfdf;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .func-group input {
+            width: 100%;
+            background: #010a18;
+            border: 1px solid #3a8a9a;
+            border-radius: 40px;
+            padding: 10px 16px;
+            color: #f5cb5c;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .param-group {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .param-item {
+            background: #010a18cc;
+            border-radius: 40px;
+            padding: 8px 16px;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+        button {
+            background: linear-gradient(95deg, #c97a2a, #eaa545);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Inter';
+        }
+        button:hover { transform: scale(0.97); filter: brightness(1.05); }
+        .btn-secondary { background: linear-gradient(95deg, #2a7a6a, #1e9f8a); }
+        
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(540px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        .method-card {
+            background: rgba(10, 16, 28, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 1.8rem;
+            border: 1px solid rgba(80, 190, 210, 0.4);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .method-card:hover { transform: translateY(-4px); border-color: #7ae2f0; }
+        
+        .card-header {
+            padding: 0.8rem 1.2rem;
+            background: linear-gradient(95deg, rgba(35, 65, 90, 0.8), rgba(20, 45, 70, 0.9));
+            border-bottom: 1px solid #2f7080;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-header h3 { font-size: 1.2rem; font-weight: 700; }
+        .badge-method { margin-left: auto; background: #0f2a36; padding: 3px 12px; border-radius: 40px; font-size: 0.7rem; }
+        
+        .graph-container { height: 270px; width: 100%; background: #010814; }
+        
+        .card-metrics {
+            padding: 0.7rem 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            background: rgba(0,0,0,0.4);
+            font-size: 0.8rem;
+        }
+        .metric {
+            background: #0b1424; 
+            border-radius: 32px; 
+            padding: 6px 14px;
+            font-family: monospace;
+        }
+        .metric-value { color: #f5cb5c; font-weight: bold; margin-left: 8px; }
+        
+        .ai-panel {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(16px);
+            border-radius: 1.5rem;
+            border: 1px solid #4a8a9a;
+            padding: 1.2rem;
+        }
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .stat-card {
+            background: #0e172ab3;
+            border-radius: 1rem;
+            padding: 0.7rem 1rem;
+            flex: 1;
+            min-width: 150px;
+            border-left: 3px solid #5dc9e0;
+        }
+        .prediction-text {
+            background: #030b18;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        .footer { text-align: center; margin-top: 1.5rem; font-size: 0.7rem; opacity: 0.6; }
+        
+        @media (max-width: 1100px) { .methods-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <span>🧬</span> NUMERICAL METHODS SUITE
+        </div>
+        <div class="nav-menu">
+            <button class="nav-btn active" data-view="all">📊 TODOS LOS MÉTODOS</button>
+            <button class="nav-btn" data-view="biseccion">📐 BISECCIÓN</button>
+            <button class="nav-btn" data-view="fijo">⚓ PUNTO FIJO</button>
+            <button class="nav-btn" data-view="newton">🧮 NEWTON</button>
+            <button class="nav-btn" data-view="secante">📈 SECANTE</button>
+            <button class="nav-btn" data-view="muller">🔮 MULLER</button>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <div class="control-bar">
+            <div class="func-group">
+                <label>📐 FUNCIÓN f(x) = </label>
+                <input type="text" id="funcInput" value="Math.cos(x) - 2*x" placeholder="Ej: Math.cos(x) - 2*x, x**2 + 2*x - 1, Math.sin(x)">
+                <div style="font-size: 0.7rem; margin-top: 4px; color: #7ae2f0;">✅ Ejemplos: Math.cos(x) - 2*x | x**3 - x - 2 | Math.exp(x) - 3*x</div>
+            </div>
+            <div class="param-group">
+                <div class="param-item">🎯 Tolerancia: 1e-12</div>
+                <div class="param-item">🔄 Max Iter: 100</div>
+                <button id="applyFuncBtn" class="btn-secondary">🔄 APLICAR FUNCIÓN</button>
+                <button id="resetFuncBtn">↺ f(x) = cos(x) - 2x</button>
+            </div>
+        </div>
+
+        <div id="methodsGrid" class="methods-grid"></div>
+
+        <div class="ai-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 0.8rem;">
+                <span style="font-weight: 800;">🧠 ANÁLISIS INTELIGENTE (RED NEURONAL HÍBRIDA)</span>
+                <button id="retrainAllBtn">⚡ RE-EJECUTAR TODOS LOS MÉTODOS</button>
+            </div>
+            <div id="statsPanel" class="stats-row"></div>
+            <div id="predictionPanel" class="prediction-text">🔮 Predicción neuronal: esperando datos...</div>
+        </div>
+        <div class="footer">
+            ✅ Métodos numéricos profesionales | Cada método es una neurona especializada | La red pondera resultados
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let currentFuncStr = "Math.cos(x) - 2*x";
+        let f = (x) => {
+            try { 
+                return Function('x', 'return ' + currentFuncStr)(x);
+            } catch(e) { 
+                console.error(e);
+                return NaN; 
+            }
+        };
+        
+        let fDeriv = (x) => { 
+            let h = 1e-6; 
+            return (f(x+h) - f(x-h)) / (2*h); 
+        };
+        
+        let gFixedPoint = (x) => {
+            // Para cos(x) - 2x, una buena función de punto fijo es (cos(x))/2
+            if (currentFuncStr.includes('cos') && currentFuncStr.includes('2*x')) {
+                return Math.cos(x) / 2;
+            }
+            return x - f(x);
+        };
+        
+        const TOL = 1e-12;
+        const MAX_ITER = 100;
+        
+        // ---------- MÉTODOS NUMÉRICOS MEJORADOS ----------
+        function biseccion(a, b) {
+            let fa = f(a), fb = f(b);
+            if (fa * fb >= 0) return { root: NaN, iter: 0, error: 1e10, history: [], message: "No hay cambio de signo en el intervalo" };
+            
+            let iter = 0;
+            let c = a;
+            let history = [];
+            let a_curr = a, b_curr = b;
+            
+            while ((b_curr - a_curr) / 2 > TOL && iter < MAX_ITER) {
+                c = (a_curr + b_curr) / 2;
+                let fc = f(c);
+                history.push({ iter, x: c, fx: fc });
+                
+                if (Math.abs(fc) < TOL) break;
+                
+                if (fa * fc < 0) {
+                    b_curr = c;
+                    fb = fc;
+                } else {
+                    a_curr = c;
+                    fa = fc;
+                }
+                iter++;
+            }
+            c = (a_curr + b_curr) / 2;
+            history.push({ iter, x: c, fx: f(c) });
+            
+            return { root: c, iter: iter + 1, error: Math.abs(f(c)), history, message: "Converge" };
+        }
+        
+        function puntoFijo(x0) {
+            let x = x0;
+            let iter = 0;
+            let history = [];
+            
+            while (iter < MAX_ITER) {
+                let x_next = gFixedPoint(x);
+                history.push({ iter, x_old: x, x_new: x_next, fx: f(x) });
+                
+                if (Math.abs(x_next - x) < TOL) {
+                    return { root: x_next, iter: iter + 1, error: Math.abs(f(x_next)), history, message: "Converge" };
+                }
+                if (iter > 0 && Math.abs(x_next) > 1e10) break;
+                
+                x = x_next;
+                iter++;
+            }
+            return { root: x, iter: iter, error: Math.abs(f(x)), history, message: "Máx iteraciones" };
+        }
+        
+        function newton(x0) {
+            let x = x0;
+            let iter = 0;
+            let history = [];
+            
+            while (iter < MAX_ITER) {
+                let fx = f(x);
+                let dfx = fDeriv(x);
+                history.push({ iter, x, fx, dfx });
+                
+                if (Math.abs(dfx) < 1e-15) {
+                    return { root: x, iter: iter, error: Math.abs(fx), history, message: "Derivada cercana a cero" };
+                }
+                
+                let x_new = x - fx / dfx;
+                
+                if (Math.abs(x_new - x) < TOL) {
+                    return { root: x_new, iter: iter + 1, error: Math.abs(f(x_new)), history, message: "Converge" };
+                }
+                
+                x = x_new;
+                iter++;
+            }
+            return { root: x, iter: iter, error: Math.abs(f(x)), history, message: "Máx iteraciones" };
+        }
+        
+        function secante(x0, x1) {
+            let x_prev = x0;
+            let x_curr = x1;
+            let iter = 0;
+            let history = [];
+            
+            while (iter < MAX_ITER) {
+                let f_prev = f(x_prev);
+                let f_curr = f(x_curr);
+                history.push({ iter, x_prev, x_curr, f_curr });
+                
+                if (Math.abs(f_curr) < TOL) break;
+                if (Math.abs(f_curr - f_prev) < 1e-18) break;
+                
+                let x_next = x_curr - f_curr * (x_curr - x_prev) / (f_curr - f_prev);
+                
+                if (Math.abs(x_next - x_curr) < TOL) {
+                    x_curr = x_next;
+                    iter++;
+                    break;
+                }
+                
+                x_prev = x_curr;
+                x_curr = x_next;
+                iter++;
+            }
+            return { root: x_curr, iter: iter + 1, error: Math.abs(f(x_curr)), history, message: "Converge" };
+        }
+        
+        function muller(x0, x1, x2) {
+            let x = [x0, x1, x2];
+            let iter = 0;
+            let history = [];
+            
+            while (iter < MAX_ITER) {
+                let h1 = x[1] - x[0];
+                let h2 = x[2] - x[1];
+                let d1 = (f(x[1]) - f(x[0])) / h1;
+                let d2 = (f(x[2]) - f(x[1])) / h2;
+                let d = (d2 - d1) / (h2 + h1);
+                let b = d2 + h2 * d;
+                let disc = b * b - 4 * f(x[2]) * d;
+                
+                if (disc < 0) disc = 0;
+                let sqrtDisc = Math.sqrt(disc);
+                let denom = (Math.abs(b - sqrtDisc) > Math.abs(b + sqrtDisc)) ? b - sqrtDisc : b + sqrtDisc;
+                
+                if (Math.abs(denom) < 1e-18) break;
+                
+                let h_new = -2 * f(x[2]) / denom;
+                let x_new = x[2] + h_new;
+                history.push({ iter, x0: x[0], x1: x[1], x2: x[2], x_new, fx: f(x[2]) });
+                
+                if (Math.abs(h_new) < TOL || Math.abs(f(x_new)) < TOL) {
+                    return { root: x_new, iter: iter + 1, error: Math.abs(f(x_new)), history, message: "Converge" };
+                }
+                
+                x[0] = x[1];
+                x[1] = x[2];
+                x[2] = x_new;
+                iter++;
+            }
+            return { root: x[2], iter: iter, error: Math.abs(f(x[2])), history, message: "Máx iteraciones" };
+        }
+        
+        const methodsConfig = [
+            { id: "biseccion", name: "BISECCIÓN", icon: "📐", color: "#2cd49f", desc: "Intervalo [0, 1]",
+              compute: () => biseccion(0, 1), xRange: [-0.5, 1.5] },
+            { id: "fijo", name: "PUNTO FIJO", icon: "⚓", color: "#ffc164", desc: "g(x)=cos(x)/2, x₀=0.5",
+              compute: () => puntoFijo(0.5), xRange: [-0.5, 1.5] },
+            { id: "newton", name: "NEWTON-RAPHSON", icon: "🧮", color: "#3b9eff", desc: "x₀=0.5, derivada numérica",
+              compute: () => newton(0.5), xRange: [-0.5, 1.5] },
+            { id: "secante", name: "SECANTE", icon: "📈", color: "#b983ff", desc: "x₀=0.3, x₁=0.7",
+              compute: () => secante(0.3, 0.7), xRange: [-0.5, 1.5] },
+            { id: "muller", name: "MULLER", icon: "🔮", color: "#ff8c42", desc: "puntos 0, 0.5, 1.0",
+              compute: () => muller(0, 0.5, 1.0), xRange: [-0.5, 1.5] }
+        ];
+        
+        let resultados = [];
+        
+        function renderGraphic(method, rootVal, history, color, xRange, containerId) {
+            if (!history || history.length === 0) return;
+            
+            // Generar puntos para la función
+            const xs = [];
+            const ys = [];
+            for (let x = xRange[0]; x <= xRange[1]; x += (xRange[1]-xRange[0])/400) {
+                xs.push(x);
+                ys.push(f(x));
+            }
+            
+            // Extraer puntos de iteraciones
+            let iterX = [];
+            let iterY = [];
+            history.forEach(step => {
+                let xval = step.x !== undefined ? step.x : (step.x_curr !== undefined ? step.x_curr : (step.x2 !== undefined ? step.x2 : step.x_new));
+                if (xval !== undefined && !isNaN(xval) && isFinite(xval)) {
+                    iterX.push(xval);
+                    iterY.push(f(xval));
+                }
+            });
+            
+            const traceFunc = { 
+                x: xs, y: ys, mode: 'lines', name: 'f(x)', 
+                line: { color: '#88ccff', width: 2.5 } 
+            };
+            
+            const traceRoot = { 
+                x: [rootVal, rootVal], y: [Math.min(...ys, -1), Math.max(...ys, 1)], 
+                mode: 'lines', name: `Raíz ≈ ${rootVal?.toFixed(10)}`, 
+                line: { color: '#f5cb5c', width: 2, dash: 'dash' } 
+            };
+            
+            const tracePoints = { 
+                x: iterX, y: iterY, mode: 'markers+lines', 
+                name: 'Iteraciones', 
+                marker: { color: color, size: 8, symbol: 'circle' }, 
+                line: { color: color, width: 1.5, dash: 'dot' } 
+            };
+            
+            const layout = { 
+                title: { text: `${method} · Convergencia a raíz`, font: { size: 12, color: '#eef' } }, 
+                xaxis: { title: 'x', gridcolor: '#2a5068', color: '#ccddee', zerolinecolor: '#4a7080' }, 
+                yaxis: { title: 'f(x)', gridcolor: '#2a5068', zerolinecolor: '#4a7080' }, 
+                plot_bgcolor: '#010814', 
+                paper_bgcolor: 'rgba(0,0,0,0)', 
+                margin: { t: 35, l: 40, r: 20, b: 30 },
+                showlegend: true,
+                legend: { font: { color: '#ccddee', size: 10 }, bgcolor: 'rgba(0,0,0,0.5)' }
+            };
+            
+            Plotly.newPlot(containerId, [traceFunc, traceRoot, tracePoints], layout, { responsive: true, displayModeBar: false });
+        }
+        
+        function renderAllMethods(filterId = null) {
+            const container = document.getElementById('methodsGrid');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            const toShow = filterId && filterId !== 'all' 
+                ? resultados.filter((_, idx) => methodsConfig[idx].id === filterId)
+                : resultados;
+                
+            toShow.forEach((res, idxInFilter) => {
+                const origIdx = resultados.findIndex(r => r.name === res.name);
+                if (origIdx === -1) return;
+                
+                const config = methodsConfig[origIdx];
+                const graphId = `graph-${config.id}-${Date.now()}-${Math.random()}`;
+                const card = document.createElement('div');
+                card.className = 'method-card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span style="font-size:1.5rem;">${config.icon}</span>
+                        <h3>${config.name}</h3>
+                        <div class="badge-method">${config.desc}</div>
+                    </div>
+                    <div id="${graphId}" class="graph-container"></div>
+                    <div class="card-metrics">
+                        <div class="metric">📍 Raíz: <span class="metric-value">${isNaN(res.raiz) ? '✗ No converge' : res.raiz.toFixed(12)}</span></div>
+                        <div class="metric">🔄 Iteraciones: <span class="metric-value">${res.iter}</span></div>
+                        <div class="metric">📉 |f(root)|: <span class="metric-value">${res.error < 1e-8 ? '< 1e-8' : res.error.toExponential(6)}</span></div>
+                        <div class="metric">💬 ${res.message || 'Completado'}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+                
+                if (res.history && res.history.length && !isNaN(res.raiz) && isFinite(res.raiz) && res.raiz !== undefined) {
+                    setTimeout(() => {
+                        const graphElement = document.getElementById(graphId);
+                        if (graphElement) {
+                            renderGraphic(config.name, res.raiz, res.history, config.color, config.xRange, graphId);
+                        }
+                    }, 50);
+                }
+            });
+        }
+        
+        function executeAllMethods() {
+            resultados = methodsConfig.map(cfg => {
+                try {
+                    const res = cfg.compute();
+                    return { 
+                        name: cfg.name, 
+                        raiz: res.root, 
+                        iter: res.iter, 
+                        error: res.error, 
+                        history: res.history || [],
+                        message: res.message || "OK"
+                    };
+                } catch(e) {
+                    console.error(`Error en ${cfg.name}:`, e);
+                    return { name: cfg.name, raiz: NaN, iter: 0, error: 1e10, history: [], message: e.message };
+                }
+            });
+            renderAllMethods();
+            updateAIPanel();
+        }
+        
+        function updateAIPanel() {
+            const statsDiv = document.getElementById('statsPanel');
+            const predDiv = document.getElementById('predictionPanel');
+            
+            const valid = resultados.filter(r => !isNaN(r.raiz) && isFinite(r.raiz) && Math.abs(r.error) < 0.1);
+            
+            if (valid.length === 0) {
+                statsDiv.innerHTML = '<div class="stat-card">⚠️ No hay convergencia estable con esta función</div>';
+                predDiv.innerHTML = '🔮 La red neuronal sugiere: Revisa que la función tenga raíces reales o cambia los intervalos iniciales.';
+                return;
+            }
+            
+            const bestPrecision = valid.reduce((a,b) => (a.error < b.error ? a : b), valid[0]);
+            const fastest = valid.reduce((a,b) => (a.iter < b.iter ? a : b), valid[0]);
+            const avgIter = (valid.reduce((s,r)=>s+r.iter,0)/valid.length).toFixed(2);
+            
+            let totalWeight = 0, weightedRoot = 0;
+            valid.forEach(r => { 
+                let w = 1 / (Math.abs(r.error) + 1e-12); 
+                weightedRoot += r.raiz * w; 
+                totalWeight += w; 
+            });
+            let predictedRoot = weightedRoot / totalWeight;
+            
+            statsDiv.innerHTML = `
+                <div class="stat-card">🏆 MEJOR PRECISIÓN<br><strong style="color:#f5cb5c">${bestPrecision.name}</strong><br>|f| = ${bestPrecision.error.toExponential(6)}</div>
+                <div class="stat-card">⚡ MÁS RÁPIDO<br><strong style="color:#f5cb5c">${fastest.name}</strong><br>${fastest.iter} iteraciones</div>
+                <div class="stat-card">📊 PROMEDIO ITER<br><strong style="color:#f5cb5c">${avgIter}</strong></div>
+                <div class="stat-card">🧬 NEURONAS ACTIVAS<br><strong style="color:#f5cb5c">${valid.length}</strong> / ${resultados.length}</div>
+            `;
+            
+            predDiv.innerHTML = `🔮 <strong>PREDICCIÓN DE LA RED NEURONAL:</strong> Raíz estimada = <span style="color:#f5cb5c; font-weight:bold; font-size:1.1rem;">${predictedRoot.toFixed(12)}</span><br>
+            📊 Ponderación basada en calidad de convergencia. Recomendación: <strong style="color:#7ae2f0">${bestPrecision.name}</strong> alcanzó la mejor precisión con |f| = ${bestPrecision.error.toExponential(6)}.`;
+        }
+        
+        function applyNewFunction(funcStr) {
+            currentFuncStr = funcStr;
+            try {
+                const testFn = new Function('x', 'return ' + currentFuncStr);
+                testFn(1);
+                f = testFn;
+                fDeriv = (x) => { let h = 1e-6; return (f(x+h) - f(x-h)) / (2*h); };
+                
+                // Actualizar función de punto fijo
+                if (currentFuncStr.includes('cos') && currentFuncStr.includes('2*x')) {
+                    gFixedPoint = (x) => Math.cos(x) / 2;
+                } else {
+                    gFixedPoint = (x) => x - f(x);
+                }
+                
+                executeAllMethods();
+            } catch(e) { 
+                alert(`Error en función: ${e.message}\nEjemplo correcto: Math.cos(x) - 2*x`); 
+            }
+        }
+        
+        function resetFunction() {
+            currentFuncStr = "Math.cos(x) - 2*x";
+            document.getElementById('funcInput').value = currentFuncStr;
+            f = new Function('x', 'return ' + currentFuncStr);
+            fDeriv = (x) => { let h = 1e-6; return (f(x+h) - f(x-h)) / (2*h); };
+            gFixedPoint = (x) => Math.cos(x) / 2;
+            executeAllMethods();
+        }
+        
+        // Eventos
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const view = btn.dataset.view;
+                if (view === 'all') renderAllMethods();
+                else renderAllMethods(view);
+            });
+        });
+        
+        document.getElementById('applyFuncBtn').addEventListener('click', () => {
+            applyNewFunction(document.getElementById('funcInput').value);
+        });
+        document.getElementById('resetFuncBtn').addEventListener('click', resetFunction);
+        document.getElementById('retrainAllBtn').addEventListener('click', executeAllMethods);
+        
+        // Inicializar con cos(x) - 2x
+        resetFunction();
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matriz Inversa</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Calculadora de Matriz Inversa</h1>
+
+        <div class="controls">
+
+            <input 
+                type="number"
+                id="orden"
+                placeholder="Orden N"
+                min="2"
+            >
+
+            <button id="btnCrear">
+                Crear Matriz
+            </button>
+
+            <button 
+                id="btnInversa"
+                style="display:none;"
+            >
+                Calcular Inversa
+            </button>
+
+            <button 
+                id="btnLimpiar"
+                style="display:none;"
+            >
+                Limpiar
+            </button>
+
+        </div>
+
+        <div id="matriz-container"></div>
+
+        <div id="resultado"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+# Dependencias
+node_modules/
+package-lock.json
+
+# Archivos de entorno y compilación
+.env
+dist/
+build/
+bin/
+obj/
+*.exe
+*.dll
+
+# IDEs y Editores
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos del SO y temporales
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.log
+*.tmp
+*.rar
+*.zip
+*.7z

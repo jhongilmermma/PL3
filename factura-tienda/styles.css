@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #333;
+}
+
+.app {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+header {
+    background: #1e293b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.form-section, .result-section {
+    flex: 1;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+
+.input-group {
+    margin-bottom: 12px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.result-section {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.factura p {
+    margin: 6px 0;
+}
+
+.total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #16a34a;
+}
+
+.empty {
+    color: gray;
+}

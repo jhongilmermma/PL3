@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🧩 MENTE MATEMÁTICA | Gym de Razonamiento Lógico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- HEADER -->
+        <div class="game-header">
+            <div class="title">
+                <h1>🧠 MENTE MATEMÁTICA</h1>
+                
+                <p style="color:#9CA3AF; font-size:0.8rem;">Razonamiento · Patrones · Estrategia</p>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-label">🏆 PUNTOS</div>
+                    <div class="stat-number" id="pointDisplay">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">⚡ RETOS</div>
+                    <div class="stat-number" id="challengeCount">0/<span id="totalCount">8</span></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">🎯 RANGO</div>
+                    <div class="stat-number" id="rankDisplay">🌱 NOVATO</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLERO DE RETOS -->
+        <div class="challenge-board" id="board"></div>
+
+        <!-- PROGRESO -->
+        <div class="progress-area">
+            <div class="progress-bar-bg">
+                <div class="progress-fill" id="globalFill"></div>
+            </div>
+        </div>
+
+        <footer>
+            ⚡ Cada desafío ejercita una habilidad lógica diferente · Haz clic en los retos desbloqueados
+        </footer>
+    </div>
+
+    <!-- PANEL FINAL -->
+    <div class="final-panel" id="finalScreen">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div>
+                <h2 id="finalRankLabel" style="color:#FBBF24;">🏅 MAESTRO</h2>
+                <p id="finalMsg" style="color:#D1D5DB;"></p>
+            </div>
+            <button class="btn btn-primary" id="closeFinalBtn">✨ Seguir entrenando</button>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal-game" id="gameModal">
+        <div class="modal-card">
+            <div class="modal-header" id="modalTitle">Desafío</div>
+            <div id="modalDynamicBody"></div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="closeModalBtn">Cancelar</button>
+                <button class="btn btn-primary" id="submitModalBtn">🧠 Verificar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

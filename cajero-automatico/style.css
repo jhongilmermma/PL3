@@ -1,0 +1,56 @@
+body {
+    background-color: #cfd8dc;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.atm-card {
+    background: #263238;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.screen {
+    background: #90a4ae;
+    color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 4px solid #546e7a;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input, select, button {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+}
+
+button {
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover { background: #45a049; }
+
+.receipt {
+    margin-top: 20px;
+    background: #37474f;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}

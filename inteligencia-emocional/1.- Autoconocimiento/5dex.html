@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilidades Sociales · golean 5</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f2f0e8 0%, #e2ddd0 100%);
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 252, 245, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 2.5rem;
+            padding: 2rem 2rem 2.5rem;
+            box-shadow: 0 25px 45px -12px rgba(60, 50, 30, 0.2), 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 248, 235, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #3d3a2e;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.15rem;
+        }
+
+        h1 i {
+            color: #7a9a6e;
+            font-size: 2rem;
+        }
+
+        .subhead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            border-bottom: 2px dashed rgba(120, 150, 100, 0.2);
+            padding-bottom: 0.8rem;
+        }
+
+        .subhead span {
+            font-size: 1rem;
+            background: #d6d9c8;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            color: #3d3a2e;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.6);
+        }
+
+        .golearn-badge {
+            background: #7a9a6e;
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .golearn-badge i {
+            font-size: 1rem;
+        }
+
+        /* Área de habilidades sociales */
+        .social-area {
+            background: rgba(215, 225, 200, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(160, 185, 140, 0.3);
+            box-shadow: 0 8px 18px rgba(80, 100, 60, 0.06);
+        }
+
+        .social-area h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: #3d3a2e;
+            margin-bottom: 0.2rem;
+        }
+
+        .social-area h2 i {
+            color: #7a9a6e;
+        }
+
+        .social-area p {
+            color: #5a604a;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            flex: 1 1 200px;
+            padding: 0.9rem 1.2rem;
+            border: none;
+            border-radius: 60px;
+            background: rgba(255, 252, 245, 0.7);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            font-size: 1rem;
+            color: #3a3a2a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), inset 0 1px 4px rgba(255, 255, 255, 0.8);
+            transition: all 0.2s;
+            border: 1px solid rgba(180, 195, 165, 0.3);
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: 2px solid #7a9a6e;
+            background: white;
+            border-color: transparent;
+            box-shadow: 0 8px 16px rgba(100, 140, 80, 0.1);
+        }
+
+        .input-group textarea {
+            flex: 2 1 280px;
+            resize: vertical;
+            min-height: 70px;
+            border-radius: 24px;
+            font-family: inherit;
+        }
+
+        .btn-grabar {
+            background: #7a9a6e;
+            border: none;
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 18px rgba(100, 140, 80, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.3px;
+            flex: 0 0 auto;
+        }
+
+        .btn-grabar:hover {
+            background: #658a5a;
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 12px 24px rgba(90, 130, 70, 0.3);
+        }
+
+        .btn-grabar:active {
+            transform: scale(0.97);
+        }
+
+        .btn-grabar i {
+            font-size: 1.2rem;
+        }
+
+        .tip-social {
+            margin-top: 1rem;
+            background: rgba(200, 215, 185, 0.3);
+            border-radius: 40px;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.95rem;
+            color: #4a5a3a;
+            border-left: 4px solid #7a9a6e;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .tip-social i {
+            color: #7a9a6e;
+            margin-right: 8px;
+        }
+
+        /* LINEA DE TIEMPO */
+        .timeline-section {
+            margin-top: 1rem;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .timeline-header h3 {
+            font-weight: 500;
+            color: #3d3a2e;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timeline-header h3 i {
+            color: #7a9a6e;
+        }
+
+        .counter {
+            background: #d6d9c8;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #3d3a2e;
+        }
+
+        .timeline-container {
+            background: rgba(215, 225, 200, 0.2);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 0.8rem 0.8rem 0.5rem;
+            border: 1px solid rgba(180, 195, 165, 0.3);
+            max-height: 340px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .timeline-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .timeline-container::-webkit-scrollbar-track {
+            background: #d6d9c8;
+            border-radius: 20px;
+        }
+        .timeline-container::-webkit-scrollbar-thumb {
+            background: #7a9a6e;
+            border-radius: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem 1rem;
+            padding: 0.8rem 1.2rem;
+            margin-bottom: 0.5rem;
+            background: rgba(245, 248, 235, 0.5);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border-radius: 50px;
+            border-left: 6px solid #7a9a6e;
+            transition: 0.15s;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .timeline-item:hover {
+            background: rgba(235, 242, 225, 0.7);
+            transform: translateX(6px);
+            border-left-width: 10px;
+        }
+
+        .time-badge {
+            background: #d6d9c8;
+            color: #3d3a2e;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .entry-emotion {
+            background: #d5ddc8;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #3d3a2e;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .entry-emotion .face {
+            font-size: 1.2rem;
+        }
+
+        .entry-text {
+            color: #3d3a2e;
+            word-break: break-word;
+            font-size: 0.95rem;
+            flex: 2 1 140px;
+        }
+
+        .reflection-box {
+            background: rgba(180, 200, 165, 0.2);
+            border-radius: 30px;
+            padding: 0.2rem 1.2rem;
+            font-size: 0.85rem;
+            color: #4a5a3a;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px dashed rgba(130, 170, 110, 0.25);
+            width: fit-content;
+            max-width: 100%;
+        }
+
+        .reflection-box i {
+            color: #7a9a6e;
+            font-size: 0.8rem;
+        }
+
+        .btn-borrar {
+            background: transparent;
+            border: none;
+            color: #8aa07a;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0 6px;
+            transition: 0.15s;
+            opacity: 0.5;
+            margin-left: auto;
+        }
+
+        .btn-borrar:hover {
+            color: #b35f4a;
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .entry-empty {
+            color: #7a8a6a;
+            font-style: italic;
+            text-align: center;
+            padding: 1.2rem 0;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        .footer-note {
+            margin-top: 1.8rem;
+            font-size: 0.8rem;
+            text-align: right;
+            color: #6a7a5a;
+            border-top: 1px solid rgba(130, 160, 110, 0.12);
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-note i {
+            margin: 0 4px;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 1.5rem;
+            }
+            .social-area {
+                padding: 1.2rem;
+            }
+            .input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-grabar {
+                justify-content: center;
+            }
+            .timeline-item {
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- encabezado -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <h1>
+                <i class="fas fa-handshake"></i> Habilidades Sociales
+            </h1>
+            <div class="golearn-badge">
+                <i class="fas fa-leaf"></i> golean 5
+            </div>
+        </div>
+        <div class="subhead">
+            <span><i class="fas fa-users" style="margin-right: 6px;"></i> comunicación y conexión</span>
+            <span style="background: transparent; box-shadow: none; padding: 0;"><i class="fas fa-arrow-right" style="color: #7a9a6e;"></i> inteligencia emocional</span>
+        </div>
+
+        <!-- bloque 5: Habilidades Sociales -->
+        <div class="social-area">
+            <h2><i class="fas fa-comment-dots"></i> Conecta con los demás</h2>
+            <p>Registrá una situación social y cómo la manejaste. <br> <i class="fas fa-circle" style="color: #7a9a6e; font-size: 0.5rem; vertical-align: middle;"></i> Cada registro genera una reflexión con carita.</p>
+
+            <div class="input-group">
+                <input type="text" id="situationInput" placeholder="Ej. una conversación difícil..." value="una reunión con compañeros">
+                <textarea id="actionInput" placeholder="¿Cómo actuaste? (opcional)">escuché atentamente y luego compartí mi punto de vista</textarea>
+                <button class="btn-grabar" id="grabarBtn"><i class="fas fa-save"></i> Grabar</button>
+            </div>
+            <div style="margin-top: 0.8rem; font-size: 0.85rem; color: #6a7a5a; display: flex; gap: 1.2rem; flex-wrap: wrap;">
+                <span><i class="fas fa-user"></i> situación social</span>
+                <span><i class="fas fa-comment"></i> mi acción</span>
+            </div>
+
+            <div class="tip-social" id="tipSocial">
+                <i class="fas fa-lightbulb"></i> "La escucha activa es la base de toda buena relación."
+            </div>
+        </div>
+
+        <!-- LINEA DE TIEMPO -->
+        <div class="timeline-section">
+            <div class="timeline-header">
+                <h3><i class="fas fa-history"></i> Línea de tiempo · habilidades</h3>
+                <span class="counter" id="entryCounter">0 registros</span>
+            </div>
+            <div class="timeline-container" id="timelineContainer">
+                <div class="entry-empty" id="emptyMessage">
+                    <i class="fas fa-hourglass-start" style="margin-right: 8px;"></i> Aún no hay registros. ¡Practicá tus habilidades!
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span><i class="fas fa-chevron-circle-right" style="color: #7a9a6e;"></i> habilidades sociales · golean 5</span>
+            <span><i class="far fa-calendar-alt"></i> <span id="currentDate"></span></span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            // ---- DOM ----
+            const situationInput = document.getElementById('situationInput');
+            const actionInput = document.getElementById('actionInput');
+            const grabarBtn = document.getElementById('grabarBtn');
+            const timelineContainer = document.getElementById('timelineContainer');
+            const emptyMessage = document.getElementById('emptyMessage');
+            const entryCounter = document.getElementById('entryCounter');
+            const tipSocial = document.getElementById('tipSocial');
+
+            // ---- Mapa de habilidades sociales ----
+            const socialMap = {
+                'escuchar': { face: '👂', reflection: 'La escucha activa construye puentes de confianza.' },
+                'comunicar': { face: '💬', reflection: 'Comunicar con claridad evita malentendidos.' },
+                'empatía': { face: '🤝', reflection: 'La empatía fortalece cualquier vínculo social.' },
+                'asertivo': { face: '😌', reflection: 'Ser asertivo es expresar tus necesidades con respeto.' },
+                'conflicto': { face: '⚖️', reflection: 'Resolver conflictos con calma y diálogo.' },
+                'colaborar': { face: '🤲', reflection: 'La colaboración multiplica los resultados.' },
+                'respeto': { face: '🙏', reflection: 'El respeto es la base de toda interacción.' },
+                'paciencia': { face: '🧘', reflection: 'La paciencia en las relaciones da frutos.' },
+                'amabilidad': { face: '😊', reflection: 'La amabilidad abre puertas y corazones.' },
+                'humor': { face: '😄', reflection: 'El humor sano alivia tensiones y conecta.' },
+                'gratitud': { face: '🌟', reflection: 'Agradecer fortalece los lazos sociales.' },
+                'honestidad': { face: '💎', reflection: 'La honestidad construye relaciones auténticas.' },
+                'liderazgo': { face: '👑', reflection: 'Liderar con ejemplo y escucha activa.' },
+                'negociación': { face: '🤝', reflection: 'Negociar es encontrar puntos en común.' },
+                'adaptación': { face: '🔄', reflection: 'Adaptarse a los demás es una gran habilidad.' },
+                'iniciativa': { face: '🚀', reflection: 'Tomar iniciativa en lo social abre oportunidades.' },
+                'escucha': { face: '👂', reflection: 'Escuchar es el primer paso para entender.' },
+            };
+
+            function getSocialData(text) {
+                const lower = text.toLowerCase().trim();
+                for (const [key, value] of Object.entries(socialMap)) {
+                    if (lower.includes(key) || key.includes(lower)) {
+                        return value;
+                    }
+                }
+                return { face: '🤗', reflection: 'Cada interacción es una oportunidad para crecer.' };
+            }
+
+            // ---- Consejos sociales aleatorios ----
+            const consejos = [
+                '"La escucha activa es la base de toda buena relación."',
+                '"La comunicación clara evita malentendidos."',
+                '"La empatía abre puertas que la lógica no puede."',
+                '"El respeto es el cimiento de cualquier vínculo."',
+                '"La paciencia en las relaciones es una virtud poderosa."',
+                '"Una sonrisa puede cambiar el ambiente de una conversación."',
+                '"La honestidad construye confianza duradera."',
+                '"La colaboración hace que los sueños se hagan realidad."',
+                '"La asertividad es equilibrio entre tus derechos y los de los demás."',
+                '"Cada persona tiene una historia que vale la pena escuchar."'
+            ];
+
+            function cambiarConsejo() {
+                const random = consejos[Math.floor(Math.random() * consejos.length)];
+                tipSocial.innerHTML = `<i class="fas fa-lightbulb"></i> ${random}`;
+            }
+
+            // ---- Estado ----
+            let registros = [];
+
+            // ---- Helpers ----
+            function formatTime(date) {
+                return String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
+            }
+
+            function formatDate(date) {
+                return String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date
+                    .getFullYear();
+            }
+
+            // ---- Renderizar timeline ----
+            function renderTimeline() {
+                const items = timelineContainer.querySelectorAll('.timeline-item');
+                items.forEach(el => el.remove());
+
+                if (registros.length === 0) {
+                    emptyMessage.style.display = 'block';
+                    entryCounter.textContent = '0 registros';
+                    return;
+                }
+                emptyMessage.style.display = 'none';
+                entryCounter.textContent = `${registros.length} registro${registros.length > 1 ? 's' : ''}`;
+
+                const sorted = [...registros].sort((a, b) => b.timestamp - a.timestamp);
+
+                for (const entry of sorted) {
+                    const date = new Date(entry.timestamp);
+                    const timeStr = formatTime(date);
+                    const dateStr = formatDate(date);
+
+                    const item = document.createElement('div');
+                    item.className = 'timeline-item';
+
+                    const badge = document.createElement('span');
+                    badge.className = 'time-badge';
+                    badge.innerHTML = `<i class="far fa-clock" style="margin-right: 4px;"></i> ${dateStr} · ${timeStr}`;
+
+                    const emotionSpan = document.createElement('span');
+                    emotionSpan.className = 'entry-emotion';
+                    emotionSpan.innerHTML = `<span class="face">${entry.face || '🤗'}</span> ${entry.situation || 'situación'}`;
+
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'entry-text';
+                    textSpan.textContent = entry.action || '';
+
+                    const reflectionBox = document.createElement('span');
+                    reflectionBox.className = 'reflection-box';
+                    reflectionBox.innerHTML = `<i class="fas fa-lightbulb"></i> ${entry.reflection || 'Cada interacción es una oportunidad.'}`;
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-borrar';
+                    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                    deleteBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        eliminarRegistro(entry.id);
+                    });
+
+                    item.appendChild(badge);
+                    item.appendChild(emotionSpan);
+                    item.appendChild(textSpan);
+                    item.appendChild(reflectionBox);
+                    item.appendChild(deleteBtn);
+
+                    timelineContainer.prepend(item);
+                }
+            }
+
+            // ---- Eliminar ----
+            function eliminarRegistro(id) {
+                registros = registros.filter(r => r.id !== id);
+                localStorage.setItem('goleanSocial', JSON.stringify(registros));
+                renderTimeline();
+                cambiarConsejo();
+            }
+
+            // ---- Agregar registro ----
+            function addRegistro() {
+                let situation = situationInput.value.trim();
+                let action = actionInput.value.trim();
+
+                if (!situation && !action) {
+                    situation = 'interacción social';
+                    action = 'observé y participé';
+                } else if (!situation) {
+                    situation = 'situación social';
+                }
+
+                const data = getSocialData(situation + ' ' + action);
+
+                const newEntry = {
+                    id: Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+                    situation: situation,
+                    action: action,
+                    timestamp: Date.now(),
+                    face: data.face,
+                    reflection: data.reflection,
+                };
+
+                registros.push(newEntry);
+                localStorage.setItem('goleanSocial', JSON.stringify(registros));
+
+                // Limpiar
+                situationInput.value = '';
+                actionInput.value = '';
+                situationInput.placeholder = 'Ej. una conversación con un compañero...';
+                actionInput.placeholder = '¿Cómo actuaste?';
+
+                renderTimeline();
+                cambiarConsejo();
+                timelineContainer.scrollTop = 0;
+            }
+
+            // ---- Cargar desde localStorage ----
+            function loadRegistros() {
+                const stored = localStorage.getItem('goleanSocial');
+                if (stored) {
+                    try {
+                        const parsed = JSON.parse(stored);
+                        if (Array.isArray(parsed)) registros = parsed;
+                    } catch (e) { registros = []; }
+                } else {
+                    // datos de ejemplo
+                    const now = Date.now();
+                    const sample = [
+                        { id: 's1_' + now, situation: 'una reunión de trabajo', action: 'escuché activamente y propuse soluciones',
+                            timestamp: now - 3600000 * 2, face: '👂',
+                            reflection: 'La escucha activa construye puentes de confianza.' },
+                        { id: 's2_' + now, situation: 'un amigo con problemas', action: 'le ofrecí mi apoyo y compañía',
+                            timestamp: now - 3600000 * 5, face: '🤝',
+                            reflection: 'La empatía fortalece cualquier vínculo social.' },
+                        { id: 's3_' + now, situation: 'un conflicto con un familiar', action: 'mantuvimos un diálogo calmado y respetuoso',
+                            timestamp: now - 3600000 * 24, face: '⚖️',
+                            reflection: 'Resolver conflictos con calma y diálogo.' },
+                    ];
+                    registros = sample;
+                    localStorage.setItem('goleanSocial', JSON.stringify(registros));
+                }
+                renderTimeline();
+                cambiarConsejo();
+            }
+
+            // ---- Fecha ----
+            function setCurrentDate() {
+                const now = new Date();
+                document.getElementById('currentDate').textContent =
+                    formatDate(now) + ' · ' + formatTime(now);
+            }
+
+            // ---- Eventos ----
+            grabarBtn.addEventListener('click', addRegistro);
+
+            situationInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    actionInput.focus();
+                }
+            });
+            actionInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    addRegistro();
+                }
+            });
+
+            // Cambiar consejo cada 30 segundos
+            setInterval(cambiarConsejo, 30000);
+
+            // ---- Inicio ----
+            loadRegistros();
+            setCurrentDate();
+            setInterval(setCurrentDate, 60000);
+        })();
+    </script>
+</body>
+</html>

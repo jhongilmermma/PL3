@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz y Traspuesta</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>Matriz N x M y su Traspuesta</h1>
+
+        <label>Filas (N):</label>
+        <input type="number" id="filas" min="1">
+
+        <label>Columnas (M):</label>
+        <input type="number" id="columnas" min="1">
+
+        <br><br>
+
+        <button onclick="crearMatriz()">
+            Crear Matriz
+        </button>
+
+        <div id="matriz"></div>
+
+        <button onclick="mostrarMatrices()">
+            Mostrar Matriz
+        </button>
+
+        <div id="resultado"></div>
+
+        <div id="traspuesta"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gob.pe | Simulador Tributario Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <main class="app-wrapper">
+        <section class="config-panel">
+            <header>
+                <div class="badge-oficial">SISTEMA OFICIAL</div>
+                <h1>Cultura <span>Tributaria</span></h1>
+                <p>Calcula tu contribución y neto mensual con precisión legal.</p>
+            </header>
+
+            <form id="taxForm" class="modern-form">
+                <div class="input-container">
+                    <label for="income">Ingreso Mensual Bruto</label>
+                    <div class="input-wrapper">
+                        <span class="currency">S/</span>
+                        <input type="number" id="income" step="any" placeholder="0.00" required>
+                    </div>
+                </div>
+                <button type="submit" id="btnSubmit">Procesar Declaración</button>
+            </form>
+        </section>
+
+        <section id="resultPanel" class="result-panel hidden">
+            <div class="receipt-card">
+                <div class="receipt-header">
+                    <div class="logo-simulado">SUNAT</div>
+                    <p>CONSTANCIA DE SIMULACIÓN</p>
+                    <small id="timeStamp"></small>
+                </div>
+
+                <div class="visual-meter">
+                    <div id="meterProgress" class="meter-bar"></div>
+                    <div class="meter-labels">
+                        <span>Exento</span>
+                        <span>Bajo</span>
+                        <span>Medio</span>
+                        <span>Alto</span>
+                    </div>
+                </div>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="label">Monto Bruto</span>
+                        <span class="value" id="valBruto">S/ 0.00</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Impuesto (<span id="valTasa">0</span>%)</span>
+                        <span class="value warning" id="valImpuesto">S/ 0.00</span>
+                    </div>
+                    <div class="detail-item full">
+                        <span class="label">Sueldo Neto Disponible</span>
+                        <span class="value total" id="valNeto">S/ 0.00</span>
+                    </div>
+                </div>
+
+                <div class="footer-note">
+                    <p id="msgTramo"></p>
+                    <div class="qr-placeholder">
+                        <div class="qr-box"></div>
+                        <span>VERIFICACIÓN DIGITAL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
