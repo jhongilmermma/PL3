@@ -1,94 +1,663 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio de Proyectos - Lenguaje de Programación III | Jhon Gilmer</title>
-  <meta name="description" content="Colección interactiva de 29 proyectos desarrollados en Lenguaje de Programación III por Jhon Gilmer: IA, Sistemas Expertos, Simulación, Salud y Algoritmos.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lenguaje de Programación 3 - Avance Semestral 2026 | Jhon Gilmer</title>
   <link rel="shortcut icon" href="https://fav.farm/🚀" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       ESTILOS FUTURISTAS & GLASSMORPHISM (DARK NEON EDITION)
+       ========================================================================== */
+    :root {
+      --bg-dark: #070A13;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(56, 189, 248, 0.35);
+      
+      --cyan: #38BDF8;
+      --purple: #8B5CF6;
+      --emerald: #10B981;
+      --amber: #F59E0B;
+      --rose: #F43F5E;
+      
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.18);
+      --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--emerald));
+    }
+
+    /* Header & Títulos */
+    .header-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 50%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      border-left: 4px solid var(--cyan);
+      padding-left: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 30px;
+      color: #34D399;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .badge-live:hover {
+      background: rgba(16, 185, 129, 0.2);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--emerald);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* Secciones */
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-title-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .pill-counter {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 40px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--cyan);
+    }
+
+    /* Barra de Progreso Avanzada */
+    .progress-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .progress-wrapper {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 40px;
+      height: 32px;
+      overflow: hidden;
+      margin: 1rem 0;
+      position: relative;
+      border: 1px solid var(--border-color);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--emerald));
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 16px;
+      color: #FFFFFF;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Controles de Búsqueda y Filtro */
+    .search-filter-box {
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 20px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+    }
+
+    .categories-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: 30px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      color: #FFFFFF;
+      border-color: transparent;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    /* Grid de Trabajos */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .work-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card), var(--shadow-glow);
+      border-color: var(--border-glow);
+      background: var(--bg-card-hover);
+    }
+
+    .work-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-num {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .tag-delivered {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .work-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    .work-card .desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), #0284C7);
+      color: #FFFFFF;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--cyan);
+    }
+
+    /* Modal de Previsualización */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(7, 10, 19, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-content {
+      width: 92%;
+      max-width: 1100px;
+      height: 85vh;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-header {
+      padding: 1rem 1.5rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-main);
+    }
+
+    .modal-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--text-main);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--rose);
+    }
+
+    .modal-body {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      background: #FFFFFF;
+    }
+
+    .modal-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Estado de Publicación Banner */
+    .status-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(56, 189, 248, 0.1));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .status-info h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .status-info p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+      padding: 0.4rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 3.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+    }
+
+    .footer a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 1.75rem 1.25rem; }
+      h1 { font-size: 2.2rem; }
+      .work-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Header & Navegación -->
-  <header class="header">
-    <div class="container header-nav">
-      <a href="#" class="logo-badge">
-        <div class="logo-icon">LP3</div>
-        <div class="logo-text">
-          <h1>Portafolio LP3</h1>
-          <p>Lenguaje de Programación III</p>
-        </div>
-      </a>
-      <a href="https://github.com/jhongilmermma/PL3" target="_blank" class="github-btn">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        Ver en GitHub
+  <div class="container">
+    <!-- Encabezado Principal -->
+    <div class="header-wrapper">
+      <div>
+        <h1>📘 Lenguaje de Programación 3</h1>
+        <div class="subtitle">Portafolio & Avance Semestral 2026 · Jhon Gilmer</div>
+      </div>
+      <a href="https://github.com/jhongilmermma/PL3" target="_blank" class="badge-live">
+        <span class="pulse-dot"></span>
+        Repo GitHub: jhongilmermma/PL3
       </a>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-tag">
-        ✨ Compendio de Proyectos Interactivos 2026
+    <!-- Progreso General del Semestre -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-title-left">
+          📊 Progreso del Semestre
+          <span class="pill-counter">100% Completado</span>
+        </div>
       </div>
-      <h1 class="hero-title">
-        Todo lo Avanzado en <br><span>Lenguaje de Programación III</span>
-      </h1>
-      <p class="hero-subtitle">
-        Una colección completa y organizada de 29 aplicaciones web, simulaciones, algoritmos de toma de decisiones, motores de inferencia e inteligencia artificial.
-      </p>
-
-      <!-- Estadísticas -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number">29</div>
-          <div class="stat-label">Proyectos Web</div>
+      <div class="progress-card">
+        <div class="progress-info">
+          <span>✅ Entregados: 29 de 29 trabajos</span>
+          <span>🎯 Estado: 100% Finalizado</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">6</div>
-          <div class="stat-label">Categorías</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Interactivo</div>
+        <div class="progress-wrapper">
+          <div class="progress-bar" style="width: 100%;">100%</div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Búsqueda y Filtros -->
-  <main class="container">
-    <div class="controls-wrapper">
-      <div class="search-bar">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" class="search-input" placeholder="Buscar proyectos por nombre, algoritmo o tema (ej. Cajero, IMC, Matriz, Red Neuronal)...">
+    <!-- Filtros y Búsqueda -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-title-left">
+          🧩 Trabajos & Laboratorios Entregados
+          <span class="pill-counter">📁 29 Proyectos</span>
+        </div>
       </div>
 
-      <div class="categories-pills">
-        <button class="pill-btn active" data-category="todos">Todos (29)</button>
-        <button class="pill-btn" data-category="ia">🧠 IA & Sistemas Expertos</button>
-        <button class="pill-btn" data-category="salud">🩺 Salud & Ecología</button>
-        <button class="pill-btn" data-category="algoritmos">📐 Algoritmos & Matrices</button>
-        <button class="pill-btn" data-category="simulacion">📈 Simulación & Control</button>
-        <button class="pill-btn" data-category="comercio">🛒 Finanzas & Comercio</button>
-        <button class="pill-btn" data-category="utilidades">🛠️ Utilidades</button>
+      <div class="search-filter-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar por nombre, algoritmo o tema (ej. Cajero, IMC, Matriz, Red Neuronal)..." />
+        
+        <div class="categories-filter">
+          <button class="filter-btn active" data-category="todos">Todos (29)</button>
+          <button class="filter-btn" data-category="ia">🧠 IA & Sistemas Expertos</button>
+          <button class="filter-btn" data-category="salud">🩺 Salud & Ecología</button>
+          <button class="filter-btn" data-category="algoritmos">📐 Algoritmos & Matrices</button>
+          <button class="filter-btn" data-category="simulacion">📈 Simulación & Control</button>
+          <button class="filter-btn" data-category="comercio">🛒 Finanzas & Comercio</button>
+          <button class="filter-btn" data-category="utilidades">🛠️ Utilidades</button>
+        </div>
+      </div>
+
+      <!-- Grid de Proyectos -->
+      <div id="workGrid" class="work-grid">
+        <!-- Renderizado dinámicamente -->
       </div>
     </div>
 
-    <!-- Grid de Proyectos -->
-    <div id="projectsGrid" class="projects-grid">
-      <!-- Generado dinámicamente desde app.js -->
+    <!-- Estado de Publicación -->
+    <div class="status-banner">
+      <div class="status-info">
+        <h4>🌐 Sitio Oficial Publicado en GitHub Pages</h4>
+        <p>Toda la colección está disponible en vivo en <a href="https://jhongilmermma.github.io/PL3/" target="_blank" style="color: var(--cyan); text-decoration: underline;">jhongilmermma.github.io/PL3/</a></p>
+      </div>
+      <div class="status-badge">
+        <span class="pulse-dot"></span> ✅ En Línea
+      </div>
     </div>
-  </main>
 
-  <!-- Modal de Vista Previa -->
+    <!-- Pie de página -->
+    <div class="footer">
+      <p>🔗 Todos los trabajos están alojados en <a href="https://github.com/jhongilmermma/PL3" target="_blank">github.com/jhongilmermma/PL3</a></p>
+      <p style="margin-top: 0.4rem;">Lenguaje de Programación 3 · Semestre 2026 · Desarrollado por <strong>Jhon Gilmer</strong></p>
+    </div>
+  </div>
+
+  <!-- Modal para Previsualizar Proyectos -->
   <div id="previewModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
         <h3 id="modalTitle" class="modal-title">Vista Previa</h3>
-        <button onclick="closePreviewModal()" class="modal-close">✕</button>
+        <button onclick="closeModal()" class="modal-close">✕</button>
       </div>
       <div class="modal-body">
         <iframe id="modalIframe" class="modal-iframe" src="about:blank"></iframe>
@@ -96,13 +665,115 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>Desarrollado por <strong>Jhon Gilmer</strong> (@jhongilmermma) • Curso de Lenguaje de Programación III</p>
-    </div>
-  </footer>
+  <script>
+    // DATOS DE LOS 29 PROYECTOS DE LP3
+    const projects = [
+      { id: 1, category: "salud", title: "Análisis Corporal & Riesgo Abdominal", desc: "Evaluación nutricional de grasa corporal e índice de riesgo abdominal.", file: "analisis-composicion-riesgo-abdominal/index.html" },
+      { id: 2, category: "comercio", title: "Simulador de Cajero Automático", desc: "Operaciones bancarias (retiro, depósito, consulta de saldo y PIN).", file: "cajero-automatico/index.html" },
+      { id: 3, category: "utilidades", title: "Calculadora Científica Web", desc: "Funciones aritméticas, trigonométricas y avanzadas.", file: "calculadora-cientifica/index.html" },
+      { id: 4, category: "salud", title: "Calculadora de Masa Corporal (IMC)", desc: "Evaluador de salud e Índice de Masa Corporal con semáforo de riesgo.", file: "calculadora-imc/index.html" },
+      { id: 5, category: "salud", title: "Clasificación Médica & Triaje", desc: "Sistema hospitalario para clasificar emergencias por código de color.", file: "clasificacion-emergencia-triaje/index.html" },
+      { id: 6, category: "utilidades", title: "Gestión de Congreso Monousuario", desc: "Registro de participantes y control de asistencia para conferencias.", file: "congreso-bd-monousuario/index.html" },
+      { id: 7, category: "comercio", title: "Control de Inventario & Almacén", desc: "Gestión de entrada, salida y balance de stock de productos.", file: "control-inventario/index.html" },
+      { id: 8, category: "algoritmos", title: "Convertidor de Bases Numéricas", desc: "Conversión dinámica entre decimal, binario, octal y hexadecimal.", file: "convertidor-numeros/index.html" },
+      { id: 9, category: "utilidades", title: "DataFest Interactive App", desc: "Aplicación interactiva para eventos de análisis de datos y métricas.", file: "data-fest/INDEX.html" },
+      { id: 10, category: "comercio", title: "Generador de Facturas & Comprobantes", desc: "Cálculo de subtotal, IGV 18%, descuentos e impresión comercial.", file: "factura-tienda/index.html" },
+      { id: 11, category: "utilidades", title: "Generador de Tarjetas de Perfil", desc: "Creador dinámico de tarjetas de presentación y usuarios.", file: "generador-tarjetas-perfil/index.html" },
+      { id: 12, category: "utilidades", title: "Sistema de Horóscopo Zodiacal", desc: "Lógica condicional según fecha de nacimiento y astrología.", file: "horoscopo-zodiacal/oroscopo" },
+      { id: 13, category: "salud", title: "Calculadora de Huella de Carbono", desc: "Estimador de emisión de CO2 e impacto ambiental ecológico.", file: "huella-carbono/index.html" },
+      { id: 14, category: "ia", title: "Test de Inteligencia Emocional", desc: "Evaluación psicométrica sobre autoconocimiento y motivación.", file: "inteligencia-emocional/1.- Autoconocimiento/index.html" },
+      { id: 15, category: "ia", title: "Evaluación de Inteligencias Múltiples", desc: "Test basado en la teoría cualitativa de Howard Gardner.", file: "inteligencias-multiples/inteligencia.html" },
+      { id: 16, category: "ia", title: "Dictamen Legal & Tribunal", desc: "Sistema experto condicional para veredictos y dictámenes de casos.", file: "justicia-tribunal/index.html" },
+      { id: 17, category: "ia", title: "Simulador de Machine Learning", desc: "Modelos introductorios de clasificación y regresión de datos.", file: "machine-learning/salud/index.html" },
+      { id: 18, category: "algoritmos", title: "Evaluador de Paridad (Par o Impar)", desc: "Algoritmo condicional de validación de números enteros.", file: "par-o-impar/index.html" },
+      { id: 19, category: "utilidades", title: "Calculadora de Ladrillos para Obras", desc: "Cálculo de volumen y unidades de construcción para losas y muros.", file: "proyecto-ladrillos/EXPLORER proyecto-ladrillos/index.html" },
+      { id: 20, category: "salud", title: "Clasificador de Residuos Ecológicos", desc: "Guía interactiva sobre separación de residuos y reciclaje.", file: "reciclador-residuos/index.html" },
+      { id: 21, category: "ia", title: "Visualizador de Red Neuronal", desc: "Simulador interactivo de capas de entrada, ocultas y peso neuronal.", file: "red-neuronal/red.html" },
+      { id: 22, category: "simulacion", title: "Monitoreo de Sensores Térmicos", desc: "Simulador en tiempo real con slider de temperatura y alertas.", file: "simulador-clima-temperatura/index.html" },
+      { id: 23, category: "simulacion", title: "Simulador Promedio de Notas (V1)", desc: "Cálculo de promedio cuantitativo y cualitativo de alumnos.", file: "simulador-promedio-notas/index1.html" },
+      { id: 24, category: "simulacion", title: "Simulador Promedio de Notas (V2)", desc: "Segunda versión optimizada del simulador académico.", file: "simulador-promedio-notas-v2/index1.html" },
+      { id: 25, category: "ia", title: "Sistema Experto & Reglas (V1)", desc: "Motor de inferencia basado en reglas condicionales (If-Then).", file: "sistema-experto-v1/index.html" },
+      { id: 26, category: "ia", title: "Sistema Experto Avanzado (V2)", desc: "Motor de inferencia modular con panel de control interactivo.", file: "sistema-experto-v2/index.html" },
+      { id: 27, category: "comercio", title: "Tienda & Catálogo de Productos", desc: "E-commerce básico con carrito de compras y total dinámico.", file: "tienda-productos/index.html" },
+      { id: 28, category: "algoritmos", title: "Generador de Matrices Algebraicas", desc: "Renderizador de 12 tipos de matrices (Serpiente, Rombo, Caracol).", file: "tipos-de-matrices/matrizes/index.html" },
+      { id: 29, category: "algoritmos", title: "Simulador de Trazado de Código", desc: "Herramienta para simulación paso a paso de variables y lógica.", file: "trazado-de-codigo/script.js" }
+    ];
 
-  <script src="app.js"></script>
+    let currentCategory = 'todos';
+    let currentSearch = '';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGrid();
+      setupFilters();
+    });
+
+    function renderGrid() {
+      const grid = document.getElementById('workGrid');
+      const filtered = projects.filter(p => {
+        const matchCat = (currentCategory === 'todos') || (p.category === currentCategory);
+        const matchSearch = p.title.toLowerCase().includes(currentSearch.toLowerCase()) || 
+                            p.desc.toLowerCase().includes(currentSearch.toLowerCase());
+        return matchCat && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+            🔍 No se encontraron trabajos para el filtro aplicado.
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="work-card">
+          <div>
+            <div class="card-header">
+              <span class="card-num">PROYECTO #${String(p.id).padStart(2, '0')}</span>
+              <span class="tag-delivered">✅ Entregado</span>
+            </div>
+            <h3>${p.title}</h3>
+            <p class="desc">${p.desc}</p>
+          </div>
+          <div class="card-actions">
+            <a href="./${p.file}" target="_blank" class="btn-action btn-primary">
+              ⚡ Abrir Trabajo
+            </a>
+            <button onclick="openModal('./${p.file}', '${p.title}')" class="btn-action btn-secondary">
+              👁️ Previsualizar
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setupFilters() {
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        currentSearch = e.target.value;
+        renderGrid();
+      });
+
+      const btns = document.querySelectorAll('.filter-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.getAttribute('data-category');
+          renderGrid();
+        });
+      });
+    }
+
+    function openModal(url, title) {
+      document.getElementById('modalTitle').textContent = `Vista Previa: ${title}`;
+      document.getElementById('modalIframe').src = url;
+      document.getElementById('previewModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('previewModal').classList.remove('active');
+      document.getElementById('modalIframe').src = 'about:blank';
+    }
+  </script>
 </body>
 </html>
