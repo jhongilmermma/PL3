@@ -1,0 +1,158 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(circle at 10% 20%, #0a0c1a, #010208);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            color: #edf4ff;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            background: linear-gradient(135deg, #fff, #7ae2f0, #c97aff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 2rem;
+        }
+        .badge {
+            display: inline-block;
+            background: linear-gradient(95deg, #6a1a8a, #9a3acf);
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            margin-top: 10px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card {
+            background: rgba(10, 16, 28, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(80, 190, 210, 0.4);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .canvas-area {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        canvas {
+            background: #010814;
+            border-radius: 1rem;
+            border: 2px solid #3a8a9a;
+            cursor: crosshair;
+        }
+        .draw-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        button {
+            background: linear-gradient(95deg, #c97a2a, #eaa545);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Inter';
+        }
+        button:hover { transform: scale(0.97); filter: brightness(1.05); }
+        .btn-primary { background: linear-gradient(95deg, #2a7a6a, #1e9f8a); }
+        .btn-nn { background: linear-gradient(95deg, #6a1a8a, #9a3acf); }
+        .prediction-result {
+            background: #0b1424;
+            border-radius: 1rem;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .class-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 8px;
+            background: #010a18;
+            border-radius: 40px;
+        }
+        .class-name {
+            width: 100px;
+            font-weight: bold;
+        }
+        .confidence-bar {
+            flex: 1;
+            height: 30px;
+            background: #2a2a4a;
+            border-radius: 30px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(95deg, #7ae2f0, #c97aff);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            transition: width 0.3s;
+        }
+        .confidence-value {
+            width: 60px;
+            text-align: right;
+            font-family: monospace;
+        }
+        .arch-card {
+            background: #0b1424;
+            border-radius: 1rem;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+        }
+        .layer {
+            border-left: 3px solid #c97aff;
+            padding: 5px 10px;
+            margin: 5px 0;
+        }
+        .training-stats {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .stat {
+            background: #010a18;
+            padding: 10px 15px;
+            border-radius: 40px;
+            font-family: monospace;
+        }
+        .stat span {
+            color: #f5cb5c;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        @media (max-width: 900px) {
+            .grid-2col { grid-template-columns: 1fr; }
+        }

@@ -1,0 +1,387 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(ellipse at 30% 20%, #0a1628 0%, #0f172a 100%);
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        .social-app {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* HEADER SOCIAL */
+        .social-header {
+            background: rgba(59, 130, 246, 0.15);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            padding: 1.2rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+        }
+
+        .social-header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #60A5FA, #3B82F6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .social-stats {
+            display: flex;
+            gap: 2rem;
+            background: #1E293B;
+            padding: 0.5rem 1.8rem;
+            border-radius: 3rem;
+            border: 1px solid #3B82F640;
+        }
+
+        .social-stat {
+            text-align: center;
+        }
+
+        .social-stat-label {
+            font-size: 0.65rem;
+            color: #60A5FA;
+        }
+
+        .social-stat-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #3B82F6;
+        }
+
+        /* GRID DE MÓDULOS */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .module-card {
+            background: linear-gradient(145deg, #1E293B, #0F172A);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #334155;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .module-card:not(.locked):not(.completed):hover {
+            transform: translateY(-6px);
+            border-color: #3B82F6;
+            box-shadow: 0 20px 30px -12px rgba(59, 130, 246, 0.3);
+        }
+
+        .module-card.completed {
+            border-color: #10B981;
+            background: linear-gradient(145deg, #064E3B, #022C22);
+        }
+
+        .module-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .module-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #F1F5F9;
+        }
+
+        .module-desc {
+            font-size: 0.7rem;
+            color: #60A5FA;
+            margin: 0.5rem 0;
+        }
+
+        .module-points {
+            display: inline-block;
+            background: #3B82F620;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            color: #60A5FA;
+        }
+
+        /* MODAL SOCIAL */
+        .modal-social {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-social.active {
+            display: flex;
+            animation: fadeScale 0.3s ease;
+        }
+
+        .modal-social-content {
+            background: linear-gradient(145deg, #1E293B, #0F172A);
+            max-width: 600px;
+            width: 90%;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid #3B82F6;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-social-header {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #60A5FA;
+            margin-bottom: 1rem;
+        }
+
+        .social-area {
+            background: #0F172A;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        /* Avatar interactivo */
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3B82F6, #60A5FA);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 0 20px #3B82F6;
+        }
+
+        /* Conversación simulada */
+        .chat-bubble {
+            background: #1E293B;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            text-align: left;
+            border-left: 4px solid #3B82F6;
+        }
+
+        .chat-bubble.sender {
+            background: #3B82F620;
+            border-left-color: #60A5FA;
+        }
+
+        /* Opciones de respuesta */
+        .response-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .response-btn {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #E2E8F0;
+        }
+
+        .response-btn:hover {
+            border-color: #3B82F6;
+            background: #2D3A5E;
+        }
+
+        .response-btn.selected {
+            border-color: #3B82F6;
+            background: #3B82F640;
+            box-shadow: 0 0 12px #3B82F6;
+        }
+
+        /* ROL PLAY - tarjetas de personajes */
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .role-card {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .role-card:hover {
+            border-color: #3B82F6;
+            transform: scale(1.02);
+        }
+
+        .role-card.selected {
+            border-color: #3B82F6;
+            background: #3B82F640;
+        }
+
+        /* Escala de empatía */
+        .empathy-scale {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .empathy-option {
+            flex: 1;
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .empathy-option:hover {
+            border-color: #3B82F6;
+        }
+
+        .empathy-option.selected {
+            background: #3B82F6;
+            border-color: #3B82F6;
+            color: white;
+        }
+
+        /* Feedback social */
+        .feedback-box {
+            background: #1E293B;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #94A3B8;
+            font-size: 0.9rem;
+        }
+
+        /* Botones */
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3B82F6, #2563EB);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: #E2E8F0;
+        }
+
+        .progress-bar {
+            margin-top: 1rem;
+            background: #1E293B;
+            border-radius: 1rem;
+            height: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #3B82F6, #60A5FA);
+            width: 0%;
+            height: 100%;
+            transition: width 0.4s;
+        }
+
+        .final-screen {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(145deg, #1E293B, #0F172A);
+            border-top: 3px solid #3B82F6;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+            z-index: 100;
+        }
+
+        .final-screen.show {
+            transform: translateY(0);
+        }
+
+        @keyframes fadeScale {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .float-particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.2rem;
+            animation: floatUp 1.5s forwards;
+            z-index: 1000;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-80px); }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #475569;
+            font-size: 0.7rem;
+        }

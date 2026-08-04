@@ -1,0 +1,159 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 30px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0b2b4a;
+            border-bottom: 3px solid #1a73e8;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        h1 small {
+            font-size: 14px;
+            font-weight: 400;
+            color: #5f6b7a;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #f8faff;
+            border-radius: 12px;
+            padding: 18px 20px;
+            border: 1px solid #dce3ed;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        .stat-card .label {
+            font-size: 13px;
+            color: #5f6b7a;
+            margin-top: 4px;
+        }
+        .test-results {
+            margin-top: 25px;
+        }
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .test-table th {
+            background: #0b2b4a;
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+        }
+        .test-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e4eaf2;
+            vertical-align: top;
+        }
+        .test-table tr:hover td {
+            background: #f8faff;
+        }
+        .test-table .pass {
+            color: #2e7d32;
+            font-weight: 700;
+        }
+        .test-table .fail {
+            color: #c62828;
+            font-weight: 700;
+        }
+        .badge-risk {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-risk.low {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .badge-risk.moderate {
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .badge-risk.high {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .btn-run {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-run:hover {
+            background: #0d47a1;
+        }
+        .btn-run:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .summary-pass {
+            background: #e8f5e9;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #2e7d32;
+            margin: 15px 0;
+        }
+        .summary-fail {
+            background: #ffebee;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #c62828;
+            margin: 15px 0;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #dce3ed;
+            border-top-color: #1a73e8;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        @media (max-width: 700px) {
+            .test-table {
+                font-size: 12px;
+            }
+            .test-table th,
+            .test-table td {
+                padding: 6px 4px;
+            }
+        }
