@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio de Proyectos - Lenguaje de Programación III | Jhon Gilmer</title>
+  <meta name="description" content="Colección interactiva de 29 proyectos desarrollados en Lenguaje de Programación III por Jhon Gilmer: IA, Sistemas Expertos, Simulación, Salud y Algoritmos.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="https://fav.farm/🚀" type="image/x-icon">
+</head>
+<body>
+
+  <!-- Header & Navegación -->
+  <header class="header">
+    <div class="container header-nav">
+      <a href="#" class="logo-badge">
+        <div class="logo-icon">LP3</div>
+        <div class="logo-text">
+          <h1>Portafolio LP3</h1>
+          <p>Lenguaje de Programación III</p>
+        </div>
+      </a>
+      <a href="https://github.com/jhongilmermma/PL3" target="_blank" class="github-btn">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        Ver en GitHub
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">
+        ✨ Compendio de Proyectos Interactivos 2026
+      </div>
+      <h1 class="hero-title">
+        Todo lo Avanzado en <br><span>Lenguaje de Programación III</span>
+      </h1>
+      <p class="hero-subtitle">
+        Una colección completa y organizada de 29 aplicaciones web, simulaciones, algoritmos de toma de decisiones, motores de inferencia e inteligencia artificial.
+      </p>
+
+      <!-- Estadísticas -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">29</div>
+          <div class="stat-label">Proyectos Web</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Categorías</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Interactivo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Búsqueda y Filtros -->
+  <main class="container">
+    <div class="controls-wrapper">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar proyectos por nombre, algoritmo o tema (ej. Cajero, IMC, Matriz, Red Neuronal)...">
+      </div>
+
+      <div class="categories-pills">
+        <button class="pill-btn active" data-category="todos">Todos (29)</button>
+        <button class="pill-btn" data-category="ia">🧠 IA & Sistemas Expertos</button>
+        <button class="pill-btn" data-category="salud">🩺 Salud & Ecología</button>
+        <button class="pill-btn" data-category="algoritmos">📐 Algoritmos & Matrices</button>
+        <button class="pill-btn" data-category="simulacion">📈 Simulación & Control</button>
+        <button class="pill-btn" data-category="comercio">🛒 Finanzas & Comercio</button>
+        <button class="pill-btn" data-category="utilidades">🛠️ Utilidades</button>
+      </div>
+    </div>
+
+    <!-- Grid de Proyectos -->
+    <div id="projectsGrid" class="projects-grid">
+      <!-- Generado dinámicamente desde app.js -->
+    </div>
+  </main>
+
+  <!-- Modal de Vista Previa -->
+  <div id="previewModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">Vista Previa</h3>
+        <button onclick="closePreviewModal()" class="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="modalIframe" class="modal-iframe" src="about:blank"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Desarrollado por <strong>Jhon Gilmer</strong> (@jhongilmermma) • Curso de Lenguaje de Programación III</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
