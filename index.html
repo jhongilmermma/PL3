@@ -3,39 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lenguaje de Programación 3 - Avance Semestral 2026 | Jhon Gilmer</title>
-  <link rel="shortcut icon" href="https://fav.farm/🚀" type="image/x-icon">
+  <title>Portafolio de Excelencia (Nota 20) - Lenguaje de Programación III | Jhon Gilmer</title>
+  <meta name="description" content="Compendio maestro de 29 aplicaciones web, inteligencia artificial, sistemas expertos y algoritmos desarrollados por Jhon Gilmer en Lenguaje de Programación III.">
+  <link rel="shortcut icon" href="https://fav.farm/👑" type="image/x-icon">
+  
+  <!-- Fuentes Google: Outfit & Space Grotesk & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================================================
-       ESTILOS FUTURISTAS & GLASSMORPHISM (DARK NEON EDITION)
+       PORTAFOLIO DE EXCELENCIA (NOTA 20) - DISEÑO FUTURISTA & HOLOGRÁFICO
        ========================================================================== */
     :root {
-      --bg-dark: #070A13;
-      --bg-card: rgba(15, 23, 42, 0.75);
-      --bg-card-hover: rgba(30, 41, 59, 0.9);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(56, 189, 248, 0.35);
+      --bg-dark: #050811;
+      --bg-card: rgba(13, 20, 36, 0.75);
+      --bg-card-hover: rgba(23, 34, 59, 0.9);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-border-glow: rgba(56, 189, 248, 0.4);
       
-      --cyan: #38BDF8;
-      --purple: #8B5CF6;
-      --emerald: #10B981;
-      --amber: #F59E0B;
-      --rose: #F43F5E;
+      --cyan-neon: #38BDF8;
+      --violet-neon: #a855f7;
+      --emerald-neon: #10B981;
+      --gold-neon: #F59E0B;
+      --rose-neon: #F43F5E;
       
-      --text-main: #F8FAFC;
-      --text-muted: #94A3B8;
-      --text-dim: #64748B;
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
       
-      --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.18);
-      --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
-      --radius-xl: 24px;
-      --radius-lg: 16px;
+      --glow-cyan: 0 0 35px rgba(56, 189, 248, 0.25);
+      --glow-gold: 0 0 30px rgba(245, 158, 11, 0.3);
+      --radius-full: 9999px;
+      --radius-2xl: 24px;
+      --radius-xl: 16px;
       --radius-md: 12px;
-      --radius-sm: 8px;
     }
 
     * {
@@ -45,391 +48,460 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding: 2rem 1rem;
+      color: var(--text-primary);
       min-height: 100vh;
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
-      background-attachment: fixed;
-    }
-
-    /* Scrollbar personalizada */
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: var(--bg-dark); }
-    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 5px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-card);
-      padding: 3rem 2.5rem;
+      overflow-x: hidden;
       position: relative;
-      overflow: hidden;
+      line-height: 1.6;
     }
 
-    .container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--emerald));
-    }
-
-    /* Header & Títulos */
-    .header-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 50%, var(--cyan) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -0.5px;
-      line-height: 1.1;
-      margin-bottom: 0.4rem;
-    }
-
-    .subtitle {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      border-left: 4px solid var(--cyan);
-      padding-left: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .badge-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 30px;
-      color: #34D399;
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .badge-live:hover {
-      background: rgba(16, 185, 129, 0.2);
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--emerald);
-      animation: pulse 1.8s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-
-    /* Secciones */
-    .section {
-      margin-bottom: 3rem;
-    }
-
-    .section-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .section-title-left {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .pill-counter {
-      background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 40px;
-      padding: 0.25rem 0.9rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--cyan);
-    }
-
-    /* Barra de Progreso Avanzada */
-    .progress-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    }
-
-    .progress-wrapper {
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: 40px;
-      height: 32px;
-      overflow: hidden;
-      margin: 1rem 0;
-      position: relative;
-      border: 1px solid var(--border-color);
-      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--emerald));
-      border-radius: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 16px;
-      color: #FFFFFF;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .progress-info {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    /* Controles de Búsqueda y Filtro */
-    .search-filter-box {
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 14px 20px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      color: var(--text-main);
-      font-size: 0.95rem;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-
-    .search-input:focus {
-      border-color: var(--cyan);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
-    }
-
-    .categories-filter {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .filter-btn {
-      padding: 8px 18px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-color);
-      border-radius: 30px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .filter-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--text-main);
-    }
-
-    .filter-btn.active {
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      color: #FFFFFF;
-      border-color: transparent;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-    }
-
-    /* Grid de Trabajos */
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .work-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      border: 1px solid var(--border-color);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .work-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cyan), var(--purple));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .work-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-card), var(--shadow-glow);
-      border-color: var(--border-glow);
-      background: var(--bg-card-hover);
-    }
-
-    .work-card:hover::before {
-      opacity: 1;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-    }
-
-    .card-num {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      color: var(--cyan);
-      background: rgba(56, 189, 248, 0.1);
-      padding: 2px 8px;
-      border-radius: 6px;
-      border: 1px solid rgba(56, 189, 248, 0.2);
-    }
-
-    .tag-delivered {
-      background: rgba(16, 185, 129, 0.15);
-      color: #34D399;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .work-card h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--text-main);
-    }
-
-    .work-card .desc {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: auto;
-    }
-
-    .btn-action {
-      flex: 1;
-      padding: 10px;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--cyan), #0284C7);
-      color: #FFFFFF;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.92;
-      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--cyan);
-    }
-
-    /* Modal de Previsualización */
-    .modal-overlay {
+    /* Fondo animado de partículas / lienzo canvas */
+    #bgCanvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(7, 10, 19, 0.85);
-      backdrop-filter: blur(10px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.25); border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cyan-neon); }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Top Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.75rem;
+      background: rgba(13, 20, 36, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-avatar {
+      width: 46px;
+      height: 46px;
+      background: linear-gradient(135deg, var(--cyan-neon), var(--violet-neon));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: #FFF;
+      box-shadow: var(--glow-cyan);
+    }
+
+    .brand-info h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      background: linear-gradient(90deg, #FFFFFF, var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-info p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .grade-badge-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(244, 63, 94, 0.15));
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: var(--radius-full);
+      color: #FCD34D;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: var(--glow-gold);
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .grade-badge-top:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Hero Master Section */
+    .hero-master {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+    }
+
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: var(--radius-full);
+      color: var(--cyan-neon);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title-main {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 40%, var(--cyan-neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-title-main span {
+      background: linear-gradient(135deg, var(--cyan-neon), var(--violet-neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 760px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    /* Grid de Métricas Principales */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan-neon), var(--violet-neon));
+      opacity: 0.5;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--glass-border-glow);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .metric-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .val-cyan { color: var(--cyan-neon); }
+    .val-violet { color: var(--violet-neon); }
+    .val-gold { color: var(--gold-neon); }
+    .val-emerald { color: var(--emerald-neon); }
+
+    .metric-name {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Panel Control de Búsqueda y Filtros */
+    .filter-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      padding: 1.75rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-icon-svg {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input-field {
+      width: 100%;
+      padding: 16px 20px 16px 54px;
+      background: rgba(5, 8, 17, 0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      color: var(--text-primary);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.25s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .search-input-field:focus {
+      border-color: var(--cyan-neon);
+      box-shadow: var(--glow-cyan);
+      background: rgba(5, 8, 17, 0.85);
+    }
+
+    .pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .filter-chip {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      color: var(--text-secondary);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+
+    .filter-chip:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .filter-chip.active {
+      background: linear-gradient(135deg, var(--cyan-neon), var(--violet-neon));
+      color: #FFFFFF;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Grid de Proyectos 3D Holográficos */
+    .projects-container-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 4rem;
+    }
+
+    .card-3d {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-3d::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan-neon), var(--violet-neon), var(--emerald-neon));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-3d:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: var(--glass-border-glow);
+      background: var(--bg-card-hover);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), var(--glow-cyan);
+    }
+
+    .card-3d:hover::before {
+      opacity: 1;
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tag-category {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cat-ia { background: rgba(168, 85, 247, 0.15); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .cat-salud { background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .cat-algoritmos { background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .cat-comercio { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .cat-utilidades { background: rgba(244, 63, 94, 0.15); color: #FB7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .cat-simulacion { background: rgba(99, 102, 241, 0.15); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.3); }
+
+    .proj-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--cyan-neon);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .card-title-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .card-body-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-tech-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .chip-item {
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .card-footer-btns {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-launch {
+      flex: 1;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--cyan-neon), #0284C7);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-launch:hover {
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-inspect {
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-inspect:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--cyan-neon);
+    }
+
+    /* Modal de Inspección Multi-Dispositivo */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 8, 17, 0.88);
+      backdrop-filter: blur(16px);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -439,78 +511,28 @@
       transition: opacity 0.3s ease;
     }
 
-    .modal-overlay.active {
+    .modal-backdrop.active {
       opacity: 1;
       pointer-events: all;
     }
 
-    .modal-content {
-      width: 92%;
-      max-width: 1100px;
-      height: 85vh;
+    .modal-window {
+      width: 94%;
+      max-width: 1200px;
+      height: 88vh;
       background: var(--bg-dark);
-      border: 1px solid var(--border-glow);
-      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border-glow);
+      border-radius: var(--radius-2xl);
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
     }
 
-    .modal-header {
-      padding: 1rem 1.5rem;
-      background: rgba(15, 23, 42, 0.95);
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .modal-title {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text-main);
-    }
-
-    .modal-close {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: var(--text-main);
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-    }
-
-    .modal-close:hover {
-      background: var(--rose);
-    }
-
-    .modal-body {
-      flex: 1;
-      width: 100%;
-      height: 100%;
-      background: #FFFFFF;
-    }
-
-    .modal-iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Estado de Publicación Banner */
-    .status-banner {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(56, 189, 248, 0.1));
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem 2rem;
+    .modal-top-bar {
+      padding: 1rem 1.75rem;
+      background: rgba(13, 20, 36, 0.95);
+      border-bottom: 1px solid var(--glass-border);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -518,261 +540,427 @@
       gap: 1rem;
     }
 
-    .status-info h4 {
+    .modal-title-heading {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 0.25rem;
+      font-size: 1.15rem;
+      color: var(--text-primary);
     }
 
-    .status-info p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
+    .device-controls {
+      display: flex;
       gap: 8px;
-      background: rgba(16, 185, 129, 0.2);
-      color: #34D399;
-      padding: 0.4rem 1.4rem;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .device-btn {
+      padding: 6px 14px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .device-btn.active {
+      background: var(--cyan-neon);
+      color: #000;
+    }
+
+    .btn-close-modal {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #FFF;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .btn-close-modal:hover {
+      background: var(--rose-neon);
+    }
+
+    .modal-view-body {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .frame-wrapper {
+      width: 100%;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .frame-wrapper.mobile { width: 375px; height: 90%; border-radius: 20px; overflow: hidden; border: 4px solid #334155; }
+    .frame-wrapper.tablet { width: 768px; height: 92%; border-radius: 16px; overflow: hidden; border: 4px solid #334155; }
+
+    .modal-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #FFFFFF;
+    }
+
+    /* Banner Final Nota 20 */
+    .master-grade-banner {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: var(--radius-2xl);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      box-shadow: var(--glow-cyan);
+    }
+
+    .grade-text-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+
+    .grade-text-box p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .gold-score-tag {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: #000;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
     }
 
     /* Footer */
-    .footer {
-      margin-top: 3.5rem;
+    .footer-master {
+      margin-top: 4rem;
       text-align: center;
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      border-top: 1px solid var(--border-color);
       padding-top: 2rem;
+      border-top: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
     }
 
-    .footer a {
-      color: var(--cyan);
+    .footer-master a {
+      color: var(--cyan-neon);
       text-decoration: none;
       font-weight: 600;
     }
 
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
     @media (max-width: 768px) {
-      .container { padding: 1.75rem 1.25rem; }
-      h1 { font-size: 2.2rem; }
-      .work-grid { grid-template-columns: 1fr; }
+      .hero-title-main { font-size: 2.5rem; }
+      .metrics-row { grid-template-columns: 1fr 1fr; }
+      .projects-container-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Canvas de fondo para efecto de partículas -->
+  <canvas id="bgCanvas"></canvas>
+
   <div class="container">
-    <!-- Encabezado Principal -->
-    <div class="header-wrapper">
-      <div>
-        <h1>📘 Lenguaje de Programación 3</h1>
-        <div class="subtitle">Portafolio & Avance Semestral 2026 · Jhon Gilmer</div>
+    
+    <!-- Top Navigation Bar -->
+    <nav class="nav-bar">
+      <div class="brand-box">
+        <div class="brand-avatar">LP3</div>
+        <div class="brand-info">
+          <h2>Jhon Gilmer</h2>
+          <p>Lenguaje de Programación III · FIISI UNAP</p>
+        </div>
       </div>
-      <a href="https://github.com/jhongilmermma/PL3" target="_blank" class="badge-live">
-        <span class="pulse-dot"></span>
-        Repo GitHub: jhongilmermma/PL3
+      <a href="https://github.com/jhongilmermma/PL3" target="_blank" class="grade-badge-top">
+        <span>⭐ NOTA ESTIMADA: 20 / 20</span>
       </a>
-    </div>
+    </nav>
 
-    <!-- Progreso General del Semestre -->
-    <div class="section">
-      <div class="section-title">
-        <div class="section-title-left">
-          📊 Progreso del Semestre
-          <span class="pill-counter">100% Completado</span>
+    <!-- Hero Master Section -->
+    <header class="hero-master">
+      <div class="hero-pill-badge">
+        🚀 PORTAFOLIO DE EXCELENCIA ACADÉMICA · 2026
+      </div>
+      <h1 class="hero-title-main">
+        Compendio Maestro de <br><span>Lenguaje de Programación III</span>
+      </h1>
+      <p class="hero-description">
+        Demostración integral de 29 aplicaciones web interactivas, algoritmos avanzados de toma de decisiones, motores de inferencia, redes neuronales y machine learning.
+      </p>
+
+      <!-- Métricas del Semestre -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-val val-cyan">29 / 29</div>
+          <div class="metric-name">Proyectos Entregados (100%)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val val-violet">6</div>
+          <div class="metric-name">Categorías Tecnológicas</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val val-gold">20 / 20</div>
+          <div class="metric-name">Puntaje Esperado</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val val-emerald">100%</div>
+          <div class="metric-name">Funcional en Vivo</div>
         </div>
       </div>
-      <div class="progress-card">
-        <div class="progress-info">
-          <span>✅ Entregados: 29 de 29 trabajos</span>
-          <span>🎯 Estado: 100% Finalizado</span>
-        </div>
-        <div class="progress-wrapper">
-          <div class="progress-bar" style="width: 100%;">100%</div>
-        </div>
-      </div>
-    </div>
+    </header>
 
-    <!-- Filtros y Búsqueda -->
-    <div class="section">
-      <div class="section-title">
-        <div class="section-title-left">
-          🧩 Trabajos & Laboratorios Entregados
-          <span class="pill-counter">📁 29 Proyectos</span>
-        </div>
+    <!-- Panel de Filtros y Búsqueda -->
+    <section class="filter-panel">
+      <div class="search-wrapper">
+        <svg class="search-icon-svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" class="search-input-field" placeholder="Buscar por título, algoritmo, tema o tecnología (ej. Cajero, IMC, Matriz, Red Neuronal)...">
       </div>
 
-      <div class="search-filter-box">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar por nombre, algoritmo o tema (ej. Cajero, IMC, Matriz, Red Neuronal)..." />
-        
-        <div class="categories-filter">
-          <button class="filter-btn active" data-category="todos">Todos (29)</button>
-          <button class="filter-btn" data-category="ia">🧠 IA & Sistemas Expertos</button>
-          <button class="filter-btn" data-category="salud">🩺 Salud & Ecología</button>
-          <button class="filter-btn" data-category="algoritmos">📐 Algoritmos & Matrices</button>
-          <button class="filter-btn" data-category="simulacion">📈 Simulación & Control</button>
-          <button class="filter-btn" data-category="comercio">🛒 Finanzas & Comercio</button>
-          <button class="filter-btn" data-category="utilidades">🛠️ Utilidades</button>
-        </div>
+      <div class="pills-container">
+        <div class="filter-chip active" data-category="todos">Todos los Proyectos (29)</div>
+        <div class="filter-chip" data-category="ia">🧠 IA & Sistemas Expertos</div>
+        <div class="filter-chip" data-category="salud">🩺 Salud & Ecología</div>
+        <div class="filter-chip" data-category="algoritmos">📐 Algoritmos & Matrices</div>
+        <div class="filter-chip" data-category="simulacion">📈 Simulación & Sensores</div>
+        <div class="filter-chip" data-category="comercio">🛒 Finanzas & Comercio</div>
+        <div class="filter-chip" data-category="utilidades">🛠️ Utilidades Web</div>
       </div>
+    </section>
 
-      <!-- Grid de Proyectos -->
-      <div id="workGrid" class="work-grid">
-        <!-- Renderizado dinámicamente -->
-      </div>
-    </div>
+    <!-- Grid de Proyectos 3D Holográficos -->
+    <main id="projectsGrid" class="projects-container-grid">
+      <!-- Generado dinámicamente con JavaScript -->
+    </main>
 
-    <!-- Estado de Publicación -->
-    <div class="status-banner">
-      <div class="status-info">
-        <h4>🌐 Sitio Oficial Publicado en GitHub Pages</h4>
-        <p>Toda la colección está disponible en vivo en <a href="https://jhongilmermma.github.io/PL3/" target="_blank" style="color: var(--cyan); text-decoration: underline;">jhongilmermma.github.io/PL3/</a></p>
+    <!-- Banner Final Nota 20 -->
+    <section class="master-grade-banner">
+      <div class="grade-text-box">
+        <h3>🌐 Repositorio Oficial & Despliegue en Vivo</h3>
+        <p>Todos los 29 proyectos están publicados y sincronizados en GitHub Pages.</p>
       </div>
-      <div class="status-badge">
-        <span class="pulse-dot"></span> ✅ En Línea
+      <div class="gold-score-tag">
+        🏆 NOTA 20 / 20
       </div>
-    </div>
+    </section>
 
-    <!-- Pie de página -->
-    <div class="footer">
-      <p>🔗 Todos los trabajos están alojados en <a href="https://github.com/jhongilmermma/PL3" target="_blank">github.com/jhongilmermma/PL3</a></p>
-      <p style="margin-top: 0.4rem;">Lenguaje de Programación 3 · Semestre 2026 · Desarrollado por <strong>Jhon Gilmer</strong></p>
-    </div>
+    <!-- Footer -->
+    <footer class="footer-master">
+      <p>Desarrollado con excelencia por <strong>Jhon Gilmer</strong> · Curso de Lenguaje de Programación III · 2026</p>
+      <p style="margin-top: 0.4rem;"><a href="https://github.com/jhongilmermma/PL3" target="_blank">github.com/jhongilmermma/PL3</a></p>
+    </footer>
   </div>
 
-  <!-- Modal para Previsualizar Proyectos -->
-  <div id="previewModal" class="modal-overlay">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="modalTitle" class="modal-title">Vista Previa</h3>
-        <button onclick="closeModal()" class="modal-close">✕</button>
+  <!-- Modal de Inspección Multi-Dispositivo -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal-window">
+      <div class="modal-top-bar">
+        <h3 id="modalProjectTitle" class="modal-title-heading">Vista Previa</h3>
+        <div class="device-controls">
+          <button class="device-btn active" onclick="setDevice('desktop')">🖥️ Desktop</button>
+          <button class="device-btn" onclick="setDevice('tablet')">💻 Tablet</button>
+          <button class="device-btn" onclick="setDevice('mobile')">📱 Mobile</button>
+        </div>
+        <button onclick="closeModal()" class="btn-close-modal">✕</button>
       </div>
-      <div class="modal-body">
-        <iframe id="modalIframe" class="modal-iframe" src="about:blank"></iframe>
+      <div class="modal-view-body">
+        <div id="frameWrapper" class="frame-wrapper">
+          <iframe id="modalIframe" class="modal-frame" src="about:blank"></iframe>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    // DATOS DE LOS 29 PROYECTOS DE LP3
-    const projects = [
-      { id: 1, category: "salud", title: "Análisis Corporal & Riesgo Abdominal", desc: "Evaluación nutricional de grasa corporal e índice de riesgo abdominal.", file: "analisis-composicion-riesgo-abdominal/index.html" },
-      { id: 2, category: "comercio", title: "Simulador de Cajero Automático", desc: "Operaciones bancarias (retiro, depósito, consulta de saldo y PIN).", file: "cajero-automatico/index.html" },
-      { id: 3, category: "utilidades", title: "Calculadora Científica Web", desc: "Funciones aritméticas, trigonométricas y avanzadas.", file: "calculadora-cientifica/index.html" },
-      { id: 4, category: "salud", title: "Calculadora de Masa Corporal (IMC)", desc: "Evaluador de salud e Índice de Masa Corporal con semáforo de riesgo.", file: "calculadora-imc/index.html" },
-      { id: 5, category: "salud", title: "Clasificación Médica & Triaje", desc: "Sistema hospitalario para clasificar emergencias por código de color.", file: "clasificacion-emergencia-triaje/index.html" },
-      { id: 6, category: "utilidades", title: "Gestión de Congreso Monousuario", desc: "Registro de participantes y control de asistencia para conferencias.", file: "congreso-bd-monousuario/index.html" },
-      { id: 7, category: "comercio", title: "Control de Inventario & Almacén", desc: "Gestión de entrada, salida y balance de stock de productos.", file: "control-inventario/index.html" },
-      { id: 8, category: "algoritmos", title: "Convertidor de Bases Numéricas", desc: "Conversión dinámica entre decimal, binario, octal y hexadecimal.", file: "convertidor-numeros/index.html" },
-      { id: 9, category: "utilidades", title: "DataFest Interactive App", desc: "Aplicación interactiva para eventos de análisis de datos y métricas.", file: "data-fest/INDEX.html" },
-      { id: 10, category: "comercio", title: "Generador de Facturas & Comprobantes", desc: "Cálculo de subtotal, IGV 18%, descuentos e impresión comercial.", file: "factura-tienda/index.html" },
-      { id: 11, category: "utilidades", title: "Generador de Tarjetas de Perfil", desc: "Creador dinámico de tarjetas de presentación y usuarios.", file: "generador-tarjetas-perfil/index.html" },
-      { id: 12, category: "utilidades", title: "Sistema de Horóscopo Zodiacal", desc: "Lógica condicional según fecha de nacimiento y astrología.", file: "horoscopo-zodiacal/oroscopo" },
-      { id: 13, category: "salud", title: "Calculadora de Huella de Carbono", desc: "Estimador de emisión de CO2 e impacto ambiental ecológico.", file: "huella-carbono/index.html" },
-      { id: 14, category: "ia", title: "Test de Inteligencia Emocional", desc: "Evaluación psicométrica sobre autoconocimiento y motivación.", file: "inteligencia-emocional/1.- Autoconocimiento/index.html" },
-      { id: 15, category: "ia", title: "Evaluación de Inteligencias Múltiples", desc: "Test basado en la teoría cualitativa de Howard Gardner.", file: "inteligencias-multiples/inteligencia.html" },
-      { id: 16, category: "ia", title: "Dictamen Legal & Tribunal", desc: "Sistema experto condicional para veredictos y dictámenes de casos.", file: "justicia-tribunal/index.html" },
-      { id: 17, category: "ia", title: "Simulador de Machine Learning", desc: "Modelos introductorios de clasificación y regresión de datos.", file: "machine-learning/salud/index.html" },
-      { id: 18, category: "algoritmos", title: "Evaluador de Paridad (Par o Impar)", desc: "Algoritmo condicional de validación de números enteros.", file: "par-o-impar/index.html" },
-      { id: 19, category: "utilidades", title: "Calculadora de Ladrillos para Obras", desc: "Cálculo de volumen y unidades de construcción para losas y muros.", file: "proyecto-ladrillos/EXPLORER proyecto-ladrillos/index.html" },
-      { id: 20, category: "salud", title: "Clasificador de Residuos Ecológicos", desc: "Guía interactiva sobre separación de residuos y reciclaje.", file: "reciclador-residuos/index.html" },
-      { id: 21, category: "ia", title: "Visualizador de Red Neuronal", desc: "Simulador interactivo de capas de entrada, ocultas y peso neuronal.", file: "red-neuronal/red.html" },
-      { id: 22, category: "simulacion", title: "Monitoreo de Sensores Térmicos", desc: "Simulador en tiempo real con slider de temperatura y alertas.", file: "simulador-clima-temperatura/index.html" },
-      { id: 23, category: "simulacion", title: "Simulador Promedio de Notas (V1)", desc: "Cálculo de promedio cuantitativo y cualitativo de alumnos.", file: "simulador-promedio-notas/index1.html" },
-      { id: 24, category: "simulacion", title: "Simulador Promedio de Notas (V2)", desc: "Segunda versión optimizada del simulador académico.", file: "simulador-promedio-notas-v2/index1.html" },
-      { id: 25, category: "ia", title: "Sistema Experto & Reglas (V1)", desc: "Motor de inferencia basado en reglas condicionales (If-Then).", file: "sistema-experto-v1/index.html" },
-      { id: 26, category: "ia", title: "Sistema Experto Avanzado (V2)", desc: "Motor de inferencia modular con panel de control interactivo.", file: "sistema-experto-v2/index.html" },
-      { id: 27, category: "comercio", title: "Tienda & Catálogo de Productos", desc: "E-commerce básico con carrito de compras y total dinámico.", file: "tienda-productos/index.html" },
-      { id: 28, category: "algoritmos", title: "Generador de Matrices Algebraicas", desc: "Renderizador de 12 tipos de matrices (Serpiente, Rombo, Caracol).", file: "tipos-de-matrices/matrizes/index.html" },
-      { id: 29, category: "algoritmos", title: "Simulador de Trazado de Código", desc: "Herramienta para simulación paso a paso de variables y lógica.", file: "trazado-de-codigo/script.js" }
+    // DATOS DE LOS 29 PROYECTOS
+    const projectsData = [
+      { id: 1, category: "salud", catLabel: "Salud", catClass: "cat-salud", title: "Análisis Corporal & Riesgo Abdominal", desc: "Evaluación cuantitativa y cualitativa de grasa corporal, masa e índices de riesgo metabólico/abdominal.", tech: ["HTML5", "CSS3", "JavaScript"], file: "analisis-composicion-riesgo-abdominal/index.html" },
+      { id: 2, category: "comercio", catLabel: "Finanzas", catClass: "cat-comercio", title: "Simulador de Cajero Automático", desc: "Aplicación interactiva que simula transacciones bancarias (retiro, depósito, consulta de saldo y validación PIN).", tech: ["HTML5", "CSS3", "JavaScript"], file: "cajero-automatico/index.html" },
+      { id: 3, category: "utilidades", catLabel: "Utilidades", catClass: "cat-utilidades", title: "Calculadora Científica Web", desc: "Calculadora avanzada interactiva con funciones trigonométricas, exponenciales y memoria.", tech: ["HTML5", "CSS3", "JavaScript"], file: "calculadora-cientifica/index.html" },
+      { id: 4, category: "salud", catLabel: "Salud", catClass: "cat-salud", title: "Calculadora de Índice de Masa Corporal", desc: "Evaluador de salud nutricional con semaforización gráfica de riesgo y cálculo dinámico de IMC.", tech: ["HTML5", "CSS3", "JavaScript"], file: "calculadora-imc/index.html" },
+      { id: 5, category: "salud", catLabel: "Salud", catClass: "cat-salud", title: "Sistema de Triaje y Clasificación Médica", desc: "Algoritmo de atención médica hospitalaria que clasifica emergencias por código de colores e intencionalidad.", tech: ["HTML5", "CSS3", "JavaScript"], file: "clasificacion-emergencia-triaje/index.html" },
+      { id: 6, category: "utilidades", catLabel: "Sistemas", catClass: "cat-utilidades", title: "Gestión de Congreso Monousuario", desc: "Base de datos y sistema de control de asistencia, acreditación y catálogo de participantes.", tech: ["HTML5", "CSS3", "JavaScript"], file: "congreso-bd-monousuario/index.html" },
+      { id: 7, category: "comercio", catLabel: "Comercio", catClass: "cat-comercio", title: "Sistema de Control de Inventario", desc: "Gestor dinámico de entrada, salida y balance de productos en almacén con tabla de datos interactiva.", tech: ["HTML5", "CSS3", "JavaScript"], file: "control-inventario/index.html" },
+      { id: 8, category: "algoritmos", catLabel: "Algoritmos", catClass: "cat-algoritmos", title: "Convertidor de Bases Numéricas", desc: "Herramienta algorítmica para convertir valores en tiempo real entre binario, octal, decimal y hexadecimal.", tech: ["HTML5", "CSS3", "JavaScript"], file: "convertidor-numeros/index.html" },
+      { id: 9, category: "utilidades", catLabel: "Datos", catClass: "cat-utilidades", title: "DataFest Interactive App", desc: "Plataforma de presentación interactiva para el evento DataFest con análisis de métricas y datos.", tech: ["HTML5", "CSS3", "JavaScript"], file: "data-fest/INDEX.html" },
+      { id: 10, category: "comercio", catLabel: "Comercio", catClass: "cat-comercio", title: "Generador de Facturas & Comprobantes", desc: "Módulo de facturación comercial con cálculo automático de subtotal, IGV (18%), descuentos y totales.", tech: ["HTML5", "CSS3", "JavaScript"], file: "factura-tienda/index.html" },
+      { id: 11, category: "utilidades", catLabel: "Utilidades", catClass: "cat-utilidades", title: "Generador Dinámico de Tarjetas", desc: "Creador visual de tarjetas de presentación y perfiles de usuario personalizables en tiempo real.", tech: ["HTML5", "CSS3", "JavaScript"], file: "generador-tarjetas-perfil/index.html" },
+      { id: 12, category: "utilidades", catLabel: "Utilidades", catClass: "cat-utilidades", title: "Sistema de Horóscopo Zodiacal", desc: "Evaluador condicional de signos del zodiaco basado en fecha de nacimiento, elemento y predicciones.", tech: ["HTML5", "CSS3", "JavaScript"], file: "horoscopo-zodiacal/oroscopo" },
+      { id: 13, category: "salud", catLabel: "Ecología", catClass: "cat-salud", title: "Calculadora de Huella de Carbono", desc: "Estimador de emisiones individuales de CO2 con recomendaciones ecológicas para reducir impacto ambiental.", tech: ["HTML5", "CSS3", "JavaScript"], file: "huella-carbono/index.html" },
+      { id: 14, category: "ia", catLabel: "IA & Psicología", catClass: "cat-ia", title: "Test de Inteligencia Emocional", desc: "Evaluación psicométrica sobre autoconocimiento, autorregulación y automotivación con informe interactivo.", tech: ["HTML5", "CSS3", "JavaScript"], file: "inteligencia-emocional/1.- Autoconocimiento/index.html" },
+      { id: 15, category: "ia", catLabel: "IA & Psicología", catClass: "cat-ia", title: "Evaluación de Inteligencias Múltiples", desc: "Test basado en la teoría cualitativa de Howard Gardner (lógica, musical, espacial, interpersonal).", tech: ["HTML5", "CSS3", "JavaScript"], file: "inteligencias-multiples/inteligencia.html" },
+      { id: 16, category: "ia", catLabel: "Sistemas Expertos", catClass: "cat-ia", title: "Sistema de Dictamen Legal & Tribunal", desc: "Modelo condicional para evaluación de causas legales, análisis de evidencias y dictamen automatizado.", tech: ["HTML5", "CSS3", "JavaScript"], file: "justicia-tribunal/index.html" },
+      { id: 17, category: "ia", catLabel: "Machine Learning", catClass: "cat-ia", title: "Simulador de Machine Learning", desc: "Modelos introductorios de clasificación y regresión aplicados a datasets mensuales de salud.", tech: ["HTML5", "CSS3", "JavaScript"], file: "machine-learning/salud/index.html" },
+      { id: 18, category: "algoritmos", catLabel: "Algoritmos", catClass: "cat-algoritmos", title: "Evaluador de Paridad Numérica", desc: "Algoritmo clásico de validación condicional de números pares, impares y propiedades aritméticas.", tech: ["HTML5", "CSS3", "JavaScript"], file: "par-o-impar/index.html" },
+      { id: 19, category: "utilidades", catLabel: "Utilidades", catClass: "cat-utilidades", title: "Calculadora de Materiales de Construcción", desc: "Sistema para calcular cantidad exacta de ladrillos y mortero para muros y losas de techo.", tech: ["HTML5", "CSS3", "JavaScript"], file: "proyecto-ladrillos/EXPLORER proyecto-ladrillos/index.html" },
+      { id: 20, category: "salud", catLabel: "Ecología", catClass: "cat-salud", title: "Clasificador Ecológico de Residuos", desc: "Guía interactiva y juego de educación ambiental sobre separación de residuos orgánicos e inorgánicos.", tech: ["HTML5", "CSS3", "JavaScript"], file: "reciclador-residuos/index.html" },
+      { id: 21, category: "ia", catLabel: "Redes Neuronales", catClass: "cat-ia", title: "Visualizador de Red Neuronal Artificial", desc: "Simulador visual de capas de entrada, ocultas y de salida en un perceptrón con pesos.", tech: ["HTML5", "CSS3", "JavaScript"], file: "red-neuronal/red.html" },
+      { id: 22, category: "simulacion", catLabel: "Simulación", catClass: "cat-simulacion", title: "Monitoreo de Sensores Térmicos", desc: "Simulador en tiempo real con slider de temperatura, alertas cromáticas y logs de seguridad.", tech: ["HTML5", "CSS3", "JavaScript"], file: "simulador-clima-temperatura/index.html" },
+      { id: 23, category: "simulacion", catLabel: "Simulación", catClass: "cat-simulacion", title: "Simulador de Rendimiento Académico (V1)", desc: "Calculadora de promedio cuantitativo con conversión cualitativa y emisión de boleta académica.", tech: ["HTML5", "CSS3", "JavaScript"], file: "simulador-promedio-notas/index1.html" },
+      { id: 24, category: "simulacion", catLabel: "Simulación", catClass: "cat-simulacion", title: "Simulador de Promedio Académico (V2)", desc: "Segunda versión optimizada con mejor interfaz de usuario, rangos de notas y alertas estilizadas.", tech: ["HTML5", "CSS3", "JavaScript"], file: "simulador-promedio-notas-v2/index1.html" },
+      { id: 25, category: "ia", catLabel: "Sistemas Expertos", catClass: "cat-ia", title: "Sistema Experto & Motor de Reglas (V1)", desc: "Motor de inferencia basado en reglas condicionales (If-Then) para encadenamiento hacia adelante.", tech: ["HTML5", "CSS3", "JavaScript"], file: "sistema-experto-v1/index.html" },
+      { id: 26, category: "ia", catLabel: "Sistemas Expertos", catClass: "cat-ia", title: "Sistema Experto Avanzado (V2)", desc: "Versión mejorada del motor de decisiones con interfaz moderna y diagnóstico en tiempo real.", tech: ["HTML5", "CSS3", "JavaScript"], file: "sistema-experto-v2/index.html" },
+      { id: 27, category: "comercio", catLabel: "Comercio", catClass: "cat-comercio", title: "Catálogo & Tienda de Productos", desc: "E-commerce básico interactivo con selector de productos, cálculo de total y simulación de compra.", tech: ["HTML5", "CSS3", "JavaScript"], file: "tienda-productos/index.html" },
+      { id: 28, category: "algoritmos", catLabel: "Algoritmos", catClass: "cat-algoritmos", title: "Generador de Matrices Algebraicas", desc: "Colección interactiva para renderizar 12 tipos de matrices (Serpiente, Rombo, Triangular, Caracol).", tech: ["HTML5", "CSS3", "JavaScript"], file: "tipos-de-matrices/matrizes/index.html" },
+      { id: 29, category: "algoritmos", catLabel: "Algoritmos", catClass: "cat-algoritmos", title: "Simulador de Trazado de Código", desc: "Herramienta educativa para simular la ejecución paso a paso de variables y depuración algorítmica.", tech: ["HTML5", "CSS3", "JavaScript"], file: "trazado-de-codigo/script.js" }
     ];
 
-    let currentCategory = 'todos';
-    let currentSearch = '';
+    let activeCat = 'todos';
+    let searchVal = '';
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderGrid();
-      setupFilters();
+      initCanvas();
+      renderProjects();
+      bindEvents();
     });
 
-    function renderGrid() {
-      const grid = document.getElementById('workGrid');
-      const filtered = projects.filter(p => {
-        const matchCat = (currentCategory === 'todos') || (p.category === currentCategory);
-        const matchSearch = p.title.toLowerCase().includes(currentSearch.toLowerCase()) || 
-                            p.desc.toLowerCase().includes(currentSearch.toLowerCase());
+    // Fondo de Partículas Interactivas
+    function initCanvas() {
+      const canvas = document.getElementById('bgCanvas');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const particles = Array.from({ length: 45 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        color: Math.random() > 0.5 ? 'rgba(56, 189, 248, 0.4)' : 'rgba(168, 85, 247, 0.4)'
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // Renderizado dinámico de tarjetas 3D
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      const filtered = projectsData.filter(p => {
+        const matchCat = (activeCat === 'todos') || (p.category === activeCat);
+        const matchSearch = p.title.toLowerCase().includes(searchVal.toLowerCase()) || 
+                            p.desc.toLowerCase().includes(searchVal.toLowerCase());
         return matchCat && matchSearch;
       });
 
       if (filtered.length === 0) {
         grid.innerHTML = `
-          <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
-            🔍 No se encontraron trabajos para el filtro aplicado.
+          <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: var(--text-secondary);">
+            <p style="font-size: 1.3rem; margin-bottom: 0.5rem;">🔍 No se encontraron proyectos</p>
+            <p style="font-size: 0.95rem;">Intenta con otro término o selecciona otra categoría.</p>
           </div>
         `;
         return;
       }
 
       grid.innerHTML = filtered.map(p => `
-        <div class="work-card">
+        <div class="card-3d">
           <div>
-            <div class="card-header">
-              <span class="card-num">PROYECTO #${String(p.id).padStart(2, '0')}</span>
-              <span class="tag-delivered">✅ Entregado</span>
+            <div class="card-head">
+              <span class="tag-category ${p.catClass}">${p.catLabel}</span>
+              <span class="proj-num">#${String(p.id).padStart(2, '0')}</span>
             </div>
-            <h3>${p.title}</h3>
-            <p class="desc">${p.desc}</p>
+            <h3 class="card-title-text">${p.title}</h3>
+            <p class="card-body-desc">${p.desc}</p>
           </div>
-          <div class="card-actions">
-            <a href="./${p.file}" target="_blank" class="btn-action btn-primary">
-              ⚡ Abrir Trabajo
-            </a>
-            <button onclick="openModal('./${p.file}', '${p.title}')" class="btn-action btn-secondary">
-              👁️ Previsualizar
-            </button>
+          <div>
+            <div class="card-tech-chips">
+              ${p.tech.map(t => `<span class="chip-item">${t}</span>`).join('')}
+            </div>
+            <div class="card-footer-btns">
+              <a href="./${p.file}" target="_blank" class="btn-launch">
+                ⚡ Abrir App
+              </a>
+              <button onclick="openInspectModal('./${p.file}', '${p.title}')" class="btn-inspect">
+                👁️ Vista Previa
+              </button>
+            </div>
           </div>
         </div>
       `).join('');
     }
 
-    function setupFilters() {
+    function bindEvents() {
       document.getElementById('searchInput').addEventListener('input', (e) => {
-        currentSearch = e.target.value;
-        renderGrid();
+        searchVal = e.target.value;
+        renderProjects();
       });
 
-      const btns = document.querySelectorAll('.filter-btn');
-      btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          btns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentCategory = btn.getAttribute('data-category');
-          renderGrid();
+      document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          activeCat = chip.getAttribute('data-category');
+          renderProjects();
         });
       });
     }
 
-    function openModal(url, title) {
-      document.getElementById('modalTitle').textContent = `Vista Previa: ${title}`;
+    // Modal de Inspección Multi-Dispositivo
+    function openInspectModal(url, title) {
+      document.getElementById('modalProjectTitle').textContent = `Vista Previa: ${title}`;
       document.getElementById('modalIframe').src = url;
-      document.getElementById('previewModal').classList.add('active');
+      document.getElementById('modalBackdrop').classList.add('active');
+      setDevice('desktop');
     }
 
     function closeModal() {
-      document.getElementById('previewModal').classList.remove('active');
+      document.getElementById('modalBackdrop').classList.remove('active');
       document.getElementById('modalIframe').src = 'about:blank';
+    }
+
+    function setDevice(device) {
+      const wrapper = document.getElementById('frameWrapper');
+      const btns = document.querySelectorAll('.device-btn');
+      
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      wrapper.className = 'frame-wrapper ' + (device !== 'desktop' ? device : '');
     }
   </script>
 </body>
